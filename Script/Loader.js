@@ -26,7 +26,7 @@ return(
     props.showProgress?(
         <View>
         <ActivityIndicator size='large' color='white'/>
-        <Text style={styles.textStyle}>Loading...</Text>
+        <Text style={styles.textStyle}>Loading All Books...</Text>
         </View>
   ):(null)
 

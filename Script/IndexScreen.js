@@ -12,6 +12,7 @@ import {
   TouchableOpacity,
   Image,
   TextInput,
+  AsyncStorage,
 } from 'react-native';
 
 var Header=require('./Header');
@@ -23,10 +24,13 @@ import HTMLView from 'react-native-htmlview';
 
 class IndexScreen extends Component{
   constructor(props){
+
     super(props);
+
     var array=['ا','ب','پ','ت','ٹ','ث','ج','چ','ح','خ','د','ڈ','ذ','ر',
     'ڑ','ز','ژ','س','ش','ص','ض','ط','ظ','ع','غ','ف','ق','ک','گ','ل','م','ن','و',
     'ہ','ي'];
+
     var englishArray=['A','B','C',
                       'D','E','F',
                       'G','H','I',
@@ -61,12 +65,53 @@ class IndexScreen extends Component{
 
   componentDidMount() {
     this.setState({showProgress:true});
-    this.loadBookFromPhone();
+    AsyncStorage.getItem("booksData").then((value) => {
+    var testVar = JSON.parse(value);
+    if (testVar == null) {
+      this.loadBookFromPhone();
+    }else{
+    this.setState({
+      bookArray:JSON.parse(value)
+    });
+    }
+
+    for (var i = 0; i < this.state.bookArray.length; i++) {
+      if (this.state.bookArray[i].title == this.props.book.bookNameWithoutExtension) {
+
+        console.log('Book From Async is = ');
+        console.log(this.state.bookArray[i].title);
+        console.log(this.state.bookArray[i].data);
+        this.state.orignalArray = this.state.bookArray[i].data;
+      }
+    }
+
+    }).done();
+}
+
+rowSelected(item){
+
+  if (item>=this.state.alphabetArray.length) {
+    return;
+  }
+  var letterSelected=this.state.alphabetArray[item];
+  var urdu=0;
+  if (this.state.isUrduSelected) {
+    urdu=1;
+  }
+
+  var selectedItem={key:item,urdu:urdu,letterSelected:letterSelected,bookName:this.props.book.bookName,bookArray:this.state.orignalArray};
+  this.props.navigator.push({
+    screen:'BookContents',
+    passProps:{selectedItem},
+    navigatorStyle:{
+      navBarHidden:true,
+    },
+  })
 }
 
   async loadBookFromPhone(){
     // Alert.alert('title, message?, buttons?, options?, type?')
-    var bookName=this.props.book.bookName;
+    var bookName = this.props.book.bookName;
     var path='';
     if (Platform.OS === 'ios') {
     path=RNFS.MainBundlePath+'/'+bookName;
@@ -89,10 +134,9 @@ class IndexScreen extends Component{
   }
 }
 
-
-
 loadBook(contents){
 
+    Alert.alert('loadBook Called');
     var contentString = contents.toString();
     console.log('Content Of Complete Book' + contentString);
     var chaptersArray=[];
@@ -123,22 +167,18 @@ loadBook(contents){
       console.log('Akhzar is testing heading' + testString);
 
       for (var x = 0; x < stringAtIndex.length; x++) {
-
         var firstIndex=stringAtIndex.indexOf('@',x);
         var secondIndex=stringAtIndex.indexOf('@',firstIndex+1);
         if (secondIndex==-1 || firstIndex==-1) {
           break;
         }
-
         console.log('FirstIndex and SecondIndex' + firstIndex +'   '+ secondIndex);
         var tempString=stringAtIndex.slice(firstIndex+1,secondIndex-1);
         // Save String and Heading Both in Array
         var ObjectToSaveInArray = {heading:testString,data:tempString.trim()};
         titlesArray.push(ObjectToSaveInArray);
         x=secondIndex;
-
       }
-
     }
 
     console.log('Titles Array is ='+titlesArray);
@@ -174,6 +214,7 @@ loadBook(contents){
 
       }
     }
+
     console.log('Main Temp Temp Array is ='+tempArray);
 
     // Extract Headings from Sub Content From $ Sign.
@@ -200,58 +241,6 @@ loadBook(contents){
           });
 }
 
-  actionButtonUrdu(){
-         var tempEngArray=[];
-         length=Math.ceil(this.state.urduAlphabet.length/3);
-         for (var i = 0; i < length; i++) {
-           var object={data:i,key:i};
-           tempEngArray.push(object);
-         }
-         this.setState({isUrduSelected:true,
-           listArray:tempEngArray,
-           alphabetArray:this.state.urduAlphabet
-                           });
-}
-
-   actionButtonEnglish(){
-
-     var tempEngArray=[];
-     length=Math.ceil(this.state.englishAlphabet.length/3);
-     for (var i = 0; i < length; i++) {
-       var object={data:i,key:i};
-       tempEngArray.push(object);
-     }
-
-     this.setState({isUrduSelected:false,
-       listArray:tempEngArray,
-       alphabetArray:this.state.englishAlphabet,
-                     });
-   }
-
-rowSelected(item){
-  if (item>=this.state.alphabetArray.length) {
-    return;
-  }
-  var letterSelected=this.state.alphabetArray[item];
-  var urdu=0;
-  if (this.state.isUrduSelected) {
-    urdu=1;
-  }
-  var selectedItem={key:item,urdu:urdu,letterSelected:letterSelected,bookName:this.props.book.bookName,bookArray:this.state.orignalArray};
-  this.props.navigator.push({
-    screen:'BookContents',
-    passProps:{selectedItem},
-    navigatorStyle:{
-      navBarHidden:true,
-    },
-  })
-}
-
-
-
-
-
-
 
 filterData(txtSearch){
       var newData=this.state.orignalArray.filter(function(item){
@@ -267,32 +256,48 @@ filterData(txtSearch){
           bookArray:newData,
         })
       }
-
 }
 
 
+actionButtonUrdu(){
+         var tempEngArray=[];
+         length=Math.ceil(this.state.urduAlphabet.length/3);
+         for (var i = 0; i < length; i++) {
+           var object={data:i,key:i};
+           tempEngArray.push(object);
+         }
+         this.setState({isUrduSelected:true,
+           listArray:tempEngArray,
+           alphabetArray:this.state.urduAlphabet
+                           });
+}
 
+   actionButtonEnglish(){
+     var tempEngArray=[];
+     length=Math.ceil(this.state.englishAlphabet.length/3);
+     for (var i = 0; i < length; i++) {
+       var object={data:i,key:i};
+       tempEngArray.push(object);
+     }
 
-
+     this.setState({isUrduSelected:false,
+       listArray:tempEngArray,
+       alphabetArray:this.state.englishAlphabet,
+                     });
+   }
 
   render(){
     return(
       <View style={styles.outerContainer}>
       <Header title='ادارہ سیلمانی' navigator={this.props.navigator} />
       <View style={styles.listView}>
-
-
-
-
       <View style={{flex:1}}>
       {this.state.isUrduSelected?
           (
             <FlatList
                   data={this.state.listArray}
-
                   renderItem={({item}) =>
                   <View>
-
                   <View style={styles.listExternalView}>
                       <View style={[styles.subView,{}]}>
                         <TouchableOpacity onPress={()=>this.rowSelected((item.key*3+2))} style={[styles.buttonStyle,{borderWidth:(item.key*3+2)<this.state.alphabetArray.length?1:0}]}>
@@ -312,62 +317,42 @@ filterData(txtSearch){
                           </TouchableOpacity>
                       </View>
                   </View>
-
-
-
-
                   </View>
-
                 }
                 />
           ):(
             <FlatList
                   data={this.state.listArray}
-
                   renderItem={({item}) =>
                   <View>
-
                   <View style={styles.listExternalView}>
                       <View style={[styles.subView,{}]}>
                         <TouchableOpacity onPress={()=>this.rowSelected((item.key*3+0))} style={[styles.buttonStyle,{borderWidth:(item.key*3+0)<this.state.alphabetArray.length?1:0}]}>
                           <Text numberOfLines={1} style={styles.textStyle}>{this.state.alphabetArray[(item.key*3+0)]}</Text>
                         </TouchableOpacity>
                       </View>
-
                       <View style={[styles.subView,{}]}>
                           <TouchableOpacity onPress={()=>this.rowSelected((item.key*3+1))} style={[styles.buttonStyle,{borderWidth:(item.key*3+1)<this.state.alphabetArray.length?1:0}]}>
                             <Text numberOfLines={1} style={styles.textStyle}>{this.state.alphabetArray[(item.key*3+1)]}</Text>
                           </TouchableOpacity>
                       </View>
-
                       <View style={[styles.subView,{}]}>
                           <TouchableOpacity onPress={()=>this.rowSelected((item.key*3+2))} style={[styles.buttonStyle,{borderWidth:(item.key*3+2)<this.state.alphabetArray.length?1:0}]}>
                             <Text numberOfLines={1} style={styles.textStyle}>{this.state.alphabetArray[(item.key*3+2)]}</Text>
                           </TouchableOpacity>
                       </View>
                   </View>
-
-
-
                   </View>
-
                 }
                 />
           )
       }
-
-    </View>
-
-
       </View>
-
+      </View>
       <Loader showProgress={this.state.showProgress}/>
-
-
       </View>
     )
   }
-
 }
 
 

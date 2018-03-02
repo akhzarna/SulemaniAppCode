@@ -22,17 +22,14 @@ class DisplayResultScreen extends Component{
   constructor(props){
     super(props);
 
-
           var finalArray=[];
-
-
           for (var x = 0; x < this.props.finalArray.length; x++) {
-            var arrayList=[];
+          var arrayList=[];
           for (var i = 0; i < this.props.finalArray[x].searchedArray.length; i++) {
             var paragraph=''+this.props.finalArray[x].searchedArray[i].data.data;
             var searchWord=this.props.finalArray[x].word;
             var index=paragraph.indexOf(searchWord);
-            console.log('Index to HightLight is = '+index);
+            // console.log('Index to HightLight is = '+index);
             var data='';
             var firstIndex=-1;
             var secondIndex=-1;
@@ -53,10 +50,10 @@ class DisplayResultScreen extends Component{
             // data='<p>'+data+'</p>';
             var frequency=this.findFrequencyOfSearchWord(paragraph)
 
-            console.log('paragraph is = ' + paragraph);
-            console.log('data is = ' + data);
-            console.log('key is = ' + i);
-            console.log('frequency is = ' + frequency);
+            // console.log('paragraph is = ' + paragraph);
+            // console.log('data is = ' + data);
+            // console.log('key is = ' + i);
+            // console.log('frequency is = ' + frequency);
 
             var object={data:data,key:i,frequency:frequency};
             arrayList.push(object)
@@ -79,22 +76,19 @@ class DisplayResultScreen extends Component{
         tempNewArray.push(object);
       }
 
-
-
-        this.state={dataArray:tempNewArray}
-        console.log('Final Data Array for Flat FlatList is = ' + this.state.dataArray);
-
+      this.state={dataArray:tempNewArray}
+      console.log('Final Data Array for Section LIST is = ' + this.state.dataArray);
 }
 
 findFrequencyOfSearchWord(paragraph){
 
     var searchWord=this.props.finalArray[0].word;
-    console.log('Search Result For Frequency is = ' + searchWord);
+    // console.log('Search Result For Frequency is = ' + searchWord);
     var freqCounter = 0;
     var headingEndIndex = paragraph.indexOf('\r',1);
 
-    console.log('Heading End Index is = ' + headingEndIndex);
-    console.log('Paragraph Length is = ' + paragraph.length);
+    // console.log('Heading End Index is = ' + headingEndIndex);
+    // console.log('Paragraph Length is = ' + paragraph.length);
 
     for (var j = 0; j <paragraph.length; j++) {
             var index=paragraph.indexOf(searchWord,j);
@@ -114,10 +108,10 @@ findFrequencyOfSearchWord(paragraph){
 
 rowSelected(item,section){
 
-console.log('Choosed Item is =' + item);
+// console.log('Choosed Item is =' + item);
 
 var dataSelected=this.props.finalArray[section.key].searchedArray[item.key].data;
-console.log('DataSelected is =' + dataSelected);
+// console.log('DataSelected is =' + dataSelected);
 var searchWord=this.props.finalArray[0].word;
 var selectedItem={key:item.key,data:dataSelected,searchWord:searchWord};
   this.props.navigator.push({

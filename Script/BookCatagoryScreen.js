@@ -24,9 +24,7 @@ class BookCatagoryScreen extends Component{
     super(props);
     this.props.navigator.setOnNavigatorEvent(this.onNavigationEvent.bind(this));
 
-
     }
-
 
     onNavigationEvent(event) {
           // handle a deep link
@@ -87,7 +85,6 @@ actionButtonPress(id){
 
               <View style={[styles.rowView,{flex:1,height:buttonWidth,justifyContent:'center',alignItems:'center'}]}>
                     <TouchableOpacity onPress={()=>this.actionButtonPress(1)} style={styles.buttonStyle}>
-
                     <Text style={styles.titleStyle}>علمی ادبی معاشرتی کتب</Text>
                     </TouchableOpacity>
               </View>
