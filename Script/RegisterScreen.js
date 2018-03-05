@@ -45,5 +45,4 @@ export function RegisterScreen(){
   Navigation.registerComponent('ChaptersListScreen', () => ChaptersListScreen);
   Navigation.registerComponent('BookCatagoryScreen', () => BookCatagoryScreen);
 
-
 }
