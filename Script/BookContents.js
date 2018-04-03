@@ -76,19 +76,14 @@ async sortDataAccordingToIndex(){
   var counter=0;
       for (var i = 0; i < array.length; i++) {
         var paragarh=''+array[i].data;
-
         paragarh.trim();
-
         var headingWords=''+array[i].subheading;
-
         var word=headingWords.toLowerCase();
         console.log(word[0]);
-
         if (word[0]==letter) {
           var titleString='';
           // headingWords.reverse();
-            titleString=titleString+' '+headingWords;
-
+          titleString=titleString+' '+headingWords;
           var displayObject={
             key:counter,
             data:titleString,
@@ -102,12 +97,6 @@ async sortDataAccordingToIndex(){
           counter++;
           // break;
         }
-
-
-
-
-
-
 
       }
 

@@ -53,5 +53,4 @@ export function RegisterScreen(){
   Navigation.registerComponent('SignUpScreen', () => SignUpScreen);
   Navigation.registerComponent('Screen4', () => Screen4);
 
-
 }
