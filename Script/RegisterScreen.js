@@ -21,8 +21,13 @@ var BookCatagoryScreen=require('./BookCatagoryScreen');
 var NewHomeScreen=require('./NewHomeScreen');
 var BooksListScreen=require('./BooksListScreen');
 var ChaptersListScreen=require('./ChaptersListScreen');
+var LoginScreen=require('./LoginScreen');
+var SignUpScreen=require('./SignUpScreen');
+var Screen4=require('./Screen4');
+
 
 export function RegisterScreen(){
+
   Navigation.registerComponent('HomeScreen', () => HomeScreen);
   Navigation.registerComponent('SideMenu', () => SideMenu);
   Navigation.registerComponent('DisplayResultScreen', () => DisplayResultScreen);
@@ -44,6 +49,9 @@ export function RegisterScreen(){
   Navigation.registerComponent('BooksListScreen', () => BooksListScreen);
   Navigation.registerComponent('ChaptersListScreen', () => ChaptersListScreen);
   Navigation.registerComponent('BookCatagoryScreen', () => BookCatagoryScreen);
+  Navigation.registerComponent('LoginScreen', () => LoginScreen);
+  Navigation.registerComponent('SignUpScreen', () => SignUpScreen);
+  Navigation.registerComponent('Screen4', () => Screen4);
 
 
 }

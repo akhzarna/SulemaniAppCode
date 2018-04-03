@@ -35,9 +35,11 @@ rowSelected(selectedItem){
               screenName='HomeScreen';
             }else if (selectedItem.key==1) {
               screenName='BookCatagoryScreen';
-            }else if(selectedItem.key==3){
+            }
+            else if(selectedItem.key==3){
               screenName='BookMarkScreen';
-            }else if(selectedItem.key==5){
+            }
+            else if(selectedItem.key==5){
               screenName='IntroductionScreen';
             }else if(selectedItem.key==6){
               screenName='ListScreen';

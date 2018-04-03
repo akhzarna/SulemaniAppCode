@@ -10,12 +10,15 @@ const {
   TouchableOpacity,
   Alert,
   Platform,
+  TextInput,
+  ImageBackground,
 } = require('react-native');
 
 
 var menuIcon=require('./Icons/menu_icon.png');
 var backArrow=require('./Icons/backArrow_2.png')
 var headerImage=require('./Icons/header.png');
+var searchIcon =  require('./Icons/search_icon.png');
 
 var isiPhone=Platform.OS === 'ios';
 
@@ -29,12 +32,9 @@ const window = Dimensions.get('window');
 const Header = (props)=>{
 
 
-  state={
-    isDisabled:true,
-    isOpen:false,
-    swipeToClose: true,
-    sliderValue: 0.3
-  }
+
+
+
 
 
   function actMenuClick() {
@@ -62,17 +62,16 @@ const Header = (props)=>{
 	return (
 
 
-        <Image resizeMode={'stretch'} source={headerImage} style={{height:120,width:window.width,backgroundColor:'transparent'}}>
+        <ImageBackground resizeMode={'stretch'} source={headerImage} style={{height:100,width:window.width,backgroundColor:'transparent'}}>
 
        <View style={[styles.viewStyle,{backgroundColor:props.isHome?'transparent':'transparent'}]}>
-       <View style={styles.iconView}>
-
-       </View>
 
 
+       <View style={[styles.textView,{}]}>
 
-       <View style={styles.textView}>
-       <Text style={styles.titleStyle}> {props.title} </Text>
+                <Text style={styles.titleStyle}> {props.title} </Text>
+
+
        </View>
 
 
@@ -96,7 +95,7 @@ const Header = (props)=>{
 
 
        </View>
-       </Image>
+       </ImageBackground>
 
 		);
 
@@ -118,15 +117,17 @@ const styles=StyleSheet.create({
   viewStyle:{
     // height: 70,
     // flex:1,
-    marginTop:25,
+    marginTop:10,
     flexDirection:'row',
     justifyContent:'center',
     alignItems:'center',
   },
   titleStyle:{
-  textAlign:'center',
+  // textAlign:'right',
   // fontWeight:'bold',
   fontFamily:'Aslam',
+  marginLeft:40,
+  textAlign:'center',
   color:'white',
   fontSize:20,
   },
@@ -136,10 +137,12 @@ const styles=StyleSheet.create({
     // backgroundColor:'green',
   },
   textView:{
-    flex:2,
+    flex:4,
     marginTop:10,
-    alignItems:'center',
-    justifyContent:'center',
+    // backgroundColor:'gray',
+    marginLeft:10,
+    // alignItems:'center',
+    // justifyContent:'center',
     // backgroundColor:'red',
   },
   notifyStyle:{

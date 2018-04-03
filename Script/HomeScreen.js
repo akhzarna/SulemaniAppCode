@@ -13,6 +13,7 @@ import {
   Dimensions,
   CheckBox,
   AsyncStorage,
+  FlatList,
 } from 'react-native';
 var Header=require('./Header')
 var Loader=require('./Loader')
@@ -43,7 +44,12 @@ class HomeScreen extends Component{
   constructor(props){
     super(props);
     this.props.navigator.setOnNavigatorEvent(this.onNavigationEvent.bind(this));
+    var array=['ا','ب','پ','ت','ٹ','ث','ج','چ','ح','خ','د','ڈ','ذ','ر',
+    'ڑ','ز','ژ','س','ش','ص','ض','ط','ظ','ع','غ','ف','ق','ک','گ','ل','م','ن','و',
+    'ہ','ي'];
+
     this.state={
+        urduAlphabet:array,
         fileContent:'kdsnfk',
         bookArray:[],
         txtSearch:'',
@@ -53,9 +59,10 @@ class HomeScreen extends Component{
         placeholderText:'نسخہ جات  یا علاج تلاش کریں',
         showProgress:true,
         isBook1Selected:true,
-        isBook2Selected:false,
-        isBook3Selected:false,
-        isBook4Selected:false,
+        isBook2Selected:true,
+        isBook3Selected: this.props.isOption1,
+        isBook4Selected: !this.props.isOption1,
+        searchResultArray:[],
         bannersArray:[
           {fileName:require('./Banner/Matab_Banner_1.jpg'),key:5},
           {fileName:require('./Banner/Matab_Banner_2.png'),key:6},
@@ -65,7 +72,8 @@ class HomeScreen extends Component{
           {fileName:require('./Banner/honey_2.jpg'),key:2},
           {fileName:require('./Banner/Honey_Farmi.jpg'),key:3},
           {fileName:require('./Banner/Honey_Wild.jpg'),key:4},
-        ]
+        ],
+
     }
 }
 
@@ -1674,12 +1682,13 @@ class HomeScreen extends Component{
 
   }else{
 
-    // For Android Path is different
+    // For Android Path is different  خواص آک
+
     var  path1='Arnad.txt';
     var  path2='Andrain.txt';
     var  path3='Angoor.txt';
     var  path4='Aaam.txt';
-    var  path5='خواص آک.txt';
+    var  path5='Khawas_aak.txt';
     var  path6='Badam.txt';
     var  path7='Bargad.txt';
     var  path8='Dhatoora.txt';
@@ -1692,10 +1701,18 @@ class HomeScreen extends Component{
     var  path15='Dahee.txt';
     var  path16='Gul Surk.txt';
 
+    // Alert.alert('title')
+    RNFS.readDirAssets('') // On Android, use "RNFS.DocumentDirectoryPath" (MainBundlePath is not defined)
+      .then((result) => {
+        console.log('GOT RESULT', result);
+      // stat the first file
+        // return Promise.all([RNFS.stat(result[0].path), result[0].path]);
+      });
+      console.log('End of File results');
     // BookNameArray:[ 'Arnad','Andrain','Angoor','Aaam','خواص آک','Badam','Bargad','Dhatoora','خواص شہد','Dhania','Dhoodh','Gajar','Ghee kvar','Ghee','Dahee','Gul Surk'],
 
     var finalArray1=[];
-    RNFS.readFile(path1)
+    RNFS.readFileAssets(path1)
         .then((contents) => {
           var contentString = contents.toString();
           console.log('Content Of Complete Book' + contentString);
@@ -1801,7 +1818,7 @@ class HomeScreen extends Component{
 
         var finalArray2=[];
 
-        RNFS.readFile(path2)
+        RNFS.readFileAssets(path2)
             .then((contents) => {
               var contentString = contents.toString();
               console.log('Content Of Complete Book' + contentString);
@@ -1909,7 +1926,7 @@ class HomeScreen extends Component{
 
             var finalArray3=[];
 
-            RNFS.readFile(path3)
+            RNFS.readFileAssets(path3)
                 .then((contents) => {
                   var contentString = contents.toString();
                   console.log('Content Of Complete Book' + contentString);
@@ -2018,7 +2035,7 @@ class HomeScreen extends Component{
 
                 var finalArray4=[];
 
-                RNFS.readFile(path4)
+                RNFS.readFileAssets(path4)
                     .then((contents) => {
                       var contentString = contents.toString();
                       console.log('Content Of Complete Book' + contentString);
@@ -2128,7 +2145,7 @@ class HomeScreen extends Component{
 
                     var finalArray5=[];
 
-                    RNFS.readFile(path5)
+                    RNFS.readFileAssets(path5)
                         .then((contents) => {
                           var contentString = contents.toString();
                           console.log('Content Of Complete Book' + contentString);
@@ -2237,7 +2254,7 @@ class HomeScreen extends Component{
 
                         var finalArray6=[];
 
-                        RNFS.readFile(path6)
+                        RNFS.readFileAssets(path6)
                             .then((contents) => {
                               var contentString = contents.toString();
                               console.log('Content Of Complete Book' + contentString);
@@ -2346,7 +2363,7 @@ class HomeScreen extends Component{
 
                             var finalArray7=[];
 
-                            RNFS.readFile(path7)
+                            RNFS.readFileAssets(path7)
                                 .then((contents) => {
                                   var contentString = contents.toString();
                                   console.log('Content Of Complete Book' + contentString);
@@ -2456,7 +2473,7 @@ class HomeScreen extends Component{
 
                                 var finalArray8=[];
 
-                                RNFS.readFile(path8)
+                                RNFS.readFileAssets(path8)
                                     .then((contents) => {
                                       var contentString = contents.toString();
                                       console.log('Content Of Complete Book' + contentString);
@@ -2565,7 +2582,7 @@ class HomeScreen extends Component{
 
                                     var finalArray9=[];
 
-                                    RNFS.readFile(path9)
+                                    RNFS.readFileAssets(path9)
                                         .then((contents) => {
                                           var contentString = contents.toString();
                                           console.log('Content Of Complete Book' + contentString);
@@ -2674,7 +2691,7 @@ class HomeScreen extends Component{
 
                                         var finalArray10=[];
 
-                                        RNFS.readFile(path10)
+                                        RNFS.readFileAssets(path10)
                                             .then((contents) => {
                                               var contentString = contents.toString();
                                               console.log('Content Of Complete Book' + contentString);
@@ -2781,7 +2798,7 @@ class HomeScreen extends Component{
 
                                             var finalArray11=[];
 
-                                            RNFS.readFile(path11)
+                                            RNFS.readFileAssets(path11)
                                                 .then((contents) => {
                                                   var contentString = contents.toString();
                                                   console.log('Content Of Complete Book' + contentString);
@@ -2891,7 +2908,7 @@ class HomeScreen extends Component{
 
                                                 var finalArray12=[];
 
-                                                RNFS.readFile(path12)
+                                                RNFS.readFileAssets(path12)
                                                     .then((contents) => {
                                                       var contentString = contents.toString();
                                                       console.log('Content Of Complete Book' + contentString);
@@ -3000,7 +3017,7 @@ class HomeScreen extends Component{
 
                                                     var finalArray13=[];
 
-                                                    RNFS.readFile(path13)
+                                                    RNFS.readFileAssets(path13)
                                                         .then((contents) => {
                                                           var contentString = contents.toString();
                                                           console.log('Content Of Complete Book' + contentString);
@@ -3110,7 +3127,7 @@ class HomeScreen extends Component{
 
                                                         var finalArray14=[];
 
-                                                        RNFS.readFile(path14)
+                                                        RNFS.readFileAssets(path14)
                                                             .then((contents) => {
                                                               var contentString = contents.toString();
                                                               console.log('Content Of Complete Book' + contentString);
@@ -3221,7 +3238,7 @@ class HomeScreen extends Component{
 
                                                             var finalArray15=[];
 
-                                                            RNFS.readFile(path15)
+                                                            RNFS.readFileAssets(path15)
                                                                 .then((contents) => {
                                                                   var contentString = contents.toString();
                                                                   console.log('Content Of Complete Book' + contentString);
@@ -3332,7 +3349,7 @@ class HomeScreen extends Component{
 
                                                                 var finalArray16=[];
 
-                                                                RNFS.readFile(path16)
+                                                                RNFS.readFileAssets(path16)
                                                                     .then((contents) => {
                                                                       var contentString = contents.toString();
                                                                       console.log('Content Of Complete Book' + contentString);
@@ -3869,6 +3886,98 @@ _renderItem ({item, index}) {
     );
   }
 
+
+
+wordSelected(index){
+
+  var letter=this.state.urduAlphabet[index]
+  var finalArray=[];
+  var tempBookArray=[];
+
+  tempBookArray.push(this.state.bookArray[0])
+  tempBookArray.push(this.state.bookArray[1])
+  tempBookArray.push(this.state.bookArray[2])
+  tempBookArray.push(this.state.bookArray[3])
+  tempBookArray.push(this.state.bookArray[4])
+  tempBookArray.push(this.state.bookArray[5])
+  tempBookArray.push(this.state.bookArray[6])
+  tempBookArray.push(this.state.bookArray[7])
+  tempBookArray.push(this.state.bookArray[8])
+  tempBookArray.push(this.state.bookArray[9])
+  tempBookArray.push(this.state.bookArray[10])
+  tempBookArray.push(this.state.bookArray[11])
+  tempBookArray.push(this.state.bookArray[12])
+  tempBookArray.push(this.state.bookArray[13])
+  tempBookArray.push(this.state.bookArray[14])
+  tempBookArray.push(this.state.bookArray[15])
+
+  // this.setState({showProgress:true})
+  for (var x = 0; x < tempBookArray.length; x++) {
+  var bookArray=tempBookArray[x].data;
+  var searchedArray=[];
+  var counter = 0;
+  var flag = 0;
+
+  // Testing Akhzar Nazir
+  for (var i = 0; i < bookArray.length; i++) {
+    var mainHeading=bookArray[i].mainheading;
+    var subHeading=bookArray[i].subheading;
+    var subbestheading=bookArray[i].subbestheading.trim();
+    var stringArray=subbestheading.split(")");
+    var newString=stringArray[0];
+    if (stringArray.length>0) {
+      newString=stringArray[1];
+    }
+
+
+    var tempString=bookArray[i].data;
+    var tempPara=tempString.toLowerCase();
+
+
+    if (newString == null) {
+      // console.log("error");
+      continue;
+    }
+    newString=newString.trim();
+    if (newString[0]==letter) {
+      finalArray.push(bookArray[i])
+    }
+
+  }
+
+
+}
+
+this.setState({
+  searchResultArray:finalArray,
+})
+// Alert.alert(''+finalArray.length)
+
+
+}
+
+
+
+callSomeFunction(index){
+  // Alert.alert(""+this.state.searchResultArray[index].subheading);
+  var dataSelected=this.state.searchResultArray[index];
+  var selectedItem=dataSelected
+
+    this.props.navigator.push({
+      screen:'ReadingScreen',
+      passProps:{selectedItem},
+      navigatorStyle:{
+        navBarHidden:true,
+      },
+    })
+
+
+}
+
+
+
+
+
   render(){
     return(
       <View style={styles.outerContainer}>
@@ -3888,13 +3997,14 @@ _renderItem ({item, index}) {
 
        {/*}<Text style={{textAlign:'right',marginRight:15,marginTop:15}}>کس کتاب سے تلاش کرنا چاہتے ہیں؟</Text>*/}
 
+{/*
        <View style={{justifyContent:'flex-end',alignItems:'flex-end',marginRight:40,marginLeft:40,backgroundColor:'transparent'}}>
 
 
        <View style={{flexDirection:'row'}}>
 
 
-               <TouchableOpacity onPress={()=>this.actionCheckBox2()} style={{marginRight:120,width:120,height:40,alignItems:'flex-end',justifyContent:'center'}}>
+               <TouchableOpacity onPress={()=>this.actionCheckBox2()} style={{marginRight:20,width:120,height:40,alignItems:'flex-end',justifyContent:'center'}}>
 
                <View style={{flexDirection:'row',}}>
                <Text style={{alignSelf:'center',color:'white'}}>Title + Text</Text>
@@ -3904,7 +4014,7 @@ _renderItem ({item, index}) {
                </TouchableOpacity>
 
 
-                <TouchableOpacity onPress={()=>this.actionCheckBox1()} style={{width:40,height:40,alignItems:'flex-end',justifyContent:'center'}}>
+                <TouchableOpacity onPress={()=>this.actionCheckBox1()} style={{width:140,height:40,alignItems:'flex-end',justifyContent:'center'}}>
 
                 <View style={{flexDirection:'row'}}>
                 <Text style={{alignSelf:'center',color:'white'}}>Title</Text>
@@ -3918,9 +4028,10 @@ _renderItem ({item, index}) {
       </View>
 
 
+
           <View style={{flexDirection:'row'}}>
 
-                    <TouchableOpacity onPress={()=>this.actionCheckBox4()} style={{marginRight:40,width:120,height:40,alignItems:'flex-end',justifyContent:'center'}}>
+                    <TouchableOpacity onPress={()=>this.actionCheckBox4()} style={{marginRight:20,width:120,height:40,alignItems:'flex-end',justifyContent:'center'}}>
 
                     <View style={{flexDirection:'row'}}>
                     <Text style={{alignSelf:'center',color:'white'}}>علاج</Text>
@@ -3930,10 +4041,10 @@ _renderItem ({item, index}) {
                     </TouchableOpacity>
 
 
-                    <TouchableOpacity onPress={()=>this.actionCheckBox3()} style={{width:120,height:40,alignItems:'flex-end',justifyContent:'center'}}>
+                    <TouchableOpacity onPress={()=>this.actionCheckBox3()} style={{width:140,height:40,alignItems:'flex-end',justifyContent:'center'}}>
 
                     <View style={{flexDirection:'row'}}>
-                    <Text style={{alignSelf:'center',color:'white'}}>نسخہ جات یا بیماریاں</Text>
+                    <Text style={{fontSize:12,color:'white'}}>نسخہ جات یا بیماریاں</Text>
                     <Image source={this.state.isBook3Selected?checkIcon:uncheckIcon} style={{width:30,height:30,marginLeft:10}}/>
                     </View>
 
@@ -3941,12 +4052,14 @@ _renderItem ({item, index}) {
           </View>
 
      </View>
+     */}
 
        <View style={styles.buttonView}>
        <TouchableOpacity onPress={()=>this.actionButtonSearch()} style={styles.buttonStyleOne}>
        <Text style={styles.textStyle}>{this.state.buttonSearchTitle}</Text>
        </TouchableOpacity>
        </View>
+
 
 
        {
@@ -3969,13 +4082,72 @@ _renderItem ({item, index}) {
          */
        }
 
-
+{/*
          <View style={styles.buttonView}>
          <TouchableOpacity onPress={()=>this.actionButtonBooksList()} style={styles.buttonStyleTwo}>
          <Text style={styles.textStyle}>{this.state.booksListTitle}</Text>
          </TouchableOpacity>
+         </View>*/
+}
+         <View style={{marginTop:25,}}>
+
+         <FlatList
+         data={this.state.urduAlphabet}
+         keyExtractor={(item, index) => index}
+         horizontal={true}
+         inverted={true}
+         renderItem={({item,index}) =>
+          <TouchableOpacity onPress={()=>this.wordSelected(index)} style={{
+            height:60,
+            width:60,
+            borderWidth:1,
+            alignItems:'center',
+            justifyContent:'center',
+            borderColor:'white',
+          }}>
+          <Text style={[styles.textStyle,{backgroundColor:'transparent'}]}>{item}</Text>
+          </TouchableOpacity>
+        }
+          />
+
          </View>
 
+
+        <View style={{marginTop:20}}>
+          <FlatList
+          data={this.state.searchResultArray}
+          keyExtractor={(item, index) => index}
+          renderItem={({item,index}) =>
+          <TouchableOpacity onPress={()=>this.callSomeFunction(index)} style={{
+            height:50,
+          }}>
+          <View style={{
+            marginLeft:20,
+            marginRight:20,
+            marginTop:10,
+            borderColor:'white',
+            borderWidth:1,
+            flex:1,
+            justifyContent:'center',
+          }}>
+          <Text numberOfLines={1} style={{
+            backgroundColor:'transparent',
+            color:'white',
+            textAlign:'right',
+            marginRight:20,
+            marginLeft:20,
+            fontSize:20,
+            fontFamily:isiPhone?'Nafees Web Naskh':'nafeeswebnaskh',
+          }}>{item.subbestheading}</Text>
+          </View>
+          </TouchableOpacity>
+        }
+            />
+
+        </View>
+
+
+        <View style={{marginTop:30}}/>
 
       </View>
 
@@ -4018,11 +4190,10 @@ inputStyle:{
   // backgroundColor:'green',
 },
 buttonView:{
-  marginTop:30,
+  marginTop:20,
   alignItems:'center',
   justifyContent:'center',
 },
-
 buttonStyleOne:{
 height:50,
 width:140,
