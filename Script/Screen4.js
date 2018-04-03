@@ -12,13 +12,14 @@ import {
   TextInput,
 } from 'react-native';
 
-
+var logoImage=require('./Icons/logo.png');
 var Header=require('./Header')
 var Loader=require('./Loader')
 const window = Dimensions.get('window');
 const DEVICE_WIDTH=window.width;
 const DEVICE_HEIGHT=window.height;
 const buttonWidth=DEVICE_WIDTH/2-50;
+const logoWidth=DEVICE_WIDTH/3+25;
 var backArrow=require('./Icons/backArrow_2.png')
 
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
@@ -115,18 +116,30 @@ render(){
             alignItems:'center',
             justifyContent:'center',
           }}>
+
             <View style={{
-              width:120,
-              height:120,
-              borderRadius:60,
-              borderWidth:1,
+              width:140,
+              height:140,
+              borderRadius:50,
+            
             }}>
+            <Image source={logoImage} resizeMode={'contain'}
+                  style={{
+                    width:140,
+                   height:140,
+                   borderRadius:50,
+              
+                  }}/>
+
+
             </View>
 
             <Text style={{
               marginTop:10,
-              fontSize:17,
-              // fontWeight:'bold'
+              fontSize:19,
+              color:'black',
+              fontWeight:'bold',
+
             }}>ادارہ مطبوعات سلیمانی</Text>
 
           </View>
@@ -139,43 +152,46 @@ render(){
             justifyContent:'center',
           }}>
           <TouchableOpacity onPress={()=>this.actButton1()} style={{
-            borderWidth:1,
+           // borderWidth:1,
             borderRadius:20,
             height:40,
             width:150,
+            backgroundColor:'#38803B',
             alignItems:'center',
             justifyContent:'center',
           }}>
-          <Text style={{
+          <Text style={{ color:'white', fontWeight:'bold',
 
           }}>طبی کتب</Text>
           </TouchableOpacity>
 
           <TouchableOpacity onPress={()=>this.actButton2()} style={{
-            borderWidth:1,
+           // borderWidth:1,
             borderRadius:20,
+            backgroundColor:'#38803B',
             marginTop:20,
             height:40,
             width:150,
             alignItems:'center',
-            justifyContent:'center',
+            justifyContent:'center', 
           }}>
-          <Text style={{
+          <Text style={{ color:'white', fontWeight:'bold',
 
           }}>امراض اور علاج</Text>
           </TouchableOpacity>
 
 
           <TouchableOpacity onPress={()=>this.actButton3()} style={{
-            borderWidth:1,
+           // borderWidth:1,
             borderRadius:20,
+            backgroundColor:'#38803B',
             marginTop:20,
             height:40,
             width:150,
             alignItems:'center',
             justifyContent:'center',
           }}>
-          <Text style={{
+          <Text style={{ color:'white', fontWeight:'bold',
 
           }}>نسخہ جات</Text>
           </TouchableOpacity>
@@ -186,7 +202,7 @@ render(){
 
               <View style={{
               marginTop:80,
-              backgroundColor:'#CDCDCD',
+              backgroundColor:'#38803B',
               // borderBottomWidth:10,
               // borderTopWidth:100,
               // height:20,
@@ -197,28 +213,36 @@ render(){
               flex:1,
               height:230
               }}>
+
               <View style={{
                 borderTopWidth:80,
                 borderLeftWidth:DEVICE_WIDTH,
-                borderLeftColor:'#E7E7E7',
-                borderTopColor:'#CDCDCD',
-                // backgroundColor:'orange',
+                borderLeftColor:'white',
+                borderTopColor:'#38803B',
+                borderBottomColor:'#38803B',
+             //    backgroundColor:'orange',
                 transform: [
                   {rotate: '180deg'}
                   ]
-              }}/>
+              }}
+              
+              />
               <View style={{
                 position:'absolute',
+
                 left:'43%',
-                top:'5%'
+                top:'5%',
               }}>
+
                 <TouchableOpacity onPress={()=>this.actButton4()} style={{
                   width:60,
                   height:60,
-                  backgroundColor:'#4C4C4C',
+                  borderWidth:1,
+                  borderColor:'white',
+                  backgroundColor:'#38803B',
                   alignItems:'center',
                   justifyContent:'center',
-                  borderRadius:30,
+                  borderRadius:50,
                 }}>
                 <Image source={backArrow} style={{width:30,height:22}}/>
                 </TouchableOpacity>
@@ -242,7 +266,9 @@ render(){
 const styles=StyleSheet.create({
 outerContainer:{
   flex:1,
-  backgroundColor:'#E7E7E7'
+ // backgroundColor:'#85C226',
+ // backgroundColor:'transparent',
+ 
 },
 inputStyle:{
   backgroundColor:'#B4B4B4',

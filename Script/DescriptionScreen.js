@@ -31,7 +31,7 @@ class DescriptionScreen extends Component{
     var mainHeading = this.props.selectedItem.data.mainheading;
     var subHeading = this.props.selectedItem.data.subheading;
     var subbestHeading = this.props.selectedItem.data.subbestheading;
-    var mainArray = [subbestHeading,subHeading,mainHeading];
+    var mainArray = [mainHeading,subHeading,subbestHeading];
     mainHeading=this.seperateHeadingWord(mainHeading);
 
     var orignalData=tempData;
@@ -290,7 +290,7 @@ checkForAlreadyBookMark(){
               stylesheet={htmlstyles}
               />
 
-          <TouchableOpacity onPress={()=>this.acutionButtonBookMark()} style={{marginLeft:40,marginRight:40,marginBottom:20,marginTop:40,backgroundColor:(this.state.indexOfBookMark!=-1)?'#E8590A':'gray',height:50,justifyContent:'center',alignItems:'center',borderRadius:30}}>
+          <TouchableOpacity onPress={()=>this.acutionButtonBookMark()} style={{marginLeft:40,marginRight:40,marginBottom:20,marginTop:40,backgroundColor:(this.state.indexOfBookMark!=-1)?'#E8590A':'#999999',height:50,justifyContent:'center',alignItems:'center',borderRadius:30}}>
           <View style={styles.innerView}>
           <Image source={bookmark_icon} style={styles.iconStar}/>
           <Text style={styles.textStyle1}>بک مارک</Text>

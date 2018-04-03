@@ -60,6 +60,7 @@ class HomeScreen extends Component{
         showProgress:true,
         isBook1Selected:true,
         isBook2Selected:true,
+        pressStatus: false,
         isBook3Selected: this.props.isOption1,
         isBook4Selected: !this.props.isOption1,
         searchResultArray:[],
@@ -3956,7 +3957,13 @@ this.setState({
 
 }
 
+ _onHideUnderlay(){
+    this.setState({ pressStatus: false });
+  }
 
+  _onShowUnderlay(){
+    this.setState({ pressStatus: true });
+  }
 
 callSomeFunction(index){
   // Alert.alert(""+this.state.searchResultArray[index].subheading);
@@ -3982,7 +3989,7 @@ callSomeFunction(index){
     return(
       <View style={styles.outerContainer}>
       <Image  source={backgroundImage} style={{width:window.width,height:window.height,backgroundColor:'gray'}}>
-      <Header navigator={this.props.navigator} showMenu={true} title='طبی کتب'/>
+      <Header navigator={this.props.navigator} showMenu={true} title='طبی  کتب'/>
       <KeyboardAwareScrollView contentContainerStyle={{flexGrow:1}} enableOnAndroid={true}>
       <View style={styles.logoView}>
       <Image source={dashboard_logo} style={styles.logoStyle}/>
@@ -4097,15 +4104,16 @@ callSomeFunction(index){
          horizontal={true}
          inverted={true}
          renderItem={({item,index}) =>
-          <TouchableOpacity onPress={()=>this.wordSelected(index)} style={{
-            height:60,
+          <TouchableOpacity
+           style={{ height:60,
             width:60,
             borderWidth:1,
             alignItems:'center',
             justifyContent:'center',
-            borderColor:'white',
-          }}>
-          <Text style={[styles.textStyle,{backgroundColor:'transparent'}]}>{item}</Text>
+            borderColor:'white',backgroundColor:(index!=-1)?'transparent':'#999999',}}
+          onPress={()=> this.wordSelected(index)}
+         >
+          <Text style={styles.textStyleNP} > {item} </Text>
           </TouchableOpacity>
         }
           />
@@ -4165,6 +4173,24 @@ outerContainer:{
   flex:1,
   backgroundColor:'#F5DDC5',
 },
+buttonPressed:{
+            height:60,
+            width:60,
+            borderWidth:1,
+            alignItems:'center',
+            justifyContent:'center',
+            borderColor:'white',
+            backgroundColor:'blue',
+},
+buttonNotpressed:{
+            height:60,
+            width:60,
+            borderWidth:1,
+            alignItems:'center',
+            justifyContent:'center',
+            borderColor:'white',
+          // backgroundColor:'blue',
+},
 subView:{
   flex:1,
   // backgroundColor:'gray',
@@ -4218,6 +4244,20 @@ textStyle:{
   color:'white',
   fontFamily:isiPhone?'Nafees Web Naskh':'nafeeswebnaskh',
   fontSize:25,
+  // fontWeight:'bold',
+},
+textStyleP:{
+  color:'white',
+  fontFamily:isiPhone?'Nafees Web Naskh':'nafeeswebnaskh',
+  fontSize:25,
+  backgroundColor:'blue',
+  // fontWeight:'bold',
+},
+textStyleNP:{
+  color:'white',
+  fontFamily:isiPhone?'Nafees Web Naskh':'nafeeswebnaskh',
+  fontSize:25,
+  backgroundColor:'transparent',
   // fontWeight:'bold',
 },
 logoStyle:{

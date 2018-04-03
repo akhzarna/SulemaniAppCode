@@ -3504,46 +3504,41 @@ actionButtonPress(id){
       <View style={styles.outerContainer}>
       <Header navigator={this.props.navigator} showMenu={true} title='طبی کتب'/>
 
-      <View style={{flex:1,justifyContent:'center',alignItems:'center',
-      }}>
-      </View>
+     
 
-      <View style={{flex:4,
-      // backgroundColor:'skyblue',
-      }}>
+      <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
 
-        <View style={{flexDirection:'row',}}>
 
-              <View style={[styles.rowView,{flex:1,height:buttonWidth,justifyContent:'center',alignItems:'center'}]}>
+              <View style={[styles.rowView,{flex:0.15,justifyContent:'center',}]}>
                     <TouchableOpacity onPress={()=>this.actionButtonPress(1)} style={styles.buttonStyle}>
                     <Text style={styles.titleStyle}>علمی ادبی معاشرتی کتب</Text>
                     </TouchableOpacity>
               </View>
-              <View style={[styles.rowView,{flex:1,height:buttonWidth,justifyContent:'center',alignItems:'center'}]}>
+              <View style={[styles.rowView,{flex:0.15,justifyContent:'center',alignItems:'center'}]}>
                     <TouchableOpacity onPress={()=>this.actionButtonPress(2)} style={styles.buttonStyle}>
 
                     <Text style={styles.titleStyle}>تصانیف حکیم عبداللہ</Text>
                     </TouchableOpacity>
               </View>
 
-        </View>
+       
 
-        <View style={{flexDirection:'row',marginTop:25}}>
+       
 
-              <View style={[styles.rowView,{flex:1,height:buttonWidth,justifyContent:'center',alignItems:'center'}]}>
+              <View style={[styles.rowView,{flex:0.15,justifyContent:'center',alignItems:'center'}]}>
                     <TouchableOpacity onPress={()=>this.actionButtonPress(3)} style={styles.buttonStyle}>
 
                     <Text style={styles.titleStyle}>دیگر</Text>
                     </TouchableOpacity>
               </View>
-              <View style={[styles.rowView,{flex:1,height:buttonWidth,justifyContent:'center',alignItems:'center'}]}>
+              <View style={[styles.rowView,{flex:0.15,justifyContent:'center',alignItems:'center'}]}>
                     <TouchableOpacity onPress={()=>this.actionButtonPress(4)} style={styles.buttonStyle}>
 
                     <Text style={styles.titleStyle}>نسخہ جات</Text>
                     </TouchableOpacity>
               </View>
 
-        </View>
+       
 
 
 
@@ -3590,10 +3585,14 @@ const styles=StyleSheet.create({
       // backgroundColor:'gray',
   },
   buttonStyle:{
-  width:buttonWidth,
-  height:buttonWidth,
-  borderWidth:StyleSheet.hairlineWidth,
+  //width:buttonWidth,
+  //height:buttonWidth,
+  //borderWidth:StyleSheet.hairlineWidth,
   borderColor:'black',
+  height:70,
+  width:400,
+  marginLeft:15,
+  marginRight:15,
   alignItems:'center',
   justifyContent:'center',
   backgroundColor:'#38803B',
@@ -3609,8 +3608,8 @@ const styles=StyleSheet.create({
     fontFamily:'Nafees Web Naskh',
   },
   rowView:{
-    width:buttonWidth,
-    height:buttonWidth,
+  //  width:buttonWidth,
+  //  height:buttonWidth,
     // backgroundColor:'orange',
   }
 
