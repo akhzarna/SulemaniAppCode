@@ -3530,7 +3530,7 @@ actionButtonSearch(){  console.log('Selected Books Detail is =');
 var stringToSearch=this.state.txtSearch.trim();
 console.log('String to Search' + stringToSearch);
   stringToSearch=stringToSearch.toLowerCase();
-if (stringToSearch.length<=1) {
+if (stringToSearch.length <=0) {
   Alert.alert('Stop!','Search complete word');
   return;
 }

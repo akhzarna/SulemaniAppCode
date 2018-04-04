@@ -250,7 +250,7 @@ seperateHeadingWord(data){
 
 
       <TouchableOpacity  onPress={()=>{
-        Share.open(shareOptions);
+       Share.open(shareOptions);
       }}  style={{marginLeft:40,marginRight:40,marginBottom:40,marginTop:30,backgroundColor:'#2C3990',height:50,justifyContent:'center',alignItems:'center',borderRadius:30}}>
 
       <View style={styles.innerView}>

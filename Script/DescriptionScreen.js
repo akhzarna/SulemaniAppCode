@@ -70,6 +70,7 @@ class DescriptionScreen extends Component{
       subHeading:subHeading,
       subbestHeading:subbestHeading,
       mainArray:mainArray,
+      forABMdata:this.props.selectedItem.data,
     }
 
     this.checkForAlreadyBookMark();
@@ -196,6 +197,7 @@ tagSimiliarword(data,spaceAfterIndex,index){
     }
 
     acutionButtonBookMark(){
+
       if (this.state.indexOfBookMark != -1) {
         AsyncStorage.getItem("bookMark").then((value) => {
                   console.log('user data= ',JSON.parse(value));
@@ -242,16 +244,17 @@ tagSimiliarword(data,spaceAfterIndex,index){
 
 
 checkForAlreadyBookMark(){
+  // var data=this.props.selectedItem.data;
   AsyncStorage.getItem("bookMark").then((value) => {
             console.log('user data= ',JSON.parse(value));
             if (value!=null) {
                   var savedValue=JSON.parse(value);
                   var array=savedValue.bookMark;
                   for (var i = 0; i < array.length; i++) {
-                    var paragraph=array[i]
-                    var str1=paragraph.slice(0,15);
-                    var data=this.props.selectedItem.data;
-                    var str2=data.slice(0,15);
+                    var paragraph=array[i];
+                    var str1 = array[i].slice(0,15);
+                  //  
+                    var str2 = this.state.forABMdata.slice(0,15);
                     if (str1==str2) {
                       console.log("marked");
                       this.setState({indexOfBookMark:i});

@@ -24,6 +24,7 @@ var ChaptersListScreen=require('./ChaptersListScreen');
 var LoginScreen=require('./LoginScreen');
 var SignUpScreen=require('./SignUpScreen');
 var Screen4=require('./Screen4');
+var BookCatagoryScreen2=require('./BookCatagoryScreen2');
 
 
 export function RegisterScreen(){
@@ -52,5 +53,6 @@ export function RegisterScreen(){
   Navigation.registerComponent('LoginScreen', () => LoginScreen);
   Navigation.registerComponent('SignUpScreen', () => SignUpScreen);
   Navigation.registerComponent('Screen4', () => Screen4);
+  Navigation.registerComponent('BookCatagoryScreen2', () => BookCatagoryScreen2);
 
 }

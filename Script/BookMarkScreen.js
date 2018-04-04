@@ -94,6 +94,14 @@ rowSelected(selectedItem){
         navBarHidden:true,
       },
     })
+     
+    //   this.props.navigator.push({
+    //   screen:'DescriptionScreen',
+    //   passProps:{callBackFunction:(data)=>this.callBackFunction(data),selectedItem },
+    //   navigatorStyle:{
+    //     navBarHidden:true,
+    //   },
+    // })
 
 
 }

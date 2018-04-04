@@ -62,7 +62,7 @@ onNavigationEvent(event) {
       }}>
 
       <View style={{
-        marginTop:120,
+        marginTop:80,
         flexDirection:'row',
         alignItems:'center',
         justifyContent:'center',
@@ -72,11 +72,15 @@ onNavigationEvent(event) {
         }}>
         <Text style={{
           fontSize:20,
+          color:'#CC181E',
+           fontWeight:'700',
         }}>Sing In</Text>
         </TouchableOpacity>
       <Text style={{
         textAlign:'center',
         fontSize:20,
+         fontWeight:'700',
+        color:'#38803B',
         textDecorationLine:'underline',
       }}>SignUp</Text>
 
@@ -92,10 +96,12 @@ onNavigationEvent(event) {
       placeholder="Name"
       underlineColorAndroid='transparent'
       style={{
-        backgroundColor:'#B4B4B4',
-        height:45,
-        borderWidth:1,
-        borderColor:'#BBBBBB',
+    
+        backgroundColor:'white',
+            height:45,
+             borderWidth:1.75,
+             borderRadius:5,
+        borderColor:'green',
         paddingLeft:10,
         paddingRight:10,
        }}/>
@@ -106,10 +112,11 @@ onNavigationEvent(event) {
        underlineColorAndroid='transparent'
        style={{
          marginTop:15,
-         backgroundColor:'#B4B4B4',
-         height:45,
-         borderWidth:1,
-         borderColor:'#BBBBBB',
+         backgroundColor:'white',
+            height:45,
+             borderWidth:1.75,
+             borderRadius:5,
+        borderColor:'green',
          paddingLeft:10,
          paddingRight:10,
         }}/>
@@ -120,10 +127,11 @@ onNavigationEvent(event) {
         underlineColorAndroid='transparent'
         style={{
           marginTop:15,
-          backgroundColor:'#B4B4B4',
-          height:45,
-          borderWidth:1,
-          borderColor:'#BBBBBB',
+           backgroundColor:'white',
+            height:45,
+             borderWidth:1.75,
+             borderRadius:5,
+        borderColor:'green',
           paddingLeft:10,
           paddingRight:10,
          }}/>
@@ -136,10 +144,11 @@ onNavigationEvent(event) {
          secureTextEntry={true}
          style={{
            marginTop:15,
-           backgroundColor:'#B4B4B4',
-           height:45,
-           borderWidth:1,
-           borderColor:'#BBBBBB',
+            backgroundColor:'white',
+            height:45,
+             borderWidth:1.75,
+             borderRadius:5,
+        borderColor:'green',
            paddingLeft:10,
            paddingRight:10,
           }}/>
@@ -151,10 +160,11 @@ onNavigationEvent(event) {
           secureTextEntry={true}
           style={{
             marginTop:15,
-            backgroundColor:'#B4B4B4',
+            backgroundColor:'white',
             height:45,
-            borderWidth:1,
-            borderColor:'#BBBBBB',
+             borderWidth:1.75,
+             borderRadius:5,
+            borderColor:'green',
             paddingLeft:10,
             paddingRight:10,
            }}/>
@@ -169,9 +179,10 @@ onNavigationEvent(event) {
       }}>
       <TouchableOpacity>
       <Text style={{
-        // fontWeight:'600',
-        fontFamily:'Aslam',
-      }}>forget                password       ? </Text>
+        fontWeight:'bold',
+        color:'#38803B',
+        //fontFamily:'Aslam',
+      }}> forget password? </Text>
       </TouchableOpacity>
       </View>
 
@@ -182,15 +193,21 @@ onNavigationEvent(event) {
       }}>
       <TouchableOpacity style={{
         borderWidth:1,
-        borderRadius:20,
-        borderColor:'#000000',
+        borderRadius:30,
+         justifyContent:'center',
+        alignItems:'center',
+        backgroundColor:'#38803B',
+        borderColor:'#38803B',
       }}>
       <Text style={{
         marginTop:10,
+        justifyContent:'center',
+        alignItems:'center',
         marginBottom:10,
+        color:'white',
         marginLeft:30,
         marginRight:30,
-        // fontWeight:'700',
+        fontSize:16,
         fontFamily:'Aslam',
       }}>Creat           Account</Text>
       </TouchableOpacity>
@@ -202,7 +219,7 @@ onNavigationEvent(event) {
 
       <View style={{
         marginTop:20,
-      backgroundColor:'#CDCDCD',
+      backgroundColor:'#38803B',
       // borderBottomWidth:10,
       // borderTopWidth:100,
       // height:20,
@@ -216,8 +233,8 @@ onNavigationEvent(event) {
       <View style={{
         borderTopWidth:80,
         borderLeftWidth:DEVICE_WIDTH,
-        borderLeftColor:'#E7E7E7',
-        borderTopColor:'#CDCDCD',
+        borderLeftColor:'white',
+        borderTopColor:'#38803B',
         // backgroundColor:'orange',
         transform: [
           {rotate: '180deg'}
@@ -232,7 +249,9 @@ onNavigationEvent(event) {
         <TouchableOpacity style={{
           width:60,
           height:60,
-          backgroundColor:'#4C4C4C',
+          borderWidth:1,
+          borderColor:'white',
+          backgroundColor:'#38803B',
           alignItems:'center',
           justifyContent:'center',
           borderRadius:30,
@@ -257,7 +276,7 @@ onNavigationEvent(event) {
 const styles=StyleSheet.create({
   outerContainer:{
     flex:1,
-    backgroundColor:'#E7E7E7',
+    backgroundColor:'white',
 
   }
 })

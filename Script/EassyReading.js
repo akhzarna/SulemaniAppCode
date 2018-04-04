@@ -38,7 +38,7 @@ class EassyReading extends Component{
   render(){
     return(
       <View style={styles.outerContainer}>
-      <Header title='مضامین' navigator={this.props.navigator} showMenu={false}/>
+      <Header title='مضامین ' navigator={this.props.navigator} showMenu={false}/>
       <ScrollView>
 
       <View style={{marginBottom:15}}>

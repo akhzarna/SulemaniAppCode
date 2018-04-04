@@ -264,7 +264,7 @@ inputStyle:{
   marginLeft:50,
   marginRight:50,
   height:50,
-  borderWidth:1,
+  borderWidth:1.5,
   borderRadius:5,
   borderColor:'green',   // #BBBBBB
   paddingLeft:10,
