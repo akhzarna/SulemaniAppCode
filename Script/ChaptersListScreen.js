@@ -158,7 +158,7 @@
 
 
     var searchWord=text.trim();
-    var orignalData=this.state.dataArray
+    var orignalData=this.state.dataArray;
     this.setState({
     textSearch:searchWord
   })
@@ -241,7 +241,7 @@ for (var i = 0; i < finalArray.length; i++) {
 
 
 
-actionTextBlur(){
+ actionTextBlur(){
 
   if (this.state.textSearch == '') {
     this.setState({

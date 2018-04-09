@@ -208,7 +208,7 @@ seperateHeadingWord(data){
        const headingView=this.state.headingWords.map((item,index)=>{
          return(
            <View key={`item-${index}`} style={[styles.subViewStyle,{borderTopWidth:1,borderLeftWidth:1,borderBottomWidth:1,borderRightWidth:index==this.state.headingWords.length-1?1:0,backgroundColor:'#BFEBFF'}]} >
-           <Text style={{fontSize:27,color:'black',fontWeight:'bold' ,fontFamily:'Adobe Arabic',marginTop:10,marginBottom:10,marginLeft:5,marginRight:5,textAlign:'right'}}>{item}</Text>
+           <Text style={{fontSize:27,color:'black',fontWeight:'bold' ,fontFamily:'Adobe Arabic',marginTop:10,marginBottom:10,marginLeft:5,marginRight:5,textAlign:'right'}}>{item} </Text>
            </View>
          )
        });
@@ -255,7 +255,7 @@ seperateHeadingWord(data){
 
       <View style={styles.innerView}>
       <Image source={share_icon}  style={styles.iconShare}/>
-        <Text style={styles.textStyle1}>شیئیر</Text>
+        <Text style={styles.textStyle1}>  شیئیر</Text>
       </View>
 
   </TouchableOpacity>

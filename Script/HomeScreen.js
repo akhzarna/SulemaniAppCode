@@ -103,7 +103,8 @@ class HomeScreen extends Component{
     var testVar = JSON.parse(value);
     if (testVar == null) {
 
-      this.actionButtonLoadBook();
+      this();
+
 
     }else{
 
@@ -111,11 +112,19 @@ class HomeScreen extends Component{
       bookArray:JSON.parse(value)
     });
 
+
+
     this.setState({showProgress:false});
+    this.slectFunc();
 
 }
-    }).done();
+    }
 
+
+    ).done();
+     
+     //this.slectFunc();
+   // this.wordSelected();
 }
 
   componentWillUnmount() {
@@ -3508,10 +3517,11 @@ class HomeScreen extends Component{
 
 // readFileAssets
   }
+ // this.wordSelected();
 }
 
 actionButtonBooksList(){
-
+      console.log("check dobara");
     var screenName='BooksListScreen';
 
     this.props.navigator.push({
@@ -3887,14 +3897,17 @@ _renderItem ({item, index}) {
     );
   }
 
+ 
 
 
 wordSelected(index){
-
-  var letter=this.state.urduAlphabet[index]
+      
+    
+  var letter=this.state.urduAlphabet[index];
+  
   var finalArray=[];
   var tempBookArray=[];
-
+     
   tempBookArray.push(this.state.bookArray[0])
   tempBookArray.push(this.state.bookArray[1])
   tempBookArray.push(this.state.bookArray[2])
@@ -3957,6 +3970,87 @@ this.setState({
 
 }
 
+
+
+
+
+
+ slectFunc(){
+     
+      var letter = "ا";
+  //  console.log("Second function", this.state.bookArray[0]);
+  var finalArray=[];
+  var tempBookArray=[];
+
+  tempBookArray.push(this.state.bookArray[0])
+  tempBookArray.push(this.state.bookArray[1])
+  tempBookArray.push(this.state.bookArray[2])
+  tempBookArray.push(this.state.bookArray[3])
+  tempBookArray.push(this.state.bookArray[4])
+  tempBookArray.push(this.state.bookArray[5])
+  tempBookArray.push(this.state.bookArray[6])
+  tempBookArray.push(this.state.bookArray[7])
+  tempBookArray.push(this.state.bookArray[8])
+  tempBookArray.push(this.state.bookArray[9])
+  tempBookArray.push(this.state.bookArray[10])
+  tempBookArray.push(this.state.bookArray[11])
+  tempBookArray.push(this.state.bookArray[12])
+  tempBookArray.push(this.state.bookArray[13])
+  tempBookArray.push(this.state.bookArray[14])
+  tempBookArray.push(this.state.bookArray[15])
+
+//   // this.setState({showProgress:true})
+   for (var x = 0; x < tempBookArray.length ; x++) {
+   var bookArray=tempBookArray[x].data;
+   var searchedArray=[];
+   var counter = 0;
+   var flag = 0;
+
+//   // Testing Akhzar Nazir
+   for (var i = 0; i < bookArray.length; i++) {
+     var mainHeading=bookArray[i].mainheading;
+     var subHeading=bookArray[i].subheading;
+     var subbestheading=bookArray[i].subbestheading.trim();
+     var stringArray=subbestheading.split(")");
+     var newString=stringArray[0];
+     if (stringArray.length>0) {
+       newString=stringArray[1];
+    }
+
+
+     var tempString=bookArray[i].data;
+     var tempPara=tempString.toLowerCase();
+
+
+     if (newString == null) {
+//       // console.log("error");
+       continue;
+     }
+     newString=newString.trim();
+     if (newString[0]==letter) {
+       finalArray.push(bookArray[i])
+     }
+
+   }
+
+
+ }
+
+ this.setState({
+   searchResultArray:finalArray,
+ })
+// Alert.alert(''+finalArray.length)
+
+
+  }
+
+
+
+
+
+
+
+
  _onHideUnderlay(){
     this.setState({ pressStatus: false });
   }
@@ -3996,6 +4090,7 @@ callSomeFunction(index){
       </View>
       <View style={styles.subView}>
       <TextInput style={[styles.inputStyle,{textAlign:this.state.isUrduSelected?'right':'left'}]}
+      
       onChangeText={(txtSearch) => this.setState({txtSearch})}
       placeholder={this.state.placeholderText}
       underlineColorAndroid='transparent'
@@ -4110,10 +4205,10 @@ callSomeFunction(index){
             borderWidth:1,
             alignItems:'center',
             justifyContent:'center',
-            borderColor:'white',backgroundColor:(index!=-1)?'transparent':'#999999',}}
+            borderColor:'white',backgroundColor:(index!=-1)?'transparent':'blue',}}
           onPress={()=> this.wordSelected(index)}
          >
-          <Text style={styles.textStyleNP} > {item} </Text>
+          <Text style={styles.textStyleNP} > {item}  </Text>
           </TouchableOpacity>
         }
           />

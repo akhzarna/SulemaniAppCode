@@ -36,6 +36,7 @@ class EassyReading extends Component{
   }
 
   render(){
+//console.log("ajjadkjjanan", <EassyText eassyId={this.props.selectedItem.eassyId}/>);
     return(
       <View style={styles.outerContainer}>
       <Header title='مضامین ' navigator={this.props.navigator} showMenu={false}/>
@@ -45,6 +46,7 @@ class EassyReading extends Component{
       <HeadingView headingWords={this.state.headingWords}/>
       </View>
       <View style={{marginRight:15,marginLeft:15,marginBottom:20}}>
+
       <EassyText eassyId={this.props.selectedItem.eassyId} />
       </View>
 

@@ -27,6 +27,7 @@ class DescriptionScreen extends Component{
 
   constructor(props){
     super(props);
+    var bookName=this.props.selectedItem.bookName;
     var tempData=this.props.selectedItem.data.data;
     var mainHeading = this.props.selectedItem.data.mainheading;
     var subHeading = this.props.selectedItem.data.subheading;
@@ -70,6 +71,7 @@ class DescriptionScreen extends Component{
       subHeading:subHeading,
       subbestHeading:subbestHeading,
       mainArray:mainArray,
+      bookName:bookName,
       forABMdata:this.props.selectedItem.data,
     }
 
@@ -279,7 +281,7 @@ checkForAlreadyBookMark(){
       return(
 
             <View style={styles.outerContainer}>
-            <Header title='نسخہ' navigator={this.props.navigator}/>
+            <Header title='نسخہ ' navigator={this.props.navigator}/>
 
             <ScrollView style={styles.textView}>
               <View style={{marginBottom:15}}>
@@ -296,18 +298,18 @@ checkForAlreadyBookMark(){
           <TouchableOpacity onPress={()=>this.acutionButtonBookMark()} style={{marginLeft:40,marginRight:40,marginBottom:20,marginTop:40,backgroundColor:(this.state.indexOfBookMark!=-1)?'#E8590A':'#999999',height:50,justifyContent:'center',alignItems:'center',borderRadius:30}}>
           <View style={styles.innerView}>
           <Image source={bookmark_icon} style={styles.iconStar}/>
-          <Text style={styles.textStyle1}>بک مارک</Text>
+          <Text style={styles.textStyle1}>بک مارک </Text>
 
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity  onPress={()=>{
-          Share.open(shareOptions);
+        <TouchableOpacity onPress={()=>{
+       Share.open(shareOptions);
         }}  style={{marginLeft:40,marginRight:40,marginBottom:40,backgroundColor:'#2C3990',height:50,justifyContent:'center',alignItems:'center',borderRadius:30}}>
 
         <View style={styles.innerView}>
         <Image source={share_icon}  style={styles.iconShare}/>
-          <Text style={styles.textStyle1}>شیئیر</Text>
+          <Text style={styles.textStyle1}>  شیئیر</Text>
         </View>
 
     </TouchableOpacity>
