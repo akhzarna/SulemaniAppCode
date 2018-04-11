@@ -57,30 +57,26 @@ class BookCatagoryScreen extends Component{
     componentDidMount() {
 
       AsyncStorage.getItem("booksData").then((value) => {
-
       var testVar = JSON.parse(value);
       if (testVar == null) {
-
         this.actionButtonLoadBook();
-
       }else{
-
       this.setState({
         bookArray:JSON.parse(value)
       });
+      this.setState({
+        showProgress:false
+      });
 
-      this.setState({showProgress:false});
+
 
     }
       }).done();
-
     }
 
     componentWillUnmount() {
 
     }
-
-
 
     actionButtonLoadBook(){
 
