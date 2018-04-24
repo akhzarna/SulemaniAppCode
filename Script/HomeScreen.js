@@ -60,6 +60,7 @@ class HomeScreen extends Component{
         showProgress:true,
         isBook1Selected:true,
         isBook2Selected:true,
+        pressStatus: false,
         isBook3Selected: this.props.isOption1,
         isBook4Selected: !this.props.isOption1,
         searchResultArray:[],
@@ -102,7 +103,8 @@ class HomeScreen extends Component{
     var testVar = JSON.parse(value);
     if (testVar == null) {
 
-      this.actionButtonLoadBook();
+      this();
+
 
     }else{
 
@@ -110,11 +112,19 @@ class HomeScreen extends Component{
       bookArray:JSON.parse(value)
     });
 
+
+
     this.setState({showProgress:false});
+    this.slectFunc();
 
 }
-    }).done();
+    }
 
+
+    ).done();
+     
+     //this.slectFunc();
+   // this.wordSelected();
 }
 
   componentWillUnmount() {
@@ -3507,10 +3517,11 @@ class HomeScreen extends Component{
 
 // readFileAssets
   }
+ // this.wordSelected();
 }
 
 actionButtonBooksList(){
-
+      console.log("check dobara");
     var screenName='BooksListScreen';
 
     this.props.navigator.push({
@@ -3529,7 +3540,7 @@ actionButtonSearch(){  console.log('Selected Books Detail is =');
 var stringToSearch=this.state.txtSearch.trim();
 console.log('String to Search' + stringToSearch);
   stringToSearch=stringToSearch.toLowerCase();
-if (stringToSearch.length<=1) {
+if (stringToSearch.length <=0) {
   Alert.alert('Stop!','Search complete word');
   return;
 }
@@ -3886,14 +3897,17 @@ _renderItem ({item, index}) {
     );
   }
 
+ 
 
 
 wordSelected(index){
-
-  var letter=this.state.urduAlphabet[index]
+      
+    
+  var letter=this.state.urduAlphabet[index];
+  
   var finalArray=[];
   var tempBookArray=[];
-
+     
   tempBookArray.push(this.state.bookArray[0])
   tempBookArray.push(this.state.bookArray[1])
   tempBookArray.push(this.state.bookArray[2])
@@ -3958,6 +3972,93 @@ this.setState({
 
 
 
+
+
+
+ slectFunc(){
+     
+      var letter = "ا";
+  //  console.log("Second function", this.state.bookArray[0]);
+  var finalArray=[];
+  var tempBookArray=[];
+
+  tempBookArray.push(this.state.bookArray[0])
+  tempBookArray.push(this.state.bookArray[1])
+  tempBookArray.push(this.state.bookArray[2])
+  tempBookArray.push(this.state.bookArray[3])
+  tempBookArray.push(this.state.bookArray[4])
+  tempBookArray.push(this.state.bookArray[5])
+  tempBookArray.push(this.state.bookArray[6])
+  tempBookArray.push(this.state.bookArray[7])
+  tempBookArray.push(this.state.bookArray[8])
+  tempBookArray.push(this.state.bookArray[9])
+  tempBookArray.push(this.state.bookArray[10])
+  tempBookArray.push(this.state.bookArray[11])
+  tempBookArray.push(this.state.bookArray[12])
+  tempBookArray.push(this.state.bookArray[13])
+  tempBookArray.push(this.state.bookArray[14])
+  tempBookArray.push(this.state.bookArray[15])
+
+//   // this.setState({showProgress:true})
+   for (var x = 0; x < tempBookArray.length ; x++) {
+   var bookArray=tempBookArray[x].data;
+   var searchedArray=[];
+   var counter = 0;
+   var flag = 0;
+
+//   // Testing Akhzar Nazir
+   for (var i = 0; i < bookArray.length; i++) {
+     var mainHeading=bookArray[i].mainheading;
+     var subHeading=bookArray[i].subheading;
+     var subbestheading=bookArray[i].subbestheading.trim();
+     var stringArray=subbestheading.split(")");
+     var newString=stringArray[0];
+     if (stringArray.length>0) {
+       newString=stringArray[1];
+    }
+
+
+     var tempString=bookArray[i].data;
+     var tempPara=tempString.toLowerCase();
+
+
+     if (newString == null) {
+//       // console.log("error");
+       continue;
+     }
+     newString=newString.trim();
+     if (newString[0]==letter) {
+       finalArray.push(bookArray[i])
+     }
+
+   }
+
+
+ }
+
+ this.setState({
+   searchResultArray:finalArray,
+ })
+// Alert.alert(''+finalArray.length)
+
+
+  }
+
+
+
+
+
+
+
+
+ _onHideUnderlay(){
+    this.setState({ pressStatus: false });
+  }
+
+  _onShowUnderlay(){
+    this.setState({ pressStatus: true });
+  }
+
 callSomeFunction(index){
   // Alert.alert(""+this.state.searchResultArray[index].subheading);
   var dataSelected=this.state.searchResultArray[index];
@@ -3982,13 +4083,14 @@ callSomeFunction(index){
     return(
       <View style={styles.outerContainer}>
       <Image  source={backgroundImage} style={{width:window.width,height:window.height,backgroundColor:'gray'}}>
-      <Header navigator={this.props.navigator} showMenu={true} title='طبی کتب'/>
+      <Header navigator={this.props.navigator} showMenu={true} title='طبی  کتب'/>
       <KeyboardAwareScrollView contentContainerStyle={{flexGrow:1}} enableOnAndroid={true}>
       <View style={styles.logoView}>
       <Image source={dashboard_logo} style={styles.logoStyle}/>
       </View>
       <View style={styles.subView}>
       <TextInput style={[styles.inputStyle,{textAlign:this.state.isUrduSelected?'right':'left'}]}
+      
       onChangeText={(txtSearch) => this.setState({txtSearch})}
       placeholder={this.state.placeholderText}
       underlineColorAndroid='transparent'
@@ -4097,15 +4199,16 @@ callSomeFunction(index){
          horizontal={true}
          inverted={true}
          renderItem={({item,index}) =>
-          <TouchableOpacity onPress={()=>this.wordSelected(index)} style={{
-            height:60,
+          <TouchableOpacity
+           style={{ height:60,
             width:60,
             borderWidth:1,
             alignItems:'center',
             justifyContent:'center',
-            borderColor:'white',
-          }}>
-          <Text style={[styles.textStyle,{backgroundColor:'transparent'}]}>{item}</Text>
+            borderColor:'white',backgroundColor:(index!=-1)?'transparent':'blue',}}
+          onPress={()=> this.wordSelected(index)}
+         >
+          <Text style={styles.textStyleNP} > {item}  </Text>
           </TouchableOpacity>
         }
           />
@@ -4165,6 +4268,24 @@ outerContainer:{
   flex:1,
   backgroundColor:'#F5DDC5',
 },
+buttonPressed:{
+            height:60,
+            width:60,
+            borderWidth:1,
+            alignItems:'center',
+            justifyContent:'center',
+            borderColor:'white',
+            backgroundColor:'blue',
+},
+buttonNotpressed:{
+            height:60,
+            width:60,
+            borderWidth:1,
+            alignItems:'center',
+            justifyContent:'center',
+            borderColor:'white',
+          // backgroundColor:'blue',
+},
 subView:{
   flex:1,
   // backgroundColor:'gray',
@@ -4218,6 +4339,20 @@ textStyle:{
   color:'white',
   fontFamily:isiPhone?'Nafees Web Naskh':'nafeeswebnaskh',
   fontSize:25,
+  // fontWeight:'bold',
+},
+textStyleP:{
+  color:'white',
+  fontFamily:isiPhone?'Nafees Web Naskh':'nafeeswebnaskh',
+  fontSize:25,
+  backgroundColor:'blue',
+  // fontWeight:'bold',
+},
+textStyleNP:{
+  color:'white',
+  fontFamily:isiPhone?'Nafees Web Naskh':'nafeeswebnaskh',
+  fontSize:25,
+  backgroundColor:'transparent',
   // fontWeight:'bold',
 },
 logoStyle:{

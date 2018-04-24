@@ -158,7 +158,7 @@
 
 
     var searchWord=text.trim();
-    var orignalData=this.state.dataArray
+    var orignalData=this.state.dataArray;
     this.setState({
     textSearch:searchWord
   })
@@ -241,7 +241,7 @@ for (var i = 0; i < finalArray.length; i++) {
 
 
 
-actionTextBlur(){
+ actionTextBlur(){
 
   if (this.state.textSearch == '') {
     this.setState({
@@ -323,13 +323,13 @@ actionTextBlur(){
                       <Image source={arrow_left} style={styles.iconDimention}/>
                       </View>
                       <View style={{flex:8}}>
-                      <Text numberOfLines={1} style={styles.textStyle}>{item.data}</Text>
+                      <Text numberOfLines={1} style={styles.textStyle}> {item.data}</Text>
                       </View>
                       </View>
                       <View style={styles.lineView}/>
                       </TouchableOpacity>}
         renderSectionHeader={({section}) =>
-        <View style={{height:40,backgroundColor:'#38803B',justifyContent:'center'}}>
+        <View style={{height:40,backgroundColor:'#999999',justifyContent:'center'}}>
         <Text style={{color:'white',textAlign:'right',
         paddingLeft:15,paddingRight:15,
         fontSize:20,

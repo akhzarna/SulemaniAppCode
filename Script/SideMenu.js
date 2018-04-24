@@ -74,7 +74,7 @@ rowSelected(selectedItem){
             renderItem={({item}) =>
             <TouchableOpacity onPress={()=>this.rowSelected(item)}>
             <View style={styles.textView}>
-            <Text numberOfLines={1} style={styles.textStyle}>{item.data}</Text>
+            <Text numberOfLines={1} style={styles.textStyle}>{item.data}  </Text>
             <Image source={this.state.iconsArray[item.key]} style={styles.iconStyle}/>
             </View>
             </TouchableOpacity>

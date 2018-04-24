@@ -24,7 +24,7 @@ var RNFS = require('react-native-fs');
 var Loader=require('./Loader')
 var Constants=require('./Constants')
 
-class BookCatagoryScreen extends Component{
+class BookCatagoryScreen2 extends Component{
 
   constructor(props){
     super(props);
@@ -57,26 +57,30 @@ class BookCatagoryScreen extends Component{
     componentDidMount() {
 
       AsyncStorage.getItem("booksData").then((value) => {
+
       var testVar = JSON.parse(value);
       if (testVar == null) {
+
         this.actionButtonLoadBook();
+
       }else{
+
       this.setState({
         bookArray:JSON.parse(value)
       });
-      this.setState({
-        showProgress:false
-      });
 
-
+      this.setState({showProgress:false});
 
     }
       }).done();
+
     }
 
     componentWillUnmount() {
 
     }
+
+
 
     actionButtonLoadBook(){
 
@@ -3475,15 +3479,15 @@ actionButtonPress(id){
   if (id==4) {
     // screenName='HomeScreen';
   }
-   if (id==1) {
-     screenName='BookCatagoryScreen2';
+  // if (id==1) {
+  //   screenName='HomeScreen';
   // }else if (id==2) {
   //   screenName='HomeScreen';
   // }else if (id==3) {
   //   screenName='HomeScreen';
   // }else if (id==4) {
   //   screenName='HomeScreen';
-   }
+  // }
   this.props.navigator.push({
     screen:screenName,
     navigatorStyle:{
@@ -3505,15 +3509,15 @@ actionButtonPress(id){
       <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
 
 
-              <View style={[styles.rowView,{flex:0.15,justifyContent:'center',}]}>
+              <View style={[styles.rowView,{flex:0.2,justifyContent:'center',}]}>
                     <TouchableOpacity onPress={()=>this.actionButtonPress(1)} style={styles.buttonStyle}>
-                    <Text style={styles.titleStyle}>علمی ادبی معاشرتی کتب</Text>
+                    <Text style={styles.titleStyle}>درختوں اور پودوں کے خواص</Text>
                     </TouchableOpacity>
               </View>
-              <View style={[styles.rowView,{flex:0.15,justifyContent:'center',alignItems:'center'}]}>
+              <View style={[styles.rowView,{flex:0.2,justifyContent:'center',alignItems:'center'}]}>
                     <TouchableOpacity onPress={()=>this.actionButtonPress(2)} style={styles.buttonStyle}>
 
-                    <Text style={styles.titleStyle}>تصانیف حکیم عبداللہ</Text>
+                    <Text style={styles.titleStyle}>پھلوں اور سبزیوں کے خواص</Text>
                     </TouchableOpacity>
               </View>
 
@@ -3521,19 +3525,13 @@ actionButtonPress(id){
 
        
 
-              <View style={[styles.rowView,{flex:0.15,justifyContent:'center',alignItems:'center'}]}>
+              <View style={[styles.rowView,{flex:0.2,justifyContent:'center',alignItems:'center'}]}>
                     <TouchableOpacity onPress={()=>this.actionButtonPress(3)} style={styles.buttonStyle}>
 
-                    <Text style={styles.titleStyle}>دیگر</Text>
+                    <Text style={styles.titleStyle}>گھریلو اشیا کے خواص</Text>
                     </TouchableOpacity>
               </View>
-              <View style={[styles.rowView,{flex:0.15,justifyContent:'center',alignItems:'center'}]}>
-                    <TouchableOpacity onPress={()=>this.actionButtonPress(4)} style={styles.buttonStyle}>
-
-                    <Text style={styles.titleStyle}>نسخہ جات</Text>
-                    </TouchableOpacity>
-              </View>
-
+             
        
 
 
@@ -3557,6 +3555,32 @@ actionButtonPress(id){
         ):(null)
 
       }
+
+       <View style={{
+              marginTop:30,
+              backgroundColor:'#38803B',
+              // borderBottomWidth:10,
+              // borderTopWidth:100,
+              // height:20,
+              // borderRightWidth:40,
+
+              borderTopColor:'blue',
+              // borderBottomWidth:20,
+              flex:0.1,
+              height:230
+              }}>
+              <View style={{
+                borderTopWidth:80,
+                borderLeftWidth:DEVICE_WIDTH,
+                borderLeftColor:'white',
+                borderTopColor:'#38803B',
+                // backgroundColor:'orange',
+                transform: [
+                  {rotate: '180deg'}
+                  ]
+              }}/>
+
+              </View>
 
       <Loader showProgress={this.state.showProgress}/>
 
@@ -3611,4 +3635,4 @@ const styles=StyleSheet.create({
 
 });
 
-module.exports=BookCatagoryScreen;
+module.exports=BookCatagoryScreen2;

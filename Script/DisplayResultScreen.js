@@ -109,11 +109,13 @@ findFrequencyOfSearchWord(paragraph){
 rowSelected(item,section){
 
 // console.log('Choosed Item is =' + item);
-
+var bookName= section.title;
+console.log("book name dispatching===",bookName);
 var dataSelected=this.props.finalArray[section.key].searchedArray[item.key].data;
+
 // console.log('DataSelected is =' + dataSelected);
 var searchWord=this.props.finalArray[0].word;
-var selectedItem={key:item.key,data:dataSelected,searchWord:searchWord};
+var selectedItem={key:item.key,data:dataSelected,searchWord:searchWord,bookName:bookName};
   this.props.navigator.push({
     screen:'DescriptionScreen',
     passProps:{selectedItem},
@@ -128,7 +130,7 @@ var selectedItem={key:item.key,data:dataSelected,searchWord:searchWord};
     return(
 
       <View style={styles.outerContainer}>
-      <Header title='نتائج' navigator={this.props.navigator}/>
+      <Header title='نتائج ' navigator={this.props.navigator}/>
       <SectionList
       renderItem={({item,section}) => <TouchableOpacity onPress={()=>this.rowSelected(item,section)}>
                     <View style={styles.textView}>
@@ -148,7 +150,7 @@ var selectedItem={key:item.key,data:dataSelected,searchWord:searchWord};
       fontSize:20,
       fontFamily:isiPhone?'Nafees Web Naskh':'nafeeswebnaskh',
         }}>
-        {section.title}
+        {section.title} 
         </Text>
       </View>
       }
@@ -156,7 +158,7 @@ var selectedItem={key:item.key,data:dataSelected,searchWord:searchWord};
       />
 
       {
-
+      //
       // <Header title='نتائج' navigator={this.props.navigator}/>
       //         <FlatList
       //               data={this.state.dataArray}

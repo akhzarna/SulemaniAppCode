@@ -13,15 +13,18 @@ import {
 } from 'react-native';
 
 
-var Header=require('./Header')
-var Loader=require('./Loader')
+var Header=require('./Header');
+var Loader=require('./Loader');
 const window = Dimensions.get('window');
 const DEVICE_WIDTH=window.width;
 const DEVICE_HEIGHT=window.height;
 const buttonWidth=DEVICE_WIDTH/2-50;
-var backArrow=require('./Icons/backArrow_2.png')
+var backArrow=require('./Icons/backArrow_2.png');
+var fbPic=require('./Icons/Fb.png');
+var ytubePic=require('./Icons/yTube.png');
+var twitterPic=require('./Icons/twitterIcon.png');
 
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 
 
@@ -31,7 +34,6 @@ class LoginScreen extends Component{
     super(props);
 
 }
-
 
 
 componentDidMount() {
@@ -65,7 +67,8 @@ render(){
           <Text style={{
             fontSize:20,
             fontWeight:'700',
-            textDecorationLine:'underline'
+            color:'#38803B',
+            textDecorationLine:'underline',
           }}>Sing in</Text>
 
           <TouchableOpacity onPress={()=> {this.props.navigator.push({
@@ -79,6 +82,7 @@ render(){
           }}>
           <Text style={{
             fontSize:20,
+            color:'#CC181E',
             fontWeight:'700',
           }}>SingUp</Text>
           </TouchableOpacity>
@@ -111,8 +115,9 @@ render(){
             }}>
             <TouchableOpacity>
               <Text style={{
+                color:'#38803B',
                 fontWeight:'600',
-              }}>Forget password?</Text>
+              }}> Forget password? </Text>
             </TouchableOpacity>
             </View>
 
@@ -124,7 +129,9 @@ render(){
               <TouchableOpacity style={{
                 alignItems:'center',
                 justifyContent:'center',
+                backgroundColor:'#38803B',
                 borderWidth:1,
+                borderColor:'#38803B',
                 borderRadius:30,
               }}>
               <Text style={{
@@ -132,6 +139,7 @@ render(){
                 marginBottom:7,
                 marginLeft:40,
                 marginRight:40,
+                color:'white',
                 fontWeight:'600'
               }}>Login</Text>
 
@@ -139,13 +147,14 @@ render(){
             </View>
 
             <View style={{flexDirection:'row',alignItems:'center',marginTop:20,marginLeft:50,marginRight:50}}>
-              <View style={{flex:1,backgroundColor:'black',height:1}}/>
+              <View style={{flex:1,backgroundColor:'#CC181E',height:1}}/>
               <Text style={{
                 marginLeft:2,
                 marginRight:2,
+                color:'#CC181E',
                 fontWeight:'600',
-              }}>Sign in with social</Text>
-              <View style={{flex:1,backgroundColor:'black',height:1}}/>
+              }}> Sign in with social </Text>
+              <View style={{flex:1,backgroundColor:'#CC181E',height:1}}/>
             </View>
 
 
@@ -159,23 +168,29 @@ render(){
                   <View style={{
                     width:50,
                     height:50,
-                    backgroundColor:'#00CDFF',
+                    backgroundColor:'white',
                     borderRadius:25,
-                  }}/>
+                  }}>
+                  <Image source={fbPic} style={{width:50,height:50}}/>
+                  </View>
 
                   <View style={{
                     width:50,
                     height:50,
-                    backgroundColor:'#004575',
+                    backgroundColor:'white',
                     borderRadius:25,
-                  }}/>
+                  }}>
+                  <Image source={ytubePic} style={{width:50,height:50}}/>
+                  </View>
 
                   <View style={{
                     width:50,
                     height:50,
-                    backgroundColor:'#990D00',
+                    backgroundColor:'white',
                     borderRadius:25,
-                  }}/>
+                  }} >
+                  <Image source={twitterPic} style={{width:50,height:50}}/>
+                  </View>
 
               </View>
 
@@ -183,7 +198,7 @@ render(){
 
               <View style={{
               marginTop:30,
-              backgroundColor:'#CDCDCD',
+              backgroundColor:'#38803B',
               // borderBottomWidth:10,
               // borderTopWidth:100,
               // height:20,
@@ -197,8 +212,8 @@ render(){
               <View style={{
                 borderTopWidth:80,
                 borderLeftWidth:DEVICE_WIDTH,
-                borderLeftColor:'#E7E7E7',
-                borderTopColor:'#CDCDCD',
+                borderLeftColor:'white',
+                borderTopColor:'#38803B',
                 // backgroundColor:'orange',
                 transform: [
                   {rotate: '180deg'}
@@ -212,7 +227,9 @@ render(){
                 <TouchableOpacity onPress={()=>this.NavigateToScreen()} style={{
                   width:60,
                   height:60,
-                  backgroundColor:'#4C4C4C',
+                  borderWidth:1,
+                  borderColor:'white',
+                  backgroundColor:'#38803B',
                   alignItems:'center',
                   justifyContent:'center',
                   borderRadius:30,
@@ -239,15 +256,17 @@ render(){
 const styles=StyleSheet.create({
 outerContainer:{
   flex:1,
-  backgroundColor:'#E7E7E7'
+  backgroundColor:'white',
+  //backgroundColor:'#E7E7E7'
 },
 inputStyle:{
-  backgroundColor:'#B4B4B4',
+  backgroundColor:'white', //#B4B4B4
   marginLeft:50,
   marginRight:50,
-  height:45,
-  borderWidth:1,
-  borderColor:'#BBBBBB',
+  height:50,
+  borderWidth:1.5,
+  borderRadius:5,
+  borderColor:'green',   // #BBBBBB
   paddingLeft:10,
   paddingRight:10,
   marginTop:20,

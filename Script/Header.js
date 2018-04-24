@@ -69,7 +69,7 @@ const Header = (props)=>{
 
        <View style={[styles.textView,{}]}>
 
-                <Text style={styles.titleStyle}> {props.title} </Text>
+                <Text style={styles.titleStyle}> {props.title}  </Text>
 
 
        </View>
