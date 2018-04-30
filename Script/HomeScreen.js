@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import {
   AppRegistry,
   StyleSheet,
@@ -38,15 +39,53 @@ var DEVICE_HEIGHT=window.height;
 var sliderWidth=DEVICE_WIDTH;
 var itemWidth=DEVICE_WIDTH/2-50;
 
-
 class HomeScreen extends Component{
 
   constructor(props){
     super(props);
     this.props.navigator.setOnNavigatorEvent(this.onNavigationEvent.bind(this));
-    var array=['ا','ب','پ','ت','ٹ','ث','ج','چ','ح','خ','د','ڈ','ذ','ر',
-    'ڑ','ز','ژ','س','ش','ص','ض','ط','ظ','ع','غ','ف','ق','ک','گ','ل','م','ن','و',
-    'ہ','ي'];
+
+    var alif = {key:'ا',data:0};
+    var bay = {key:'ب',data:0};
+    var pay = {key:'پ',data:0};
+    var tay = {key:'ت',data:0};
+    var ttay = {key:'ٹ',data:0};
+    var say = {key:'ث',data:0};
+    var jeem = {key:'ج',data:0};
+    var chay = {key:'چ',data:0};
+    var hey = {key:'ح',data:0};
+    var khey = {key:'خ',data:0};
+    var dal = {key:'د',data:0};
+    var ddal = {key:'ڈ',data:0};
+    var zaal = {key:'ذ',data:0};
+    var ray = {key:'ر',data:0};
+    var aray = {key:'ڑ',data:0};
+    var zay = {key:'ز',data:0};
+    var say = {key:'ژ',data:0};
+    var seen = {key:'س',data:0};
+    var sheen = {key:'ش',data:0};
+    var saad = {key:'ص',data:0};
+    var zaad = {key:'ض',data:0};
+    var toain = {key:'ط',data:0};
+    var zoain = {key:'ظ',data:0};
+    var ain = {key:'ع',data:0};
+    var ghain = {key:'غ',data:0};
+    var fey = {key:'ف',data:0};
+    var kaf = {key:'ق',data:0};
+    var kaaf = {key:'ک',data:0};
+    var gaaf = {key:'گ',data:0};
+    var laam = {key:'ل',data:0};
+    var meem = {key:'م',data:0};
+    var noon = {key:'ن',data:0};
+    var wao = {key:'و',data:0};
+    var hey = {key:'ہ',data:0};
+    var chotiye = {key:'ی',data:0};
+
+    var array=[alif,bay,pay,tay,ttay,say,jeem,chay,hey,khey,dal,ddal,zaal,ray,aray,zay,say,seen,sheen,saad,zaad,toain,zoain,ain,ghain,fey,kaf,kaaf,gaaf,laam,meem,noon,wao,hey,chotiye];
+
+    // var array=['ا','ب','پ','ت','ٹ','ث','ج','چ','ح','خ','د','ڈ','ذ','ر',
+    // 'ڑ','ز','ژ','س','ش','ص','ض','ط','ظ','ع','غ','ف','ق','ک','گ','ل','م','ن','و',
+    // 'ہ','ي'];
 
     this.state={
         urduAlphabet:array,
@@ -97,34 +136,20 @@ class HomeScreen extends Component{
 }
 
   componentDidMount() {
-
     AsyncStorage.getItem("booksData").then((value) => {
-
     var testVar = JSON.parse(value);
     if (testVar == null) {
-
-      this();
-
-
+      this.actionButtonLoadBook();
     }else{
-
     this.setState({
       bookArray:JSON.parse(value)
     });
-
-
-
     this.setState({showProgress:false});
     this.slectFunc();
-
-}
     }
-
-
+  }
     ).done();
-     
-     //this.slectFunc();
-   // this.wordSelected();
+
 }
 
   componentWillUnmount() {
@@ -349,7 +374,6 @@ class HomeScreen extends Component{
 
               }
             })
-
 
             var finalArray3=[];
 
@@ -1636,16 +1660,11 @@ class HomeScreen extends Component{
 
                                                                       this.setState({showProgress:false});
                                                                       AsyncStorage.setItem('booksData', JSON.stringify(this.state.bookArray));
+                                                                      this.slectFunc();
 
                                                                     })
 
-
-
-
-        // BookNameArray:[ 'Arnad','Andrain','Angoor','Aaam','خواص آک','Badam','Bargad','Dhatoora','خواص شہد','Dhania','Dhoodh','Gajar','Ghee kvar','Ghee','Dahee','Gul Surk'],
-
         var mainArray=[];
-
         var Object1ToSaveInMainArray = {title:'Arnad',data:finalArray1};
         var Object2ToSaveInMainArray = {title:'Andrain',data:finalArray2};
         var Object3ToSaveInMainArray = {title:'Angoor',data:finalArray3};
@@ -1685,10 +1704,6 @@ class HomeScreen extends Component{
         this.setState({
           bookArray:mainArray
         })
-
-        // For Permanent Storage Of Data
-
-        // AsyncStorage.setItem('booksData', JSON.stringify(mainArray));
 
   }else{
 
@@ -3465,7 +3480,7 @@ class HomeScreen extends Component{
 
                                                                       this.setState({showProgress:false});
                                                                       AsyncStorage.setItem('booksData', JSON.stringify(this.state.bookArray));
-
+                                                                      this.slectFunc();
                                                                     })
 
 
@@ -3517,7 +3532,6 @@ class HomeScreen extends Component{
 
 // readFileAssets
   }
- // this.wordSelected();
 }
 
 actionButtonBooksList(){
@@ -3534,7 +3548,9 @@ actionButtonBooksList(){
 
 }
 
-actionButtonSearch(){  console.log('Selected Books Detail is =');
+actionButtonSearch(){
+
+console.log('Selected Books Detail is =');
 
 // this.searchExactWord();
 var stringToSearch=this.state.txtSearch.trim();
@@ -3546,28 +3562,10 @@ if (stringToSearch.length <=0) {
 }
 
 var finalArray=[];
-var tempBookArray=[];
-
-tempBookArray.push(this.state.bookArray[0])
-tempBookArray.push(this.state.bookArray[1])
-tempBookArray.push(this.state.bookArray[2])
-tempBookArray.push(this.state.bookArray[3])
-tempBookArray.push(this.state.bookArray[4])
-tempBookArray.push(this.state.bookArray[5])
-tempBookArray.push(this.state.bookArray[6])
-tempBookArray.push(this.state.bookArray[7])
-tempBookArray.push(this.state.bookArray[8])
-tempBookArray.push(this.state.bookArray[9])
-tempBookArray.push(this.state.bookArray[10])
-tempBookArray.push(this.state.bookArray[11])
-tempBookArray.push(this.state.bookArray[12])
-tempBookArray.push(this.state.bookArray[13])
-tempBookArray.push(this.state.bookArray[14])
-tempBookArray.push(this.state.bookArray[15])
 
 this.setState({showProgress:true})
-for (var x = 0; x < tempBookArray.length; x++) {
-var bookArray=tempBookArray[x].data;
+for (var x = 0; x < this.state.bookArray.length; x++) {
+var bookArray=this.state.bookArray[x].data;
 var searchedArray=[];
 var counter = 0;
 var flag = 0;
@@ -3579,12 +3577,6 @@ for (var i = 0; i < bookArray.length; i++) {
   var subbestheading=bookArray[i].subbestheading;
   var tempString=bookArray[i].data;
   var tempPara=tempString.toLowerCase();
-
-
-  console.log(this.state.isBook1Selected);
-  console.log(this.state.isBook2Selected);
-  console.log(this.state.isBook3Selected);
-  console.log(this.state.isBook4Selected);
 
   var index = -1;
 
@@ -3765,7 +3757,7 @@ for (var i = 0; i < bookArray.length; i++) {
 
 }
 
-var searchResult={'word':stringToSearch,'searchedArray':searchedArray,bookname:tempBookArray[x].title};
+var searchResult={'word':stringToSearch,'searchedArray':searchedArray,bookname:this.state.bookArray[x].title};
 
 this.setState({showProgress:false})
 if (searchedArray.length!=0) {
@@ -3886,127 +3878,68 @@ actionCheckBox4(){
                   });
 }
 
-_renderItem ({item, index}) {
-        var image=item.fileName
-    return (
-        <View style={{backgroundColor:'transparent',justifyContent:'center',alignItems:'center'}}>
-
-            <Image source={image} style={{width:itemWidth,height:itemWidth,borderRadius:15}}/>
-
-        </View>
-    );
-  }
-
- 
-
+// _renderItem ({item, index}) {
+//         var image=item.fileName
+//     return (
+//         <View style={{backgroundColor:'transparent',justifyContent:'center',alignItems:'center'}}>
+//             <Image source={image} style={{width:itemWidth,height:itemWidth,borderRadius:15}}/>
+//         </View>
+//     );
+//   }
 
 wordSelected(index){
-      
-    
-  var letter=this.state.urduAlphabet[index];
-  
-  var finalArray=[];
-  var tempBookArray=[];
-     
-  tempBookArray.push(this.state.bookArray[0])
-  tempBookArray.push(this.state.bookArray[1])
-  tempBookArray.push(this.state.bookArray[2])
-  tempBookArray.push(this.state.bookArray[3])
-  tempBookArray.push(this.state.bookArray[4])
-  tempBookArray.push(this.state.bookArray[5])
-  tempBookArray.push(this.state.bookArray[6])
-  tempBookArray.push(this.state.bookArray[7])
-  tempBookArray.push(this.state.bookArray[8])
-  tempBookArray.push(this.state.bookArray[9])
-  tempBookArray.push(this.state.bookArray[10])
-  tempBookArray.push(this.state.bookArray[11])
-  tempBookArray.push(this.state.bookArray[12])
-  tempBookArray.push(this.state.bookArray[13])
-  tempBookArray.push(this.state.bookArray[14])
-  tempBookArray.push(this.state.bookArray[15])
 
-  // this.setState({showProgress:true})
-  for (var x = 0; x < tempBookArray.length; x++) {
-  var bookArray=tempBookArray[x].data;
+  var letter=this.state.urduAlphabet[index].key;
+  var finalArray=[];
+
+  for (var x = 0; x < this.state.bookArray.length; x++) {
+  var bookArray=this.state.bookArray[x].data;
   var searchedArray=[];
   var counter = 0;
   var flag = 0;
 
-  // Testing Akhzar Nazir
   for (var i = 0; i < bookArray.length; i++) {
     var mainHeading=bookArray[i].mainheading;
     var subHeading=bookArray[i].subheading;
     var subbestheading=bookArray[i].subbestheading.trim();
     var stringArray=subbestheading.split(")");
     var newString=stringArray[0];
+    console.log('String at zero is = ',newString);
     if (stringArray.length>0) {
       newString=stringArray[1];
+      console.log('String at One is = ',newString);
     }
-
-
-    var tempString=bookArray[i].data;
-    var tempPara=tempString.toLowerCase();
-
 
     if (newString == null) {
-      // console.log("error");
       continue;
     }
+
     newString=newString.trim();
     if (newString[0]==letter) {
       finalArray.push(bookArray[i])
     }
-
   }
-
-
 }
+
+this.state.urduAlphabet[index].data = 2;
 
 this.setState({
   searchResultArray:finalArray,
 })
-// Alert.alert(''+finalArray.length)
-
 
 }
 
-
-
-
-
-
  slectFunc(){
-     
-      var letter = "ا";
-  //  console.log("Second function", this.state.bookArray[0]);
-  var finalArray=[];
-  var tempBookArray=[];
 
-  tempBookArray.push(this.state.bookArray[0])
-  tempBookArray.push(this.state.bookArray[1])
-  tempBookArray.push(this.state.bookArray[2])
-  tempBookArray.push(this.state.bookArray[3])
-  tempBookArray.push(this.state.bookArray[4])
-  tempBookArray.push(this.state.bookArray[5])
-  tempBookArray.push(this.state.bookArray[6])
-  tempBookArray.push(this.state.bookArray[7])
-  tempBookArray.push(this.state.bookArray[8])
-  tempBookArray.push(this.state.bookArray[9])
-  tempBookArray.push(this.state.bookArray[10])
-  tempBookArray.push(this.state.bookArray[11])
-  tempBookArray.push(this.state.bookArray[12])
-  tempBookArray.push(this.state.bookArray[13])
-  tempBookArray.push(this.state.bookArray[14])
-  tempBookArray.push(this.state.bookArray[15])
-
-//   // this.setState({showProgress:true})
-   for (var x = 0; x < tempBookArray.length ; x++) {
-   var bookArray=tempBookArray[x].data;
+   for (var u = 0; u < this.state.urduAlphabet.length; u++) {
+   var letter=this.state.urduAlphabet[u].key;
+   var finalArray=[];
+   for (var x = 0; x < this.state.bookArray.length ; x++) {
+   var bookArray=this.state.bookArray[x].data;
    var searchedArray=[];
    var counter = 0;
    var flag = 0;
 
-//   // Testing Akhzar Nazir
    for (var i = 0; i < bookArray.length; i++) {
      var mainHeading=bookArray[i].mainheading;
      var subHeading=bookArray[i].subheading;
@@ -4016,40 +3949,30 @@ this.setState({
      if (stringArray.length>0) {
        newString=stringArray[1];
     }
-
-
      var tempString=bookArray[i].data;
      var tempPara=tempString.toLowerCase();
-
-
      if (newString == null) {
-//       // console.log("error");
        continue;
      }
      newString=newString.trim();
      if (newString[0]==letter) {
        finalArray.push(bookArray[i])
+       this.state.urduAlphabet[u].data = 1;
      }
-
    }
-
-
  }
 
- this.setState({
-   searchResultArray:finalArray,
- })
-// Alert.alert(''+finalArray.length)
+ if (u == 0) {
+   // 2 value is for selected item
+   this.state.urduAlphabet[0].data = 2;
+   this.setState({
+     searchResultArray:finalArray,
+   })
+ }
 
+}
 
-  }
-
-
-
-
-
-
-
+}
 
  _onHideUnderlay(){
     this.setState({ pressStatus: false });
@@ -4060,7 +3983,6 @@ this.setState({
   }
 
 callSomeFunction(index){
-  // Alert.alert(""+this.state.searchResultArray[index].subheading);
   var dataSelected=this.state.searchResultArray[index];
   var selectedItem=dataSelected
 
@@ -4076,9 +3998,6 @@ callSomeFunction(index){
 }
 
 
-
-
-
   render(){
     return(
       <View style={styles.outerContainer}>
@@ -4090,7 +4009,7 @@ callSomeFunction(index){
       </View>
       <View style={styles.subView}>
       <TextInput style={[styles.inputStyle,{textAlign:this.state.isUrduSelected?'right':'left'}]}
-      
+
       onChangeText={(txtSearch) => this.setState({txtSearch})}
       placeholder={this.state.placeholderText}
       underlineColorAndroid='transparent'
@@ -4189,8 +4108,9 @@ callSomeFunction(index){
          <TouchableOpacity onPress={()=>this.actionButtonBooksList()} style={styles.buttonStyleTwo}>
          <Text style={styles.textStyle}>{this.state.booksListTitle}</Text>
          </TouchableOpacity>
-         </View>*/
-}
+         </View>
+*/}
+
          <View style={{marginTop:25,}}>
 
          <FlatList
@@ -4205,10 +4125,10 @@ callSomeFunction(index){
             borderWidth:1,
             alignItems:'center',
             justifyContent:'center',
-            borderColor:'white',backgroundColor:(index!=-1)?'transparent':'blue',}}
+            borderColor:'white',backgroundColor:(this.state.urduAlphabet[index].data==0)?'transparent':(this.state.urduAlphabet[index].data==1)?'#38803B':'grey',}}
           onPress={()=> this.wordSelected(index)}
          >
-          <Text style={styles.textStyleNP} > {item}  </Text>
+          <Text style={styles.textStyleNP} > {item.key}  </Text>
           </TouchableOpacity>
         }
           />
@@ -4245,21 +4165,14 @@ callSomeFunction(index){
           </View>
           </TouchableOpacity>
         }
-            />
-
+          />
         </View>
-
-
         <View style={{marginTop:30}}/>
-
       </View>
-
       <Loader showProgress={this.state.showProgress}/>
-
       </KeyboardAwareScrollView>
       </Image>
       </View>
-
     );}
 }
 
