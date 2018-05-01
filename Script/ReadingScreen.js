@@ -16,40 +16,28 @@ import {
 var Header=require('./Header');
 var HeadingView=require('./HeadingView');
 
-
 var bookmark_icon=require('./Icons/bookmark_icon.png')
 var share_icon=require('./Icons/share_icon.png')
 import HTMLView from 'react-native-htmlview';
 
-
 import Share, {ShareSheet, Button} from 'react-native-share';
-
-
 
 class ReadingScreen extends Component{
   constructor(props){
     super(props);
-    var reciveData=this.props.selectedItem.data
+    var reciveData=this.props.selectedItem.data;
     var tempData=this.props.selectedItem.data;
-
     var mainHeading = this.props.selectedItem.mainheading;
     var subHeading = this.props.selectedItem.subheading;
     var subbestHeading = this.props.selectedItem.subbestheading;
+    var bookTitle = this.props.selectedTitle;
     var headingWords= [mainHeading,subHeading,subbestHeading];
-
-
-
-
     var index=tempData.indexOf('\r');
     var beforeHeading=tempData.slice(0,index);
     var afterHeading=tempData.slice(index+1,tempData.length);
     var headingData='<h1>'+beforeHeading+'</h1>';
-
     afterHeading=afterHeading.replace('\n','');
-
     afterHeading='<p>'+afterHeading+'</p>';
-
-
     if (Platform.OS === 'ios') {
     }else{
      reciveData=reciveData.split('\r').join('\n');
@@ -62,6 +50,7 @@ class ReadingScreen extends Component{
       orignalData:this.props.selectedItem.data,
       indexOfBookMark:-1,
       headingWords:headingWords,
+      bookTitle:bookTitle,
     }
 
     this.checkForAlreadyBookMark();
@@ -217,7 +206,7 @@ seperateHeadingWord(data){
 
     return(
       <View style={styles.outerContainer}>
-      <Header title='ادارہ سیلمانی' navigator={this.props.navigator} />
+      <Header title={this.state.bookTitle} navigator={this.props.navigator} />
       <ScrollView style={styles.listView}>
 
 
