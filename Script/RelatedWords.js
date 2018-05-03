@@ -25,7 +25,7 @@
   var headerImage=require('./Icons/header.png');
   var searchIcon =  require('./Icons/search_icon.png');
   const window = Dimensions.get('window');
-  
+
   class RelatedWords extends Component{
     constructor(props){
       super(props);
@@ -73,6 +73,7 @@
 
       return(
 
+        <View>
         <SectionList
         renderItem={({item,section}) => <TouchableOpacity onPress={()=>this.rowSelected(item,section)}>
                       <View style={styles.textView}>
