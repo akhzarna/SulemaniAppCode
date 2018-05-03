@@ -194,8 +194,6 @@ class HomeScreen extends Component{
     path15=RNFS.MainBundlePath+'/Dahee.txt';
     path16=RNFS.MainBundlePath+'/Gul Surk.txt';
 
-    // BookNameArray:[ 'Arnad','Andrain','Angoor','Aaam','خواص آک','Badam','Bargad','Dhatoora','خواص شہد','Dhania','Dhoodh','Gajar','Ghee kvar','Ghee','Dahee','Gul Surk'],
-
     var finalArray1=[];
     RNFS.readFile(path1)
         .then((contents) => {
@@ -3904,10 +3902,8 @@ wordSelected(index){
     var subbestheading=bookArray[i].subbestheading.trim();
     var stringArray=subbestheading.split(")");
     var newString=stringArray[0];
-    console.log('String at zero is = ',newString);
     if (stringArray.length>0) {
       newString=stringArray[1];
-      console.log('String at One is = ',newString);
     }
 
     if (newString == null) {
@@ -3916,7 +3912,8 @@ wordSelected(index){
 
     newString=newString.trim();
     if (newString[0]==letter) {
-      finalArray.push(bookArray[i])
+      var ObjectToSaveInArray = {title:this.state.bookArray[x].title,data:bookArray[i]};
+      finalArray.push(ObjectToSaveInArray)
     }
   }
 }
@@ -3926,7 +3923,6 @@ this.state.urduAlphabet[index].data = 2;
 this.setState({
   searchResultArray:finalArray,
 })
-
 }
 
  slectFunc(){
@@ -3934,29 +3930,45 @@ this.setState({
    for (var u = 0; u < this.state.urduAlphabet.length; u++) {
    var letter=this.state.urduAlphabet[u].key;
    var finalArray=[];
-   for (var x = 0; x < this.state.bookArray.length ; x++) {
+   for (var x = 0; x < this.state.bookArray.length; x++) {
    var bookArray=this.state.bookArray[x].data;
    var searchedArray=[];
    var counter = 0;
    var flag = 0;
 
    for (var i = 0; i < bookArray.length; i++) {
+     // console.log('Book Array is = ',bookArray[i].data);
      var mainHeading=bookArray[i].mainheading;
+     // console.log('Main Heading is = ',mainHeading);
      var subHeading=bookArray[i].subheading;
+     // console.log('Sub Heading is = ',subHeading);
+     // console.log('Subbest Heading before trim is = ',bookArray[i].subbestheading);
      var subbestheading=bookArray[i].subbestheading.trim();
+     // console.log('Subbest Heading After trim is = ',subbestheading);
+     // console.log('Main Data is = ',bookArray[i].data);
      var stringArray=subbestheading.split(")");
+     // console.log('Array Length is = ',stringArray.length);
+     // console.log('Array is = ',stringArray[0]);
+     // console.log('Array is = ',stringArray[1]);
      var newString=stringArray[0];
      if (stringArray.length>0) {
-       newString=stringArray[1];
+       newString = stringArray[1];
+       // console.log('If Greater Than Zero is = ', newString);
     }
-     var tempString=bookArray[i].data;
-     var tempPara=tempString.toLowerCase();
+
+    // What these lines are doing
+     // var tempString=bookArray[i].data;
+     // var tempPara=tempString.toLowerCase();
      if (newString == null) {
        continue;
      }
      newString=newString.trim();
      if (newString[0]==letter) {
-       finalArray.push(bookArray[i])
+       console.log('New String Is = ',newString);
+       // Need to add one extra key to control repitition
+       var ObjectToSaveInArray = {title:this.state.bookArray[x].title,data:bookArray[i],key:newString};
+       finalArray.push(ObjectToSaveInArray)
+       // finalArray.push(bookArray[i])
        this.state.urduAlphabet[u].data = 1;
      }
    }
@@ -3969,9 +3981,7 @@ this.setState({
      searchResultArray:finalArray,
    })
  }
-
 }
-
 }
 
  _onHideUnderlay(){
@@ -3983,20 +3993,33 @@ this.setState({
   }
 
 callSomeFunction(index){
-  var dataSelected=this.state.searchResultArray[index];
-  var selectedItem=dataSelected
-
+  var finalArrayToCheckRepitition = [];
+  for (var i = 0; i < this.state.searchResultArray.length; i++) {
+    if (this.state.searchResultArray[index].key == this.state.searchResultArray[i].key) {
+      finalArrayToCheckRepitition.push(this.state.searchResultArray[i]);
+    }
+  }
+  console.log('Array count is = ',finalArrayToCheckRepitition.length);
+  if (finalArrayToCheckRepitition.length > 1) {
     this.props.navigator.push({
-      screen:'ReadingScreen',
-      passProps:{selectedItem},
+      screen:'RelatedWords',
+      passProps:{finalArrayToCheckRepitition},
       navigatorStyle:{
         navBarHidden:true,
       },
     })
-
-
+  }else{
+    var selectedItem = this.state.searchResultArray[index].data;
+    var selectedTitle = this.state.searchResultArray[index].title;
+    this.props.navigator.push({
+      screen:'ReadingScreen',
+      passProps:{selectedItem,selectedTitle},
+      navigatorStyle:{
+        navBarHidden:true,
+      },
+    })
+  }
 }
-
 
   render(){
     return(
@@ -4161,7 +4184,7 @@ callSomeFunction(index){
             marginLeft:20,
             fontSize:20,
             fontFamily:isiPhone?'Nafees Web Naskh':'nafeeswebnaskh',
-          }}>{item.subbestheading}</Text>
+          }}>{item.data.subbestheading}</Text>
           </View>
           </TouchableOpacity>
         }
