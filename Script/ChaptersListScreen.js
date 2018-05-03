@@ -21,14 +21,12 @@
   import HTMLView from 'react-native-htmlview';
   import SearchHeader from './SearchHeader';
 
-
   var isiPhone=Platform.OS === 'ios';
   var backArrow=require('./Icons/backArrow_2.png')
   var headerImage=require('./Icons/header.png');
   var searchIcon =  require('./Icons/search_icon.png');
 
   const window = Dimensions.get('window');
-
 
   class ChaptersListScreen extends Component{
     constructor(props){

@@ -3923,7 +3923,6 @@ this.state.urduAlphabet[index].data = 2;
 this.setState({
   searchResultArray:finalArray,
 })
-
 }
 
  slectFunc(){
@@ -3994,7 +3993,6 @@ this.setState({
   }
 
 callSomeFunction(index){
-
   var finalArrayToCheckRepitition = [];
   for (var i = 0; i < this.state.searchResultArray.length; i++) {
     if (this.state.searchResultArray[index].key == this.state.searchResultArray[i].key) {
@@ -4003,7 +4001,13 @@ callSomeFunction(index){
   }
   console.log('Array count is = ',finalArrayToCheckRepitition.length);
   if (finalArrayToCheckRepitition.length > 1) {
-
+    this.props.navigator.push({
+      screen:'RelatedWords',
+      passProps:{finalArrayToCheckRepitition},
+      navigatorStyle:{
+        navBarHidden:true,
+      },
+    })
   }else{
     var selectedItem = this.state.searchResultArray[index].data;
     var selectedTitle = this.state.searchResultArray[index].title;

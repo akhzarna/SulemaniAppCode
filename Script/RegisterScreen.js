@@ -9,6 +9,7 @@ var BookMarkScreen=require('./BookMarkScreen');
 var NotesScreen=require('./NotesScreen');
 var BookContents=require('./BookContents');
 var ReadingScreen=require('./ReadingScreen');
+var RelatedWords=require('./RelatedWords');
 var IndexScreen=require('./IndexScreen');
 var BookMarkReading=require('./BookMarkReading');
 var IntroductionScreen=require('./IntroductionScreen');
@@ -38,6 +39,7 @@ export function RegisterScreen(){
   Navigation.registerComponent('NotesScreen', () => NotesScreen);
   Navigation.registerComponent('BookContents', () => BookContents);
   Navigation.registerComponent('ReadingScreen', () => ReadingScreen);
+  Navigation.registerComponent('RelatedWords', () => RelatedWords);
   Navigation.registerComponent('IndexScreen', () => IndexScreen);
   Navigation.registerComponent('BookMarkReading', () => BookMarkReading);
   Navigation.registerComponent('IntroductionScreen', () => IntroductionScreen);

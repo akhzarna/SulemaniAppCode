@@ -8,12 +8,9 @@
  */
 
 #import "AppDelegate.h"
-
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
-
 #import "RCCManager.h"
-
 
 @implementation AppDelegate
 
@@ -55,9 +52,6 @@
 //  self.window.rootViewController = rootViewController;
 //  [self.window makeKeyAndVisible];
 
-  
-  
-  
   return YES;
 }
 
