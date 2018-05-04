@@ -4001,8 +4001,10 @@ callSomeFunction(index){
   }
   console.log('Array count is = ',finalArrayToCheckRepitition.length);
   if (finalArrayToCheckRepitition.length > 1) {
+    console.log("array",finalArrayToCheckRepitition);
     this.props.navigator.push({
       screen:'RelatedWords',
+      title:'Related Items',
       passProps:{finalArrayToCheckRepitition},
       navigatorStyle:{
         navBarHidden:true,
