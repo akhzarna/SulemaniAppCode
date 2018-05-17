@@ -42,25 +42,25 @@
 		9B08EC7D10C34BC0A0447680 /* libRNShare.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71037C0E42C34CA888800822 /* libRNShare.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		CA6FFBB6FC0742C79B0067D9 /* Aslam.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB65FCB27BE949C7BDD3940A /* Aslam.ttf */; };
-		CE1D9BE32036F1160049850F /* Dhatoora.txt in Resources */ = {isa = PBXBuildFile; fileRef = CE1D9BB72036F1150049850F /* Dhatoora.txt */; };
-		CE1D9BE42036F1160049850F /* Dhoodh.txt in Resources */ = {isa = PBXBuildFile; fileRef = CE1D9BDD2036F1160049850F /* Dhoodh.txt */; };
-		CE1D9BE52036F1160049850F /* Gajar.txt in Resources */ = {isa = PBXBuildFile; fileRef = CE1D9BDE2036F1160049850F /* Gajar.txt */; };
-		CE1D9BE62036F1160049850F /* Ghee.txt in Resources */ = {isa = PBXBuildFile; fileRef = CE1D9BDF2036F1160049850F /* Ghee.txt */; };
-		CE1D9BE72036F1160049850F /* Gul Surk.txt in Resources */ = {isa = PBXBuildFile; fileRef = CE1D9BE02036F1160049850F /* Gul Surk.txt */; };
-		CE1D9BE82036F1160049850F /* Dhania.txt in Resources */ = {isa = PBXBuildFile; fileRef = CE1D9BE12036F1160049850F /* Dhania.txt */; };
-		CE1D9BE92036F1160049850F /* Ghee kvar.txt in Resources */ = {isa = PBXBuildFile; fileRef = CE1D9BE22036F1160049850F /* Ghee kvar.txt */; };
+		CE1D9BE32036F1160049850F /* دھتورہ.txt in Resources */ = {isa = PBXBuildFile; fileRef = CE1D9BB72036F1150049850F /* دھتورہ.txt */; };
+		CE1D9BE42036F1160049850F /* دودھ.txt in Resources */ = {isa = PBXBuildFile; fileRef = CE1D9BDD2036F1160049850F /* دودھ.txt */; };
+		CE1D9BE52036F1160049850F /* گاجر.txt in Resources */ = {isa = PBXBuildFile; fileRef = CE1D9BDE2036F1160049850F /* گاجر.txt */; };
+		CE1D9BE62036F1160049850F /* گھی.txt in Resources */ = {isa = PBXBuildFile; fileRef = CE1D9BDF2036F1160049850F /* گھی.txt */; };
+		CE1D9BE72036F1160049850F /* گل سرک.txt in Resources */ = {isa = PBXBuildFile; fileRef = CE1D9BE02036F1160049850F /* گل سرک.txt */; };
+		CE1D9BE82036F1160049850F /* دھنیہ.txt in Resources */ = {isa = PBXBuildFile; fileRef = CE1D9BE12036F1160049850F /* دھنیہ.txt */; };
+		CE1D9BE92036F1160049850F /* گھی کوار.txt in Resources */ = {isa = PBXBuildFile; fileRef = CE1D9BE22036F1160049850F /* گھی کوار.txt */; };
 		CE1DE4611F6BF23B00AA21F8 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE1DE4601F6BF23B00AA21F8 /* Social.framework */; };
 		CE1DE4861F6BF24A00AA21F8 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE1DE4851F6BF24A00AA21F8 /* MessageUI.framework */; };
 		CE1E96A81FE3FEDA003A1AEF /* خواص شہد.txt in Resources */ = {isa = PBXBuildFile; fileRef = CE1E96A71FE3FEDA003A1AEF /* خواص شہد.txt */; };
 		CEA6346D1F8E5FA0007C6F20 /* libART.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA634471F8E5F80007C6F20 /* libART.a */; };
 		CEBC86AA1F69224F009136DD /* libReactNativeNavigation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CEBC86A91F69222C009136DD /* libReactNativeNavigation.a */; };
-		CEC0D79A2020829800339C7E /* Angoor.txt in Resources */ = {isa = PBXBuildFile; fileRef = CEC0D7742020829700339C7E /* Angoor.txt */; };
-		F342E7D1203F3E5F00643D66 /* Dahee.txt in Resources */ = {isa = PBXBuildFile; fileRef = F342E7AB203F3E5F00643D66 /* Dahee.txt */; };
-		F342E7D3203F3E8E00643D66 /* Bargad.txt in Resources */ = {isa = PBXBuildFile; fileRef = F342E7D2203F3E8D00643D66 /* Bargad.txt */; };
-		F342E7D5203F3EA600643D66 /* Badam.txt in Resources */ = {isa = PBXBuildFile; fileRef = F342E7D4203F3EA600643D66 /* Badam.txt */; };
-		F342E7D7203F3ECF00643D66 /* Arnad.txt in Resources */ = {isa = PBXBuildFile; fileRef = F342E7D6203F3ECF00643D66 /* Arnad.txt */; };
-		F342E7DB203F3F9000643D66 /* Andrain.txt in Resources */ = {isa = PBXBuildFile; fileRef = F342E7DA203F3F9000643D66 /* Andrain.txt */; };
-		F342E7DD203F3FBF00643D66 /* Aaam.txt in Resources */ = {isa = PBXBuildFile; fileRef = F342E7DC203F3FBF00643D66 /* Aaam.txt */; };
+		CEC0D79A2020829800339C7E /* انگور.txt in Resources */ = {isa = PBXBuildFile; fileRef = CEC0D7742020829700339C7E /* انگور.txt */; };
+		F342E7D1203F3E5F00643D66 /* دھی.txt in Resources */ = {isa = PBXBuildFile; fileRef = F342E7AB203F3E5F00643D66 /* دھی.txt */; };
+		F342E7D3203F3E8E00643D66 /* برگد.txt in Resources */ = {isa = PBXBuildFile; fileRef = F342E7D2203F3E8D00643D66 /* برگد.txt */; };
+		F342E7D5203F3EA600643D66 /* بادام.txt in Resources */ = {isa = PBXBuildFile; fileRef = F342E7D4203F3EA600643D66 /* بادام.txt */; };
+		F342E7D7203F3ECF00643D66 /* ٓارنڈ.txt in Resources */ = {isa = PBXBuildFile; fileRef = F342E7D6203F3ECF00643D66 /* ٓارنڈ.txt */; };
+		F342E7DB203F3F9000643D66 /* اندرائین.txt in Resources */ = {isa = PBXBuildFile; fileRef = F342E7DA203F3F9000643D66 /* اندرائین.txt */; };
+		F342E7DD203F3FBF00643D66 /* آم.txt in Resources */ = {isa = PBXBuildFile; fileRef = F342E7DC203F3FBF00643D66 /* آم.txt */; };
 		F3FCB64A1FDFD61800B1066D /* خواص آک.txt in Resources */ = {isa = PBXBuildFile; fileRef = F3FCB6481FDFD61800B1066D /* خواص آک.txt */; };
 /* End PBXBuildFile section */
 
@@ -374,27 +374,27 @@
 		BB65FCB27BE949C7BDD3940A /* Aslam.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Aslam.ttf; path = ../Fonts/Aslam.ttf; sourceTree = "<group>"; };
 		C950EA302251409D9DACCD8A /* RNFS.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNFS.xcodeproj; path = "../node_modules/react-native-fs/RNFS.xcodeproj"; sourceTree = "<group>"; };
 		CC92A5B1159E4627BACB9ACF /* aslam-regular-1.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "aslam-regular-1.ttf"; path = "../Fonts/aslam-regular-1.ttf"; sourceTree = "<group>"; };
-		CE1D9BB72036F1150049850F /* Dhatoora.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dhatoora.txt; sourceTree = "<group>"; };
-		CE1D9BDD2036F1160049850F /* Dhoodh.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dhoodh.txt; sourceTree = "<group>"; };
-		CE1D9BDE2036F1160049850F /* Gajar.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Gajar.txt; sourceTree = "<group>"; };
-		CE1D9BDF2036F1160049850F /* Ghee.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Ghee.txt; sourceTree = "<group>"; };
-		CE1D9BE02036F1160049850F /* Gul Surk.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Gul Surk.txt"; sourceTree = "<group>"; };
-		CE1D9BE12036F1160049850F /* Dhania.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dhania.txt; sourceTree = "<group>"; };
-		CE1D9BE22036F1160049850F /* Ghee kvar.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Ghee kvar.txt"; sourceTree = "<group>"; };
+		CE1D9BB72036F1150049850F /* دھتورہ.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "دھتورہ.txt"; sourceTree = "<group>"; };
+		CE1D9BDD2036F1160049850F /* دودھ.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "دودھ.txt"; sourceTree = "<group>"; };
+		CE1D9BDE2036F1160049850F /* گاجر.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "گاجر.txt"; sourceTree = "<group>"; };
+		CE1D9BDF2036F1160049850F /* گھی.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "گھی.txt"; sourceTree = "<group>"; };
+		CE1D9BE02036F1160049850F /* گل سرک.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "گل سرک.txt"; sourceTree = "<group>"; };
+		CE1D9BE12036F1160049850F /* دھنیہ.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "دھنیہ.txt"; sourceTree = "<group>"; };
+		CE1D9BE22036F1160049850F /* گھی کوار.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "گھی کوار.txt"; sourceTree = "<group>"; };
 		CE1DE4601F6BF23B00AA21F8 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		CE1DE4851F6BF24A00AA21F8 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		CE1E96A71FE3FEDA003A1AEF /* خواص شہد.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "خواص شہد.txt"; sourceTree = "<group>"; };
 		CEA634411F8E5F7F007C6F20 /* ART.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ART.xcodeproj; path = "../node_modules/react-native/Libraries/ART/ART.xcodeproj"; sourceTree = "<group>"; };
 		CEBC868F1F69222B009136DD /* ReactNativeNavigation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeNavigation.xcodeproj; path = "../node_modules/react-native-navigation/ios/ReactNativeNavigation.xcodeproj"; sourceTree = "<group>"; };
-		CEC0D7742020829700339C7E /* Angoor.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Angoor.txt; sourceTree = "<group>"; };
+		CEC0D7742020829700339C7E /* انگور.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "انگور.txt"; sourceTree = "<group>"; };
 		E92A5BA0AA7A46DF91135B1C /* Nafees Web Naskh.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nafees Web Naskh.ttf"; path = "../Fonts/Nafees Web Naskh.ttf"; sourceTree = "<group>"; };
 		EAFD4A4BBA3A4A46BAA8F253 /* RNShare.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNShare.xcodeproj; path = "../node_modules/react-native-share/ios/RNShare.xcodeproj"; sourceTree = "<group>"; };
-		F342E7AB203F3E5F00643D66 /* Dahee.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dahee.txt; sourceTree = "<group>"; };
-		F342E7D2203F3E8D00643D66 /* Bargad.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Bargad.txt; sourceTree = "<group>"; };
-		F342E7D4203F3EA600643D66 /* Badam.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Badam.txt; sourceTree = "<group>"; };
-		F342E7D6203F3ECF00643D66 /* Arnad.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Arnad.txt; sourceTree = "<group>"; };
-		F342E7DA203F3F9000643D66 /* Andrain.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Andrain.txt; sourceTree = "<group>"; };
-		F342E7DC203F3FBF00643D66 /* Aaam.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Aaam.txt; sourceTree = "<group>"; };
+		F342E7AB203F3E5F00643D66 /* دھی.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "دھی.txt"; sourceTree = "<group>"; };
+		F342E7D2203F3E8D00643D66 /* برگد.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "برگد.txt"; sourceTree = "<group>"; };
+		F342E7D4203F3EA600643D66 /* بادام.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "بادام.txt"; sourceTree = "<group>"; };
+		F342E7D6203F3ECF00643D66 /* ٓارنڈ.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "ٓارنڈ.txt"; sourceTree = "<group>"; };
+		F342E7DA203F3F9000643D66 /* اندرائین.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "اندرائین.txt"; sourceTree = "<group>"; };
+		F342E7DC203F3FBF00643D66 /* آم.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "آم.txt"; sourceTree = "<group>"; };
 		F3FCB6481FDFD61800B1066D /* خواص آک.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "خواص آک.txt"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -551,22 +551,22 @@
 		13B07FAE1A68108700A75B9A /* BookAPP */ = {
 			isa = PBXGroup;
 			children = (
-				F342E7D6203F3ECF00643D66 /* Arnad.txt */,
-				F342E7DA203F3F9000643D66 /* Andrain.txt */,
-				CEC0D7742020829700339C7E /* Angoor.txt */,
-				F342E7DC203F3FBF00643D66 /* Aaam.txt */,
+				F342E7D6203F3ECF00643D66 /* ٓارنڈ.txt */,
+				F342E7DA203F3F9000643D66 /* اندرائین.txt */,
+				CEC0D7742020829700339C7E /* انگور.txt */,
+				F342E7DC203F3FBF00643D66 /* آم.txt */,
 				F3FCB6481FDFD61800B1066D /* خواص آک.txt */,
-				F342E7D4203F3EA600643D66 /* Badam.txt */,
-				F342E7D2203F3E8D00643D66 /* Bargad.txt */,
-				CE1D9BB72036F1150049850F /* Dhatoora.txt */,
+				F342E7D4203F3EA600643D66 /* بادام.txt */,
+				F342E7D2203F3E8D00643D66 /* برگد.txt */,
+				CE1D9BB72036F1150049850F /* دھتورہ.txt */,
 				CE1E96A71FE3FEDA003A1AEF /* خواص شہد.txt */,
-				CE1D9BE12036F1160049850F /* Dhania.txt */,
-				CE1D9BDD2036F1160049850F /* Dhoodh.txt */,
-				CE1D9BDE2036F1160049850F /* Gajar.txt */,
-				CE1D9BE22036F1160049850F /* Ghee kvar.txt */,
-				CE1D9BDF2036F1160049850F /* Ghee.txt */,
-				F342E7AB203F3E5F00643D66 /* Dahee.txt */,
-				CE1D9BE02036F1160049850F /* Gul Surk.txt */,
+				CE1D9BE12036F1160049850F /* دھنیہ.txt */,
+				CE1D9BDD2036F1160049850F /* دودھ.txt */,
+				CE1D9BDE2036F1160049850F /* گاجر.txt */,
+				CE1D9BE22036F1160049850F /* گھی کوار.txt */,
+				CE1D9BDF2036F1160049850F /* گھی.txt */,
+				F342E7AB203F3E5F00643D66 /* دھی.txt */,
+				CE1D9BE02036F1160049850F /* گل سرک.txt */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -1201,25 +1201,25 @@
 			files = (
 				CE1E96A81FE3FEDA003A1AEF /* خواص شہد.txt in Resources */,
 				F3FCB64A1FDFD61800B1066D /* خواص آک.txt in Resources */,
-				CE1D9BE42036F1160049850F /* Dhoodh.txt in Resources */,
+				CE1D9BE42036F1160049850F /* دودھ.txt in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
-				F342E7D7203F3ECF00643D66 /* Arnad.txt in Resources */,
-				CE1D9BE52036F1160049850F /* Gajar.txt in Resources */,
-				CE1D9BE32036F1160049850F /* Dhatoora.txt in Resources */,
-				CE1D9BE82036F1160049850F /* Dhania.txt in Resources */,
+				F342E7D7203F3ECF00643D66 /* ٓارنڈ.txt in Resources */,
+				CE1D9BE52036F1160049850F /* گاجر.txt in Resources */,
+				CE1D9BE32036F1160049850F /* دھتورہ.txt in Resources */,
+				CE1D9BE82036F1160049850F /* دھنیہ.txt in Resources */,
 				270346315EC04C01BC2ABD4B /* Adobe Arabic.otf in Resources */,
 				CA6FFBB6FC0742C79B0067D9 /* Aslam.ttf in Resources */,
-				F342E7DB203F3F9000643D66 /* Andrain.txt in Resources */,
-				CE1D9BE72036F1160049850F /* Gul Surk.txt in Resources */,
-				F342E7D3203F3E8E00643D66 /* Bargad.txt in Resources */,
-				CEC0D79A2020829800339C7E /* Angoor.txt in Resources */,
+				F342E7DB203F3F9000643D66 /* اندرائین.txt in Resources */,
+				CE1D9BE72036F1160049850F /* گل سرک.txt in Resources */,
+				F342E7D3203F3E8E00643D66 /* برگد.txt in Resources */,
+				CEC0D79A2020829800339C7E /* انگور.txt in Resources */,
 				35D1766DFCF644189B96A44E /* Nafees Web Naskh.ttf in Resources */,
-				CE1D9BE92036F1160049850F /* Ghee kvar.txt in Resources */,
-				F342E7D1203F3E5F00643D66 /* Dahee.txt in Resources */,
-				F342E7D5203F3EA600643D66 /* Badam.txt in Resources */,
-				F342E7DD203F3FBF00643D66 /* Aaam.txt in Resources */,
-				CE1D9BE62036F1160049850F /* Ghee.txt in Resources */,
+				CE1D9BE92036F1160049850F /* گھی کوار.txt in Resources */,
+				F342E7D1203F3E5F00643D66 /* دھی.txt in Resources */,
+				F342E7D5203F3EA600643D66 /* بادام.txt in Resources */,
+				F342E7DD203F3FBF00643D66 /* آم.txt in Resources */,
+				CE1D9BE62036F1160049850F /* گھی.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

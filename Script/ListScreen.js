@@ -58,7 +58,7 @@ onNavigationEvent(event) {
         if (event.type == 'DeepLink') {
           const parts = event.link;
           if (parts=='Home') {
-            console.log(parts);
+            // console.log(parts);
             return;
           }else{
                 this.props.navigator.resetTo({
@@ -93,7 +93,7 @@ onNavigationEvent(event) {
 //               })
 //             }   
               
-//             //  console.log("word to search descrip",this.props.selectedItem.searchWord);
+//             //  // console.log("word to search descrip",this.props.selectedItem.searchWord);
 //              this.actionButtonLoadBook();
              
 
@@ -134,7 +134,7 @@ onNavigationEvent(event) {
 //     path=RNFS.MainBundlePath+'/Essay.txt';
 //     // path=RNFS.MainBundlePath+'/Book.txt';
 
-//     // console.log(path);
+//     // // console.log(path);
 //      var ciphertext=(contents.toString());
 //           var contentString=ciphertext;
 
@@ -160,9 +160,9 @@ onNavigationEvent(event) {
 //             tempArray1.push(tempString);
 //             i=secondIndex-1;
 //           }
-//          // console.log(tempArray1.length);
+//          // // console.log(tempArray1.length);
 
-//           // console.log(tempArray);
+//           // // console.log(tempArray);
 //           Constants.FileArray=tempArray1;
 //           Constants.isFileLoaded=true;
 
@@ -186,7 +186,7 @@ onNavigationEvent(event) {
 //      var  path1='Essay.txt';
 //      RNFS.readDirAssets('') // On Android, use "RNFS.DocumentDirectoryPath" (MainBundlePath is not defined)
 //         .then((result) => {
-//           console.log('GOT RESULT', result);
+//           // console.log('GOT RESULT', result);
 //         // stat the first file
 //           // return Promise.all([RNFS.stat(result[0].path), result[0].path]);
 //         });
@@ -197,7 +197,7 @@ onNavigationEvent(event) {
 //         .then((contents) => {
 //           // console.warn(contents)
 //           // var display=contents.slice(0,500);
-//           // console.log(contents);
+//           // // console.log(contents);
 //          var ciphertext=(contents.toString());
 //           var contentString=ciphertext;
 
@@ -253,31 +253,31 @@ onNavigationEvent(event) {
 //            //  var foundIndexdata=[];
 //            //this.props.selectedItem.searchWord.replace(' ','');
 //           //  var word=this.props.selectedItem.searchWord.split(' ').join('');
-//           // console.log("array from searching", fileArray);
+//           // // console.log("array from searching", fileArray);
 //        for (var i = 0; i < fileArray.length; i++) {
                      
 //                      var object1= fileArray[i];
                     
 //                         // tempArray.push(object1);
                          
-//               //           console.log("Loop Portion");
-//                      //   console.log("word to search descrip",this.props.selectedItem.searchWord);
+//               //           // console.log("Loop Portion");
+//                      //   // console.log("word to search descrip",this.props.selectedItem.searchWord);
 //                         index=object1.indexOf(searchWord);
                   
 //                         if (index ==-1) {
-//                         //  console.log("Index not found");
+//                         //  // console.log("Index not found");
 //                           }  
 //                           else{ 
-//                           //  console.log("Index Found at number =",index);
+//                           //  // console.log("Index Found at number =",index);
 //                             object1=object1.split('\n').join('');
 //                             object1=object1.split('vr>').join('');
 //                             object1=object1.split('\r').join('');
 //                           //  object1=object1.split(',').join('\n');
                             
 //                               this.setState({DataSource:object1});
-//                               console.log("lo g bbbbbbb",this.state.DataSource);
+//                               // console.log("lo g bbbbbbb",this.state.DataSource);
 //                               // yarr=this.state.DataSource;
-//                    //           console.log("Data in the Arra is=",this.state.DataSource,"yarrrrrrr values of for =",yarr);
+//                    //           // console.log("Data in the Arra is=",this.state.DataSource,"yarrrrrrr values of for =",yarr);
 //                                    //   break;
 //   }
 // }
@@ -287,7 +287,7 @@ onNavigationEvent(event) {
 //     //         var firstIndex=yarr.indexOf(',' , i);
 //     //         var secondIndex=yarr.indexOf(',' , firstIndex+1);
 //     //         if (secondIndex==-1 || firstIndex==-1) {
-//     //    //       console.log("No Index found of ,,","length of yarrr arry=",yarr.length);
+//     //    //       // console.log("No Index found of ,,","length of yarrr arry=",yarr.length);
 //     //         //  break;
 //     //         } else{
               
@@ -299,9 +299,9 @@ onNavigationEvent(event) {
 //     //         storageArray.push(singleword);
 //     //         i=secondIndex-1;
            
-//     //        //   console.log("where the word is storing", storageArray.length);
+//     //        //   // console.log("where the word is storing", storageArray.length);
 //     //           this.setState({DataShow:storageArray});
-//     // //         console.log("Last Array of save dataa", this.state.DataShow);
+//     // //         // console.log("Last Array of save dataa", this.state.DataShow);
            
 //     //       }
           
@@ -356,7 +356,7 @@ actButtonSearch(){
 
 rowSelected(item){
   var selectedItem={eassyId:item.key,heading:item.data};
-  console.log("back data mazameeen", selectedItem.heading,"blah blah",item.data);
+  // console.log("back data mazameeen", selectedItem.heading,"blah blah",item.data);
   this.props.navigator.push({
     screen:'EassyReading',
     passProps:{selectedItem},

@@ -34,9 +34,7 @@
   [[RCCManager sharedInstance] initBridgeWithBundleURL:jsCodeLocation launchOptions:launchOptions];
 
   
-  
-  
-  //  NSURL *jsCodeLocation;
+//  NSURL *jsCodeLocation;
 //
 //  jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
 //

@@ -52,7 +52,7 @@ class BooksListScreen extends Component{
             {bookName:'خواص انار',key:15,cover:require('./Icons/Book2.jpg'),description:''},
 
           ],
-          BookNameArray:[ 'Arnad','Andrain','Angoor','Aaam','خواص آک','Badam','Bargad','Dhatoora','خواص شہد','Dhania','Dhoodh','Gajar','Ghee kvar','Ghee','Dahee','Gul Surk'],
+          BookNameArray:[ 'آرنڈ','اندرائین','انگور','آم','خواص آک','بادام','برگد','دھتورہ','خواص شہد','دھنیہ','دودھ','گاجر','گھی کوار','گھی','دھی','گل سرک'],
           bookArray:[],
       }
 
@@ -63,7 +63,7 @@ class BooksListScreen extends Component{
             if (event.type == 'DeepLink') {
               const parts = event.link;
               if (parts=='Home') {
-                console.log(parts);
+                // console.log(parts);
                 return;
               }else{
                     this.props.navigator.resetTo({
@@ -103,8 +103,8 @@ class BooksListScreen extends Component{
         var bookNameWithoutExtension=bookName;
         bookName=bookName+".txt";
 
-        console.log('Ghalib Sab Testing');
-        console.log(this.state.bookArray[0]);
+        // console.log('Ghalib Sab Testing');
+        // console.log(this.state.bookArray[0]);
 
         var finalArray=[];
         var bookArray;
@@ -113,8 +113,8 @@ class BooksListScreen extends Component{
           if (this.state.bookArray[x].title == bookNameWithoutExtension) {
             var searchedArray=[];
             var bookArray=this.state.bookArray[x].data;
-            // console.log('tahir testing');
-            // console.log(bookArray);
+            // // console.log('tahir testing');
+            // // console.log(bookArray);
             for (var i = 0; i < bookArray.length; i++) {
               var object={key:i,data:bookArray[i]}
               searchedArray.push(object);
@@ -141,8 +141,8 @@ class BooksListScreen extends Component{
           }
 
           if (arrayForSections.length>0) {
-            console.log('Tahir');
-            // console.log(arrayForSections[flag].data.mainheading);
+            // console.log('Tahir');
+            // // console.log(arrayForSections[flag].data.mainheading);
             searchResult={'word':'Testing','searchedArray':arrayForSections,bookname:title};
             finalArray.push(searchResult);
           }

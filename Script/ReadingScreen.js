@@ -60,7 +60,7 @@ class ReadingScreen extends Component{
 
   checkForAlreadyBookMark(){
     AsyncStorage.getItem("bookMark").then((value) => {
-              console.log('user data= ',JSON.parse(value));
+              // console.log('user data= ',JSON.parse(value));
               if (value!=null) {
                     var savedValue=JSON.parse(value);
                     var array=savedValue.bookMark;
@@ -70,12 +70,12 @@ class ReadingScreen extends Component{
                       var data=this.props.selectedItem.data;
                       var str2=data.slice(0,15);
                       if (str1==str2) {
-                        console.log("marked");
+                        // console.log("marked");
                         this.setState({indexOfBookMark:i});
 
                         break;
                       }else{
-                        console.log("not marked");
+                        // console.log("not marked");
 
                       }
 
@@ -121,7 +121,7 @@ seperateHeadingWord(data){
 
     }
 
-  console.log(array);
+  // console.log(array);
   array.reverse();
   return array;
 
@@ -133,7 +133,7 @@ seperateHeadingWord(data){
   acutionButtonBookMark(){
     if (this.state.indexOfBookMark != -1) {
       AsyncStorage.getItem("bookMark").then((value) => {
-                console.log('user data= ',JSON.parse(value));
+                // console.log('user data= ',JSON.parse(value));
                 if (value!=null) {
                       var savedValue=JSON.parse(value);
                       var array=savedValue.bookMark;
@@ -152,7 +152,7 @@ seperateHeadingWord(data){
              }).done();
     }else{
     AsyncStorage.getItem("bookMark").then((value) => {
-              console.log('user data= ',JSON.parse(value));
+              // console.log('user data= ',JSON.parse(value));
               if (value!=null) {
                     var savedValue=JSON.parse(value);
                     var array=savedValue.bookMark;

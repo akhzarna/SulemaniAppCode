@@ -62,7 +62,7 @@ class BooksScreen extends Component{
    // Alert.alert('title')
    RNFS.readDirAssets('') // On Android, use "RNFS.DocumentDirectoryPath" (MainBundlePath is not defined)
      .then((result) => {
-       // console.log('GOT RESULT', result);
+       // // console.log('GOT RESULT', result);
        var tempArray=[];
        for (var i = 0; i < result.length; i++) {
          var object=result[i];
@@ -76,7 +76,7 @@ class BooksScreen extends Component{
          }
 
        }
-       console.log(tempArray);
+       // console.log(tempArray);
        this.setState({bookList:tempArray});
 
        // stat the first file
@@ -95,7 +95,7 @@ loadBooksFromDocuments(){
 // Alert.alert('title')
 RNFS.readDir(RNFS.MainBundlePath) // On Android, use "RNFS.DocumentDirectoryPath" (MainBundlePath is not defined)
   .then((result) => {
-    // console.log('GOT RESULT', result);
+    // // console.log('GOT RESULT', result);
     var tempArray=[];
     for (var i = 0; i < result.length; i++) {
       var object=result[i];
@@ -109,7 +109,7 @@ RNFS.readDir(RNFS.MainBundlePath) // On Android, use "RNFS.DocumentDirectoryPath
       }
 
     }
-    // console.log(tempArray);
+    // // console.log(tempArray);
 
     this.setState({bookList:tempArray});
 

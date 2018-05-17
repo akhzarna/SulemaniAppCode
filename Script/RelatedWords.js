@@ -37,16 +37,16 @@
           sectionArray:[],
         }
 
-        console.log('Final Data Array for Section LIST is = ' + this.state.finalArray[0]);
+        // console.log('Final Data Array for Section LIST is = ' + this.state.finalArray[0]);
   }
 
   componentWillMount(){
-    console.log("will mount");
+    // console.log("will mount");
     this.function();
   }
 
   rowSelected(item,section){
-     console.log("read dfdnnfd",section.key,"item",item.key,"index",);
+     // console.log("read dfdnnfd",section.key,"item",item.key,"index",);
     var selectedItem =this.state.sectionArray[item.key].read;
     var selectedTitle = this.state.sectionArray[item.key].title;
     this.props.navigator.push({
@@ -61,22 +61,22 @@
   }
 
  function(){
-  console.log("calling"); 
+  // console.log("calling"); 
   tempArray=[]; 
   title=[]; 
    for(var i=0; i<this.props.finalArrayToCheckRepitition.length; i++){
     //   var abc=this.props.finalArrayToCheckRepitition[i].data;
        var obj=this.props.finalArrayToCheckRepitition[i].data;
        var title=this.props.finalArrayToCheckRepitition[i].title;
-    //   console.log("datatta",abc.subbestheading);
-      //  console.log("abcd",title);
+    //   // console.log("datatta",abc.subbestheading);
+      //  // console.log("abcd",title);
         var mainObj = {title:title,data:[{data:obj.subbestheading, key:i} ],  read:obj };
        tempArray.push(mainObj);
   }
-  console.log("saved array",tempArray);
+  // console.log("saved array",tempArray);
   this.setState({ sectionArray: tempArray,
   });
- // console.log("abcd",this.state.sectionArray);
+ // // console.log("abcd",this.state.sectionArray);
  }
 
   actButtonSearch(){

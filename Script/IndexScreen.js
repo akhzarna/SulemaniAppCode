@@ -78,9 +78,9 @@ class IndexScreen extends Component{
     for (var i = 0; i < this.state.bookArray.length; i++) {
       if (this.state.bookArray[i].title == this.props.book.bookNameWithoutExtension) {
 
-        console.log('Book From Async is = ');
-        console.log(this.state.bookArray[i].title);
-        console.log(this.state.bookArray[i].data);
+        // console.log('Book From Async is = ');
+        // console.log(this.state.bookArray[i].title);
+        // console.log(this.state.bookArray[i].data);
         this.state.orignalArray = this.state.bookArray[i].data;
       }
     }
@@ -115,7 +115,7 @@ rowSelected(item){
     var path='';
     if (Platform.OS === 'ios') {
     path=RNFS.MainBundlePath+'/'+bookName;
-    console.log(path);
+    // console.log(path);
 
   await  RNFS.readFile(path)
         .then((contents) => {
@@ -138,7 +138,7 @@ loadBook(contents){
 
     Alert.alert('loadBook Called');
     var contentString = contents.toString();
-    console.log('Content Of Complete Book' + contentString);
+    // console.log('Content Of Complete Book' + contentString);
     var chaptersArray=[];
     // For Chapters Titles denoted by & Sign
     for (var i = 0; i < contentString.length; i++) {
@@ -148,13 +148,13 @@ loadBook(contents){
         break;
       }
 
-      console.log('FirstIndex and SecondIndex' + firstIndex +'   '+ secondIndex);
+      // console.log('FirstIndex and SecondIndex' + firstIndex +'   '+ secondIndex);
       var tempString=contentString.slice(firstIndex+1,secondIndex-1);
       chaptersArray.push(tempString);
       i=secondIndex;
     }
 
-    console.log('Chapters Array is ='+chaptersArray);
+    // console.log('Chapters Array is ='+chaptersArray);
 
     var titlesArray=[];
     var finalArray1=[];
@@ -164,7 +164,7 @@ loadBook(contents){
       var stringAtIndex = chaptersArray[i];
       var headingEndIndex = stringAtIndex.indexOf('\r',1);
       var testString=stringAtIndex.slice(0,headingEndIndex);
-      console.log('Akhzar is testing heading' + testString);
+      // console.log('Akhzar is testing heading' + testString);
 
       for (var x = 0; x < stringAtIndex.length; x++) {
         var firstIndex=stringAtIndex.indexOf('@',x);
@@ -172,7 +172,7 @@ loadBook(contents){
         if (secondIndex==-1 || firstIndex==-1) {
           break;
         }
-        console.log('FirstIndex and SecondIndex' + firstIndex +'   '+ secondIndex);
+        // console.log('FirstIndex and SecondIndex' + firstIndex +'   '+ secondIndex);
         var tempString=stringAtIndex.slice(firstIndex+1,secondIndex-1);
         // Save String and Heading Both in Array
         var ObjectToSaveInArray = {heading:testString,data:tempString.trim()};
@@ -181,7 +181,7 @@ loadBook(contents){
       }
     }
 
-    console.log('Titles Array is ='+titlesArray);
+    // console.log('Titles Array is ='+titlesArray);
 
     var tempArray=[];
     // For Nuskha Jaat denoted by $ Sign
@@ -189,12 +189,12 @@ loadBook(contents){
 
       var mainHeading = titlesArray[i].heading;
       var stringAtIndex = titlesArray[i].data;
-      console.log('Main Heading is == ' + mainHeading);
-      console.log('stringAtIndex is == ' + stringAtIndex);
+      // console.log('Main Heading is == ' + mainHeading);
+      // console.log('stringAtIndex is == ' + stringAtIndex);
 
       var headingEndIndex = stringAtIndex.indexOf('\r',1);
       var testString=stringAtIndex.slice(0,headingEndIndex);
-      console.log('Akhzar is testing heading' + testString);
+      // console.log('Akhzar is testing heading' + testString);
 
       for (var x = 0; x < stringAtIndex.length; x++) {
 
@@ -204,9 +204,9 @@ loadBook(contents){
           break;
         }
 
-        console.log('FirstIndex and SecondIndex' + firstIndex +'   '+ secondIndex);
+        // console.log('FirstIndex and SecondIndex' + firstIndex +'   '+ secondIndex);
         var tempString=stringAtIndex.slice(firstIndex+1,secondIndex-1);
-        console.log('What About main Heading = ' + mainHeading +' And What about Sub Heading  '+ testString +' And What About Subbest Heading  '+tempString.trim());
+        // console.log('What About main Heading = ' + mainHeading +' And What about Sub Heading  '+ testString +' And What About Subbest Heading  '+tempString.trim());
 
         var ObjectToSaveInArray = {mainheading:mainHeading,subheading:testString,data:tempString.trim()};
         tempArray.push(ObjectToSaveInArray);
@@ -215,7 +215,7 @@ loadBook(contents){
       }
     }
 
-    console.log('Main Temp Temp Array is ='+tempArray);
+    // console.log('Main Temp Temp Array is ='+tempArray);
 
     // Extract Headings from Sub Content From $ Sign.
 
@@ -226,9 +226,9 @@ loadBook(contents){
       var subHeading = tempArray[i].subheading;
       var stringAtIndex = tempArray[i].data;
 
-      console.log('Main Main Heading is == ' + mainHeading);
-      console.log('Sub Sub Heading is == ' + subHeading);
-      console.log('Main Main Data is == ' + stringAtIndex);
+      // console.log('Main Main Heading is == ' + mainHeading);
+      // console.log('Sub Sub Heading is == ' + subHeading);
+      // console.log('Main Main Data is == ' + stringAtIndex);
 
       var headingEndIndex = stringAtIndex.indexOf('\r',1);
       var testString=stringAtIndex.slice(0,headingEndIndex);

@@ -111,7 +111,7 @@ if (index1!=-1) {
 
   }
 
-console.log(array);
+// console.log(array);
 array.reverse();
 return array;
 
@@ -183,18 +183,18 @@ tagSimiliarword(data,spaceAfterIndex,index){
     var str2=data.slice(spaceAfterIndex,data.length);
     var newWord='<u>'+word+'</u>';
     var  tempString=str1+newWord+str2;
-    console.log(word);
+    // console.log(word);
     return tempString;
 
 
 }
 
   onCancel() {
-      console.log("CANCEL")
+      // console.log("CANCEL")
       this.setState({visible:false});
     }
     onOpen() {
-      console.log("OPEN")
+      // console.log("OPEN")
       this.setState({visible:true});
     }
 
@@ -202,7 +202,7 @@ tagSimiliarword(data,spaceAfterIndex,index){
 
       if (this.state.indexOfBookMark != -1) {
         AsyncStorage.getItem("bookMark").then((value) => {
-                  console.log('user data= ',JSON.parse(value));
+                  // console.log('user data= ',JSON.parse(value));
                   if (value!=null) {
                         var savedValue=JSON.parse(value);
                         var array=savedValue.bookMark;
@@ -221,7 +221,7 @@ tagSimiliarword(data,spaceAfterIndex,index){
                }).done();
       }else{
       AsyncStorage.getItem("bookMark").then((value) => {
-                console.log('user data= ',JSON.parse(value));
+                // console.log('user data= ',JSON.parse(value));
                 if (value!=null) {
                       var savedValue=JSON.parse(value);
                       var array=savedValue.bookMark;
@@ -248,7 +248,7 @@ tagSimiliarword(data,spaceAfterIndex,index){
 checkForAlreadyBookMark(){
   // var data=this.props.selectedItem.data;
   AsyncStorage.getItem("bookMark").then((value) => {
-            console.log('user data= ',JSON.parse(value));
+            // console.log('user data= ',JSON.parse(value));
             if (value!=null) {
                   var savedValue=JSON.parse(value);
                   var array=savedValue.bookMark;
@@ -258,11 +258,11 @@ checkForAlreadyBookMark(){
                   //  
                     var str2 = this.state.forABMdata.slice(0,15);
                     if (str1==str2) {
-                      console.log("marked");
+                      // console.log("marked");
                       this.setState({indexOfBookMark:i});
                       break;
                     }else{
-                      console.log("not marked");
+                      // console.log("not marked");
                     }
                   }
             }

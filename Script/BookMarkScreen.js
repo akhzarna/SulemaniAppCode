@@ -59,7 +59,7 @@ class BookMarkScreen extends Component{
 
 loadBookMarks(){
   AsyncStorage.getItem("bookMark").then((value) => {
-            console.log('user data= ',JSON.parse(value));
+            // console.log('user data= ',JSON.parse(value));
             if (value!=null) {
                   var savedValue=JSON.parse(value);
                   var array=savedValue.bookMark;

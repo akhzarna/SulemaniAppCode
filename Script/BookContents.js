@@ -79,7 +79,7 @@ async sortDataAccordingToIndex(){
         paragarh.trim();
         var headingWords=''+array[i].subheading;
         var word=headingWords.toLowerCase();
-        console.log(word[0]);
+        // console.log(word[0]);
         if (word[0]==letter) {
           var titleString='';
           // headingWords.reverse();
@@ -142,7 +142,7 @@ if (index1!=-1) {
 
   }
 
-console.log(array);
+// console.log(array);
 array.reverse();
 return array;
 

@@ -94,7 +94,7 @@ class BookMarkReading extends Component{
 
     }
 
-  console.log(array);
+  // console.log(array);
   array.reverse();
   return array;
 
@@ -108,7 +108,7 @@ class BookMarkReading extends Component{
   acutionButtonBookMark(){
     if (this.state.indexOfBookMark != -1) {
       AsyncStorage.getItem("bookMark").then((value) => {
-                console.log('user data= ',JSON.parse(value));
+                // console.log('user data= ',JSON.parse(value));
                 if (value!=null) {
                       var savedValue=JSON.parse(value);
                       var array=savedValue.bookMark;
@@ -128,7 +128,7 @@ class BookMarkReading extends Component{
              }).done();
     }else{
     AsyncStorage.getItem("bookMark").then((value) => {
-              console.log('user data= ',JSON.parse(value));
+              // console.log('user data= ',JSON.parse(value));
               if (value!=null) {
                     var savedValue=JSON.parse(value);
                     var array=savedValue.bookMark;

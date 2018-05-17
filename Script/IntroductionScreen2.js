@@ -33,7 +33,7 @@ class IntroductionScreen2 extends Component{
 		if (event.type == 'DeepLink') {
 			const parts = event.link;
 			if (parts=='Home') {
-				console.log(parts);
+				// console.log(parts);
 				return;
 			}else{
     				this.props.navigator.resetTo({
