@@ -94,7 +94,7 @@ rowSelected(selectedItem){
         navBarHidden:true,
       },
     })
-     
+
     //   this.props.navigator.push({
     //   screen:'DescriptionScreen',
     //   passProps:{callBackFunction:(data)=>this.callBackFunction(data),selectedItem },
@@ -121,41 +121,27 @@ callBackFunction(data){
       <View style={styles.outerContainer}>
       <Header navigator={this.props.navigator} showMenu={true} title='بک مارکس'/>
       <View style={styles.listView}>
-
-
       <FlatList
             data={this.state.dataArray}
             renderItem={({item}) =>
             <TouchableOpacity onPress={()=>this.rowSelected(item)}>
 
             <View style={styles.textView}>
-
             <View style={{flex:1}}>
             <Image source={arrow_left} style={styles.iconDimention}/>
             </View>
-
             <View style={{flex:8}}>
             <Text  style={styles.textStyle}>{}</Text>
-
-
             <Text numberOfLines={2} style={styles.textStyle}>{item.data.trim().replace(/#/g,'/')}</Text>
-
             </View>
-
-
             </View>
-
             <View style={styles.lineView}/>
 
             </TouchableOpacity>
-
           }
           />
-
       </View>
-
       </View>
-
     );
   }
 

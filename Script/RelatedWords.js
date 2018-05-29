@@ -31,71 +31,57 @@
       super(props);
       var finalArray=[];
         finalArray = this.props.finalArrayToCheckRepitition
-       
         this.state={
           finalArray:finalArray,
           sectionArray:[],
         }
-
-        // console.log('Final Data Array for Section LIST is = ' + this.state.finalArray[0]);
   }
 
   componentWillMount(){
-    // console.log("will mount");
     this.function();
   }
 
   rowSelected(item,section){
-     // console.log("read dfdnnfd",section.key,"item",item.key,"index",);
-    var selectedItem =this.state.sectionArray[item.key].read;
-    var selectedTitle = this.state.sectionArray[item.key].title;
+    var selectedRow = item.key;
+    var sectionArray = [];
+    sectionArray = this.state.finalArray;
+    console.log('Compare Array 2',sectionArray);
+    // var selectedItem = this.state.sectionArray[item.key].read;
+    // var selectedTitle = this.state.sectionArray[item.key].title;
     this.props.navigator.push({
       screen:'ReadingScreen',
-      passProps:{selectedItem,selectedTitle},
+      passProps:{sectionArray,selectedRow},
       navigatorStyle:{
         navBarHidden:true,
       },
     });
-  
-
   }
 
  function(){
-  // console.log("calling"); 
-  tempArray=[]; 
-  title=[]; 
-   for(var i=0; i<this.props.finalArrayToCheckRepitition.length; i++){
-    //   var abc=this.props.finalArrayToCheckRepitition[i].data;
-       var obj=this.props.finalArrayToCheckRepitition[i].data;
-       var title=this.props.finalArrayToCheckRepitition[i].title;
-    //   // console.log("datatta",abc.subbestheading);
-      //  // console.log("abcd",title);
-        var mainObj = {title:title,data:[{data:obj.subbestheading, key:i} ],  read:obj };
+  tempArray=[];
+  title=[];
+   for(var i=0; i<this.state.finalArray.length; i++){
+       var data=this.state.finalArray[i].data;
+       var title=this.state.finalArray[i].title;
+      var mainObj = {title:title,data:[{data:data.subbestheading, key:i} ],  read:data };
        tempArray.push(mainObj);
   }
-  // console.log("saved array",tempArray);
   this.setState({ sectionArray: tempArray,
   });
- // // console.log("abcd",this.state.sectionArray);
  }
 
   actButtonSearch(){
     this.setState({
       showSearchField:true,
     })
-
-    // this.refs.SearchInput.focus();
-
   }
 
     render(){
+    return(
 
-      return(
-
-        <View>
-         <Header title='Related Items' showMenu={false} navigator={this.props.navigator}/>
-
-          <SectionList
+    <View>
+     <Header title='Related Items' showMenu={false} navigator={this.props.navigator}/>
+      <SectionList
         renderItem={({item,section}) => <TouchableOpacity onPress={()=>this.rowSelected(item,section)}>
                       <View style={styles.textView}>
                       <View style={{flex:1}}>
@@ -119,14 +105,9 @@
         </View>
         }
         sections={this.state.sectionArray}
-    
         />
-       
-    
         </View>
-
       );}
-
   }
 
   const styles=StyleSheet.create({
@@ -162,8 +143,8 @@
 
   const htmlstyles = StyleSheet.create({
     a: {
-      fontWeight: '300',
-      color: '#FF3366', // make links coloured pink
+      fontWeight:'300',
+      color:'#FF3366', // make links coloured pink
     },
     b:{
       fontWeight:'bold',

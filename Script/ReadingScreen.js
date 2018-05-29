@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import {
   AppRegistry,
   StyleSheet,
@@ -15,85 +16,83 @@ import {
 
 var Header=require('./Header');
 var HeadingView=require('./HeadingView');
-
 var bookmark_icon=require('./Icons/bookmark_icon.png')
 var share_icon=require('./Icons/share_icon.png')
 import HTMLView from 'react-native-htmlview';
-
 import Share, {ShareSheet, Button} from 'react-native-share';
+var isiPhone=Platform.OS === 'ios';
 
 class ReadingScreen extends Component{
   constructor(props){
     super(props);
-    var reciveData=this.props.selectedItem.data;
-    var tempData=this.props.selectedItem.data;
-    var mainHeading = this.props.selectedItem.mainheading;
-    var subHeading = this.props.selectedItem.subheading;
-    var subbestHeading = this.props.selectedItem.subbestheading;
-    var bookTitle = this.props.selectedTitle;
-    var headingWords= [mainHeading,subHeading,subbestHeading];
-    var index=tempData.indexOf('\r');
-    var beforeHeading=tempData.slice(0,index);
-    var afterHeading=tempData.slice(index+1,tempData.length);
-    var headingData='<h1>'+beforeHeading+'</h1>';
-    afterHeading=afterHeading.replace('\n','');
-    afterHeading='<p>'+afterHeading+'</p>';
+    var readingArray = [];
+
+    for (var i = 0; i < this.props.sectionArray.length; i++) {
+
+    var tempData = this.props.sectionArray[i].data.data;
+    var mainHeading = this.props.sectionArray[i].data.mainheading;
+    var subHeading = this.props.sectionArray[i].data.subheading;
+    var subbestHeading = this.props.sectionArray[i].data.subbestheading;
+    var bookTitle = this.props.sectionArray[0].title;
+    var headingWords = [mainHeading,subHeading,subbestHeading];
+    var index = tempData.indexOf('\r');
+    // var beforeHeading = tempData.slice(0,index);
+    var afterHeading = tempData.slice(index+1,tempData.length);
+    // var headingData = '<h1>'+beforeHeading+'</h1>';
+    afterHeading = afterHeading.replace('\n','');
+    afterHeading = '<p>'+afterHeading+'</p>';
     if (Platform.OS === 'ios') {
     }else{
-     reciveData=reciveData.split('\r').join('\n');
      afterHeading=afterHeading.split('\r').join('\n');
     }
-    var modifiedData=afterHeading;
-    reciveData='<p>'+reciveData+'</p>'
+
+    var ObjectToSaveInArray = {heading:headingWords,data:afterHeading};
+    readingArray.push(ObjectToSaveInArray);
+
+  }
+
     this.state={
-      data:modifiedData,
-      orignalData:this.props.selectedItem.data,
+      newArray:[],
+      readingArray:readingArray,
+      data:afterHeading,
+      orignalData:this.props.sectionArray[0].data.data,
       indexOfBookMark:-1,
       headingWords:headingWords,
       bookTitle:bookTitle,
     }
 
-    this.checkForAlreadyBookMark();
+    console.log('test Array Data is = ',this.props.sectionArray[0].data.subbestheading);
+    this.state.newArray.push(this.props.sectionArray[0].data.subbestheading);
+    this.state.newArray.push(this.props.sectionArray[0].data.subbestheading);
+    console.log('New Array Length is = ', this.state.newArray.length);
 
+    this.checkForAlreadyBookMark();
   }
 
-
   checkForAlreadyBookMark(){
+
     AsyncStorage.getItem("bookMark").then((value) => {
-              // console.log('user data= ',JSON.parse(value));
               if (value!=null) {
                     var savedValue=JSON.parse(value);
                     var array=savedValue.bookMark;
                     for (var i = 0; i < array.length; i++) {
-                      var paragraph=array[i]
-                      var str1=paragraph.slice(0,15);
-                      var data=this.props.selectedItem.data;
+                      var paragraph = array[i]
+                      var str1 = paragraph.slice(0,15);
+                      var data = this.props.sectionArray[0].data.data;
                       var str2=data.slice(0,15);
                       if (str1==str2) {
-                        // console.log("marked");
                         this.setState({indexOfBookMark:i});
-
                         break;
                       }else{
-                        // console.log("not marked");
-
                       }
-
                     }
               }
-
            }).done();
   }
 
-
-
-
-
 seperateHeadingWord(data){
-    // data='پاکستان\r';
   var index1=data.indexOf('#');
   var array=[];
-
   if (index1!=-1) {
     var urduWord=data.slice(0,index1);
     urduWord=urduWord.trim();
@@ -118,22 +117,14 @@ seperateHeadingWord(data){
       var word=data.slice(0,index3);
       word=word.trim();
       array.push(word);
-
     }
-
-  // console.log(array);
   array.reverse();
   return array;
-
   }
 
-
-
-
-  acutionButtonBookMark(){
+  BookMarkBtnClicked(){
     if (this.state.indexOfBookMark != -1) {
       AsyncStorage.getItem("bookMark").then((value) => {
-                // console.log('user data= ',JSON.parse(value));
                 if (value!=null) {
                       var savedValue=JSON.parse(value);
                       var array=savedValue.bookMark;
@@ -152,7 +143,6 @@ seperateHeadingWord(data){
              }).done();
     }else{
     AsyncStorage.getItem("bookMark").then((value) => {
-              // console.log('user data= ',JSON.parse(value));
               if (value!=null) {
                     var savedValue=JSON.parse(value);
                     var array=savedValue.bookMark;
@@ -160,39 +150,29 @@ seperateHeadingWord(data){
                     var bookMark={bookMark:array};
                     AsyncStorage.setItem('bookMark', JSON.stringify(bookMark))
                     this.setState({indexOfBookMark:array.length-1});
-
               }else{
                 var tempArray=[];
                 tempArray.push(this.state.orignalData);
                 var bookMark={bookMark:tempArray};
                 AsyncStorage.setItem('bookMark', JSON.stringify(bookMark))
                 this.setState({indexOfBookMark:tempArray.length-1});
-
               }
               Alert.alert('Alert!','Book Mark Saved.')
            }).done();
       }
-
   }
 
+  rowSelected(selectedItem){
 
-
-
-
-
-
-
-
+  }
 
   render(){
 
     let shareOptions = {
          title: "کتاب الرویا",
-         message:this.props.selectedItem.data,
-        //  url: "",
+         message:this.props.sectionArray[0].data.data,
          subject: "Share Link" //  for email
        };
-
 
        const headingView=this.state.headingWords.map((item,index)=>{
          return(
@@ -202,64 +182,52 @@ seperateHeadingWord(data){
          )
        });
 
-
-
     return(
+
       <View style={styles.outerContainer}>
       <Header title={this.state.bookTitle} navigator={this.props.navigator} />
-      <ScrollView style={styles.listView}>
 
+      <FlatList
 
-      <View style={{marginBottom:15}}>
-      <HeadingView headingWords={this.state.headingWords}/>
-      </View>
+          style={styles.listView}
+          data={this.state.readingArray}
+          renderItem=
+          {({item})=>
+          <TouchableOpacity onPress={()=>this.rowSelected(item)}>
+          <HeadingView headingWords={item.heading}/>
 
+            <HTMLView
+                value={item.data}
+                addLineBreaks={false}
+                textComponentProps={{textAlign:'right'}}
+                stylesheet={htmlstyles}
+            />
 
+            <TouchableOpacity onPress={()=>this.BookMarkBtnClicked()} style={{marginLeft:40,marginRight:40,marginBottom:20,marginTop:40,backgroundColor:(this.state.indexOfBookMark!=-1)?'#E8590A':'gray',height:50,justifyContent:'center',alignItems:'center',borderRadius:30}}>
+            <View style={styles.innerView}>
+            <Image source={bookmark_icon} style={styles.iconStar}/>
+            <Text style={styles.textStyle1}>بک مارک</Text>
+            </View>
+            </TouchableOpacity>
 
-      <HTMLView
-        value={this.state.data}
-        addLineBreaks={false}
-        textComponentProps={{textAlign:'right'}}
-        stylesheet={htmlstyles}
+            <TouchableOpacity  onPress={()=>{
+             Share.open(shareOptions);
+            }}  style={{marginLeft:40,marginRight:40,marginBottom:40,marginTop:30,backgroundColor:'#2C3990',height:50,justifyContent:'center',alignItems:'center',borderRadius:30}}>
+            <View style={styles.innerView}>
+            <Image source={share_icon}  style={styles.iconShare}/>
+              <Text style={styles.textStyle1}>  شیئیر</Text>
+            </View>
+            </TouchableOpacity>
+
+            </TouchableOpacity>
+
+          }
         />
-
-
-
-
-        <TouchableOpacity onPress={()=>this.acutionButtonBookMark()} style={{marginLeft:40,marginRight:40,marginBottom:20,marginTop:40,backgroundColor:(this.state.indexOfBookMark!=-1)?'#E8590A':'gray',height:50,justifyContent:'center',alignItems:'center',borderRadius:30}}>
-      <View style={styles.innerView}>
-      <Image source={bookmark_icon} style={styles.iconStar}/>
-        <Text style={styles.textStyle1}>بک مارک</Text>
-
-      </View>
-      </TouchableOpacity>
-
-
-
-
-
-      <TouchableOpacity  onPress={()=>{
-       Share.open(shareOptions);
-      }}  style={{marginLeft:40,marginRight:40,marginBottom:40,marginTop:30,backgroundColor:'#2C3990',height:50,justifyContent:'center',alignItems:'center',borderRadius:30}}>
-
-      <View style={styles.innerView}>
-      <Image source={share_icon}  style={styles.iconShare}/>
-        <Text style={styles.textStyle1}>  شیئیر</Text>
-      </View>
-
-  </TouchableOpacity>
-
-
-
-
-      </ScrollView>
-
       </View>
     )
   }
 
 }
-
 
 const styles=StyleSheet.create({
     outerContainer:{
@@ -267,12 +235,9 @@ const styles=StyleSheet.create({
       backgroundColor:'white',
     },
     listView:{
-      // marginRight:20,
-      // marginLeft:20,
       paddingLeft:20,
       paddingRight:20,
       flex:1,
-
     },
     textView:{
       height:80,
@@ -338,9 +303,6 @@ const styles=StyleSheet.create({
 
 })
 
-
-
-
 const htmlstyles = StyleSheet.create({
   a: {
     fontWeight: '300',
@@ -363,8 +325,6 @@ const htmlstyles = StyleSheet.create({
      color:'#606060',
     //  paddingTop:-40,
     // marginBottom: 3
-
-
   },
   h1:{
     fontSize:30,
@@ -375,10 +335,6 @@ const htmlstyles = StyleSheet.create({
     // lineHeight:20,
     // paddingBottom:-40,
   }
-
 });
-
-
-
 
 module.exports=ReadingScreen;

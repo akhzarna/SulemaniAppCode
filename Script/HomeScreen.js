@@ -3996,9 +3996,9 @@ callSomeFunction(index){
       finalArrayToCheckRepitition.push(this.state.searchResultArray[i]);
     }
   }
-  // // // console.log('Array count is = ',finalArrayToCheckRepitition.length);
+
   if (finalArrayToCheckRepitition.length > 1) {
-    // // // console.log("array",finalArrayToCheckRepitition);
+    console.log('Compare Array Multiple',this.state.searchResultArray[0]);
     this.props.navigator.push({
       screen:'RelatedWords',
       title:'Related Items',
@@ -4008,11 +4008,15 @@ callSomeFunction(index){
       },
     })
   }else{
-    var selectedItem = this.state.searchResultArray[index].data;
-    var selectedTitle = this.state.searchResultArray[index].title;
+    var selectedRow = index;
+    var sectionArray = [];
+    sectionArray.push(this.state.searchResultArray[index]);
+    console.log('Compare Array 1',sectionArray);
+    // var selectedItem = this.state.searchResultArray[index].data;
+    // var selectedTitle = this.state.searchResultArray[index].title;
     this.props.navigator.push({
       screen:'ReadingScreen',
-      passProps:{selectedItem,selectedTitle},
+      passProps:{sectionArray,selectedRow},
       navigatorStyle:{
         navBarHidden:true,
       },
@@ -4037,15 +4041,16 @@ callSomeFunction(index){
       underlineColorAndroid='transparent'
        />
 
+       {
+      /*
+       }<Text style={{textAlign:'right',marginRight:15,marginTop:15}}>کس کتاب سے تلاش کرنا چاہتے ہیں؟</Text>
+      */
+        }
 
-       {/*}<Text style={{textAlign:'right',marginRight:15,marginTop:15}}>کس کتاب سے تلاش کرنا چاہتے ہیں؟</Text>*/}
-
-{/*
+      {
+        /*
        <View style={{justifyContent:'flex-end',alignItems:'flex-end',marginRight:40,marginLeft:40,backgroundColor:'transparent'}}>
-
-
        <View style={{flexDirection:'row'}}>
-
 
                <TouchableOpacity onPress={()=>this.actionCheckBox2()} style={{marginRight:20,width:120,height:40,alignItems:'flex-end',justifyContent:'center'}}>
 
@@ -4055,7 +4060,6 @@ callSomeFunction(index){
                </View>
 
                </TouchableOpacity>
-
 
                 <TouchableOpacity onPress={()=>this.actionCheckBox1()} style={{width:140,height:40,alignItems:'flex-end',justifyContent:'center'}}>
 
@@ -4067,10 +4071,7 @@ callSomeFunction(index){
 
                 </TouchableOpacity>
 
-
       </View>
-
-
 
           <View style={{flexDirection:'row'}}>
 
@@ -4083,7 +4084,6 @@ callSomeFunction(index){
 
                     </TouchableOpacity>
 
-
                     <TouchableOpacity onPress={()=>this.actionCheckBox3()} style={{width:140,height:40,alignItems:'flex-end',justifyContent:'center'}}>
 
                     <View style={{flexDirection:'row'}}>
@@ -4095,7 +4095,8 @@ callSomeFunction(index){
           </View>
 
      </View>
-     */}
+     */
+   }
 
        <View style={styles.buttonView}>
        <TouchableOpacity onPress={()=>this.actionButtonSearch()} style={styles.buttonStyleOne}>
@@ -4103,10 +4104,8 @@ callSomeFunction(index){
        </TouchableOpacity>
        </View>
 
-
-
        {
-         /*
+      /*
        <View style={{flex:1,backgroundColor:'transparent',justifyContent:'flex-end'}}>
        <View style={{alignItems:'flex-start',marginBottom:isiPhone?10:30}}>
        <Carousel
@@ -4125,16 +4124,17 @@ callSomeFunction(index){
          */
        }
 
-{/*
+{
+/*
          <View style={styles.buttonView}>
          <TouchableOpacity onPress={()=>this.actionButtonBooksList()} style={styles.buttonStyleTwo}>
          <Text style={styles.textStyle}>{this.state.booksListTitle}</Text>
          </TouchableOpacity>
          </View>
-*/}
+*/
+}
 
          <View style={{marginTop:25,}}>
-
          <FlatList
          data={this.state.urduAlphabet}
          keyExtractor={(item, index) => index}
@@ -4154,9 +4154,7 @@ callSomeFunction(index){
           </TouchableOpacity>
         }
           />
-
          </View>
-
 
         <View style={{marginTop:20}}>
           <FlatList
@@ -4189,7 +4187,8 @@ callSomeFunction(index){
         }
           />
         </View>
-        <View style={{marginTop:30}}/>
+
+      <View style={{marginTop:30}}/>
       </View>
       <Loader showProgress={this.state.showProgress}/>
       </KeyboardAwareScrollView>

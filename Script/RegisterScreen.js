@@ -27,7 +27,6 @@ var SignUpScreen=require('./SignUpScreen');
 var Screen4=require('./Screen4');
 var BookCatagoryScreen2=require('./BookCatagoryScreen2');
 
-
 export function RegisterScreen(){
 
   Navigation.registerComponent('HomeScreen', () => HomeScreen);
