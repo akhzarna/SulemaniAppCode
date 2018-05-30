@@ -6,7 +6,7 @@ import {
   Text,
   Alert,
   View,
-  FlatList,
+  FlatList,Dimensions,
   Platform,
   TouchableOpacity,
   Image,
@@ -22,11 +22,13 @@ import HTMLView from 'react-native-htmlview';
 import Share, {ShareSheet, Button} from 'react-native-share';
 var isiPhone=Platform.OS === 'ios';
 
+
 class ReadingScreen extends Component{
   constructor(props){
     super(props);
     var readingArray = [];
-
+    this.width = Dimensions.get('window').width;
+    this.height = Dimensions.get('window').height;
     for (var i = 0; i < this.props.sectionArray.length; i++) {
 
     var tempData = this.props.sectionArray[i].data.data;
@@ -46,7 +48,7 @@ class ReadingScreen extends Component{
      afterHeading=afterHeading.split('\r').join('\n');
     }
 
-    var ObjectToSaveInArray = {heading:headingWords,data:afterHeading};
+    var ObjectToSaveInArray = {heading:headingWords,data:afterHeading,key:i,bookmarkCheck:false};
     readingArray.push(ObjectToSaveInArray);
 
   }
@@ -73,20 +75,36 @@ class ReadingScreen extends Component{
 
     AsyncStorage.getItem("bookMark").then((value) => {
               if (value!=null) {
+                   console.log("value bookmark",value,"LENGTH",value.length);
                     var savedValue=JSON.parse(value);
                     var array=savedValue.bookMark;
+
                     for (var i = 0; i < array.length; i++) {
-                      var paragraph = array[i]
-                      var str1 = paragraph.slice(0,15);
-                      var data = this.props.sectionArray[0].data.data;
-                      var str2=data.slice(0,15);
-                      if (str1==str2) {
-                        this.setState({indexOfBookMark:i});
-                        break;
+                      var paragraph = array[i].data;
+                      var str1 = paragraph.slice(0,105);
+
+                      for(var j=0; j<this.state.readingArray.length; j++){
+                      var data = this.state.readingArray[j].data;
+                      var str2=data.slice(0,105);
+                     
+                      if (str1===str2) {
+                         var tempArrat=[];
+                        console.log("alredy book mark");
+                      //  Alert.alert('before compare asyn',str1,i,j);
+                      //  Alert.alert("before compare local",str2,"  " ,i,j);
+                        //console.log("before compare asyn",str1,"  " ,i,j);
+                        //console.log("before compare local",str2,"  ",i,j);
+                        this.state.readingArray[j].bookmarkCheck = true;
+                          tempArrat= this.state.readingArray;
+                          this.setState({readingArray: tempArrat});
+                    
                       }else{
                       }
                     }
-              }
+                   }
+             
+             
+                  }
            }).done();
   }
 
@@ -122,51 +140,118 @@ seperateHeadingWord(data){
   return array;
   }
 
-  BookMarkBtnClicked(){
-    if (this.state.indexOfBookMark != -1) {
+  BookMarkBtnClicked(item){
+        //   console.log("before key",item.key);
+        // //  item.key = -1;
+        // console.log("before editing",this.state.readingArray[item.key]);
+        // this.state.readingArray[item.key].bookmarkCheck = !this.state.readingArray[item.key].bookmarkCheck;
+        // var test = [];
+        // test = this.state.readingArray;
+        // this.setState({readingArray:test});
+        // console.log("after editing",this.state.readingArray[item.key]);
+
+
+        
+        // for(var i=0; i<this.state.readingArray.length; i++){
+        //   if(item.key == this.state.readingArray[i].key)
+        //   {  
+        //     console.log("before editing key", this.state.readingArray[i].bookmarkCheck);
+        //     this.state.readingArray[i].bookmarkCheck = !this.state.readingArray[i].bookmarkCheck;
+        //     console.log("after additing key",this.state.readingArray[i].bookmarkCheck);
+        //   }
+        // }
+
+
+    if (item.bookmarkCheck == false) {
+
+
+      item.bookmarkCheck = true;
+        console.log("book markk item length",item.length);
       AsyncStorage.getItem("bookMark").then((value) => {
                 if (value!=null) {
+                     console.log("data save in bookmark",item);
                       var savedValue=JSON.parse(value);
-                      var array=savedValue.bookMark;
-                      var tempArray=[];
-                      for(var i = 0; i < array.length; i++) {
-                        if (i!=this.state.indexOfBookMark) {
-                          tempArray.push(array[i]);
-                        }
-                      }
-                      var bookMark={bookMark:tempArray};
+                     // savedValue.bookmarkCheck = 
+                       var array=savedValue.bookMark;
+                      array.push(item);
+                      var bookMark={bookMark:array};
                       AsyncStorage.setItem('bookMark', JSON.stringify(bookMark))
-                      this.setState({indexOfBookMark:-1});
-                      Alert.alert('Alert!','Book Mark removed.')
+                      this.setState({indexOfBookMark:array.length-1});
+                   //   this.state.item.bookmarkCheck = array.length-1;
+                }else{
+                  var tempArray=[];
+                  tempArray.push(item);
+                  var bookMark={bookMark:tempArray};
+                  AsyncStorage.setItem('bookMark', JSON.stringify(bookMark))
+                  this.setState({indexOfBookMark:tempArray.length-1});
+                 // this.state.item.bookmarkCheck = array.length-1;
                 }
-
+                Alert.alert('Alert!','Book Mark Saved.')
              }).done();
-    }else{
-    AsyncStorage.getItem("bookMark").then((value) => {
-              if (value!=null) {
-                    var savedValue=JSON.parse(value);
-                    var array=savedValue.bookMark;
-                    array.push(this.state.orignalData);
-                    var bookMark={bookMark:array};
-                    AsyncStorage.setItem('bookMark', JSON.stringify(bookMark))
-                    this.setState({indexOfBookMark:array.length-1});
-              }else{
-                var tempArray=[];
-                tempArray.push(this.state.orignalData);
-                var bookMark={bookMark:tempArray};
-                AsyncStorage.setItem('bookMark', JSON.stringify(bookMark))
-                this.setState({indexOfBookMark:tempArray.length-1});
+        
+
+
+     
+   }else{
+      item.bookmarkCheck = false;
+
+      AsyncStorage.getItem("bookMark").then((value) => {
+        if (value!=null) {
+              var savedValue=JSON.parse(value);
+              var array=savedValue.bookMark;
+              var tempArray=[];
+              var dummyArray = [];
+
+              for(var i = 0; i < array.length; i++) {
+                var paragraph= array[i].data;
+                var str1 = paragraph.slice(0,105);
+                var itemData= item.data;
+                var str2 = itemData.slice(0,105);
+                 if (str1== str2) {
+                  //  tempArray.push(array[i]);
+                 }else{
+                   array[i].bookmarkCheck = false;
+                  dummyArray.push(array[i]);
+                 }
               }
-              Alert.alert('Alert!','Book Mark Saved.')
-           }).done();
-      }
+              var bookMark={bookMark:dummyArray};
+              AsyncStorage.setItem('bookMark', JSON.stringify(bookMark))
+              this.setState({indexOfBookMark:-1});
+              Alert.alert('Alert!','Book Mark removed.')
+        }
+
+     }).done();
+     }
   }
 
   rowSelected(selectedItem){
 
   }
 
+
+
+  componentDidMount() {
+    console.log("key",this.props.selectedRow);
+   
+}
+   
+  componentWillMount(){
+    if(this.props.selectedRow){
+  scrollToIndex = () => {
+    let randomIndex =  this.props.selectedRow;
+    this.flatListRef.scrollToIndex({animated: true, index: randomIndex});
+  }
+}
+    }
+
+
+    getItemLayout = (data, index) => (
+      { length: 900, offset: 900 * index, index }
+    );
+  
+
   render(){
+         
 
     let shareOptions = {
          title: "کتاب الرویا",
@@ -188,12 +273,16 @@ seperateHeadingWord(data){
       <Header title={this.state.bookTitle} navigator={this.props.navigator} />
 
       <FlatList
-
+          ref={(ref) => { this.flatListRef = ref; }}
           style={styles.listView}
           data={this.state.readingArray}
-          renderItem=
-          {({item})=>
-          <TouchableOpacity onPress={()=>this.rowSelected(item)}>
+          keyExtractor={(item, index) => ''+item.key}
+          extraData={this.state}
+          getItemLayout={this.getItemLayout}
+          initialScrollIndex={this.props.selectedRow}
+          renderItem={({item,index})=>
+         
+         <TouchableOpacity  onPress={()=>this.rowSelected(item)}>
           <HeadingView headingWords={item.heading}/>
 
             <HTMLView
@@ -203,7 +292,8 @@ seperateHeadingWord(data){
                 stylesheet={htmlstyles}
             />
 
-            <TouchableOpacity onPress={()=>this.BookMarkBtnClicked()} style={{marginLeft:40,marginRight:40,marginBottom:20,marginTop:40,backgroundColor:(this.state.indexOfBookMark!=-1)?'#E8590A':'gray',height:50,justifyContent:'center',alignItems:'center',borderRadius:30}}>
+            <TouchableOpacity onPress={()=>this.BookMarkBtnClicked(item)} 
+            style={{marginLeft:40,marginRight:40,marginBottom:20,marginTop:40, backgroundColor: (item.bookmarkCheck ? '#E8590A':'gray'),height:50,justifyContent:'center',alignItems:'center',borderRadius:30}}>
             <View style={styles.innerView}>
             <Image source={bookmark_icon} style={styles.iconStar}/>
             <Text style={styles.textStyle1}>بک مارک</Text>

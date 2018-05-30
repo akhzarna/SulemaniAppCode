@@ -220,6 +220,7 @@ tagSimiliarword(data,spaceAfterIndex,index){
 
                }).done();
       }else{
+        console.log("book mark");
       AsyncStorage.getItem("bookMark").then((value) => {
                 // console.log('user data= ',JSON.parse(value));
                 if (value!=null) {

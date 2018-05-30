@@ -43,9 +43,10 @@
 
   rowSelected(item,section){
     var selectedRow = item.key;
+    console.log("keyyy",selectedRow);
     var sectionArray = [];
     sectionArray = this.state.finalArray;
-    console.log('Compare Array 2',sectionArray);
+   // console.log('Compare Array 2',sectionArray);
     // var selectedItem = this.state.sectionArray[item.key].read;
     // var selectedTitle = this.state.sectionArray[item.key].title;
     this.props.navigator.push({
