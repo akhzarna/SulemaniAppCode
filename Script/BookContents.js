@@ -18,10 +18,7 @@ var RNFS = require('react-native-fs');
 
 var Loader=require('./Loader')
 
-
 import HTMLView from 'react-native-htmlview';
-
-
 
 class BookContents extends Component{
   constructor(props){
@@ -224,6 +221,7 @@ filterData(txtSearch){
             </TouchableOpacity>
 
           }
+
           />
 
       </View>

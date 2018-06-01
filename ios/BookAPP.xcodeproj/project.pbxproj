@@ -61,6 +61,7 @@
 		F342E7D7203F3ECF00643D66 /* ٓارنڈ.txt in Resources */ = {isa = PBXBuildFile; fileRef = F342E7D6203F3ECF00643D66 /* ٓارنڈ.txt */; };
 		F342E7DB203F3F9000643D66 /* اندرائین.txt in Resources */ = {isa = PBXBuildFile; fileRef = F342E7DA203F3F9000643D66 /* اندرائین.txt */; };
 		F342E7DD203F3FBF00643D66 /* آم.txt in Resources */ = {isa = PBXBuildFile; fileRef = F342E7DC203F3FBF00643D66 /* آم.txt */; };
+		F34CA2D520BEDBDC00A7F94C /* Articles.txt in Resources */ = {isa = PBXBuildFile; fileRef = F34CA2AF20BEDBDC00A7F94C /* Articles.txt */; };
 		F3FCB64A1FDFD61800B1066D /* خواص آک.txt in Resources */ = {isa = PBXBuildFile; fileRef = F3FCB6481FDFD61800B1066D /* خواص آک.txt */; };
 /* End PBXBuildFile section */
 
@@ -395,6 +396,7 @@
 		F342E7D6203F3ECF00643D66 /* ٓارنڈ.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "ٓارنڈ.txt"; sourceTree = "<group>"; };
 		F342E7DA203F3F9000643D66 /* اندرائین.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "اندرائین.txt"; sourceTree = "<group>"; };
 		F342E7DC203F3FBF00643D66 /* آم.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "آم.txt"; sourceTree = "<group>"; };
+		F34CA2AF20BEDBDC00A7F94C /* Articles.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Articles.txt; sourceTree = "<group>"; };
 		F3FCB6481FDFD61800B1066D /* خواص آک.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "خواص آک.txt"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -551,6 +553,7 @@
 		13B07FAE1A68108700A75B9A /* BookAPP */ = {
 			isa = PBXGroup;
 			children = (
+				F34CA2AF20BEDBDC00A7F94C /* Articles.txt */,
 				F342E7D6203F3ECF00643D66 /* ٓارنڈ.txt */,
 				F342E7DA203F3F9000643D66 /* اندرائین.txt */,
 				CEC0D7742020829700339C7E /* انگور.txt */,
@@ -1204,6 +1207,7 @@
 				CE1D9BE42036F1160049850F /* دودھ.txt in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				F34CA2D520BEDBDC00A7F94C /* Articles.txt in Resources */,
 				F342E7D7203F3ECF00643D66 /* ٓارنڈ.txt in Resources */,
 				CE1D9BE52036F1160049850F /* گاجر.txt in Resources */,
 				CE1D9BE32036F1160049850F /* دھتورہ.txt in Resources */,
