@@ -4163,6 +4163,12 @@ callSomeFunction(index){
     })
   }
 }
+ Search(){
+  this.setState({txtSearch :'ا'});
+ }
+ Search1(){
+  this.setState({txtSearch :'ب'});
+ }
 
   render(){
     return(
@@ -4175,7 +4181,7 @@ callSomeFunction(index){
       </View>
       <View style={styles.subView}>
       <TextInput style={[styles.inputStyle,{textAlign:this.state.isUrduSelected?'right':'left'}]}
-
+      value={this.state.txtSearch}
       onChangeText={(txtSearch) => this.setState({txtSearch})}
       placeholder={this.state.placeholderText}
       underlineColorAndroid='transparent'
@@ -4241,6 +4247,15 @@ callSomeFunction(index){
        <View style={styles.buttonView}>
        <TouchableOpacity onPress={()=>this.actionButtonSearch()} style={styles.buttonStyleOne}>
        <Text style={styles.textStyle}>{this.state.buttonSearchTitle}</Text>
+       </TouchableOpacity>
+       </View>
+        <View style={{alignItems:'center'}}>
+        <TouchableOpacity onPress={()=>this.Search('ب')} style={styles.buttonStyleOne}>
+       <Text style={styles.textStyle}>ب</Text>
+       </TouchableOpacity>
+
+       <TouchableOpacity onPress={()=>this.Search1('ا')} style={styles.buttonStyleOne}>
+       <Text style={styles.textStyle}>ا</Text>
        </TouchableOpacity>
        </View>
 

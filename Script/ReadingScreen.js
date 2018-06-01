@@ -232,21 +232,21 @@ seperateHeadingWord(data){
 
   componentDidMount() {
     console.log("key",this.props.selectedRow);
-   
+    if(this.props.selectedRow){
+      scrollToIndex = () => {
+        let randomIndex =  this.props.selectedRow;
+        this.flatListRef.scrollToIndex({animated: false, index: randomIndex});
+      }
+    }
 }
    
   componentWillMount(){
-    if(this.props.selectedRow){
-  scrollToIndex = () => {
-    let randomIndex =  this.props.selectedRow;
-    this.flatListRef.scrollToIndex({animated: true, index: randomIndex});
-  }
-}
+   
     }
 
 
     getItemLayout = (data, index) => (
-      { length: 900, offset: 900 * index, index }
+      { length: 0, offset: 900 * index, index }
     );
   
 
@@ -278,8 +278,9 @@ seperateHeadingWord(data){
           data={this.state.readingArray}
           keyExtractor={(item, index) => ''+item.key}
           extraData={this.state}
-          getItemLayout={this.getItemLayout}
           initialScrollIndex={this.props.selectedRow}
+          getItemLayout={this.getItemLayout}
+          
           renderItem={({item,index})=>
          
          <TouchableOpacity  onPress={()=>this.rowSelected(item)}>
