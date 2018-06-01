@@ -17,7 +17,7 @@ class SideMenu extends Component{
   constructor(props){
     super(props);
     this.state={
-      titleArray:[{key:0,data:'ڈیش بورڈ'},{key:1,data:'طبی کتب'},{key:2,data:'نسخہ جات'},{key:3,data:'بک مارکس'},{key:4,data:'یونانی ادویہ'},{key:5,data:'ادارہ سلیمانی۔منزل بہ منزل'},{key:6,data:'مضامین'},{key:7,data:'برائے رابطہ'}],
+      titleArray:[{key:0,data:'ڈیش بورڈ'},{key:1,data:'طبی کتب'},{key:2,data:'نسخہ جات'},{key:3,data:'بک مارکس'},{key:4,data:'یونانی ادویہ'},{key:5,data:'ادارہ سلیمانی۔منزل بہ منزل'},{key:6,data:'مضامین'},{key:7,data:'برائے رابطہ'},{key:8,data:'برائے فورم'}],
       iconsArray:[require('./Icons/ExpandMenu_1.png'),require('./Icons/ExpandMenu_2.png'),require('./Icons/ExpandMenu_6.png'),require('./Icons/ExpandMenu_3.png'),
                   require('./Icons/ExpandMenu_9.png'),require('./Icons/ExpandMenu_4.png'),
                   require('./Icons/ExpandMenu_7.png'),require('./Icons/ExpandMenu_14.png'),
@@ -43,6 +43,9 @@ rowSelected(selectedItem){
               screenName='IntroductionScreen';
             }else if(selectedItem.key==6){
               screenName='ListScreen';
+            }
+            else if(selectedItem.key==8){
+              screenName='ForumScreen';
             }
             else{
               this.toggleDrawer();
