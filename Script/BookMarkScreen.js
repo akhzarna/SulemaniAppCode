@@ -59,7 +59,7 @@ class BookMarkScreen extends Component{
 
 loadBookMarks(){
   AsyncStorage.getItem("bookMark").then((value) => {
-            // console.log('user data= ',JSON.parse(value));
+             console.log('user data= ',JSON.parse(value));
             if (value!=null) {
                   var savedValue=JSON.parse(value);
                   var array=savedValue.bookMark;
@@ -67,7 +67,7 @@ loadBookMarks(){
                   for (var i = 0; i < array.length; i++) {
                   var object={
                     key:i,
-                    data:array[i]
+                    data:array[i].data
                         }
                         tempArray.push(object);
                   }
@@ -132,7 +132,7 @@ callBackFunction(data){
             </View>
             <View style={{flex:8}}>
             <Text  style={styles.textStyle}>{}</Text>
-            <Text numberOfLines={2} style={styles.textStyle}>{item.data.trim().replace(/#/g,'/')}</Text>
+            <Text numberOfLines={2} style={styles.textStyle}>{item.data}</Text>
             </View>
             </View>
             <View style={styles.lineView}/>

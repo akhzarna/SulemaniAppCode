@@ -3995,7 +3995,7 @@ callSomeFunction(index){
   }
 
   if (finalArrayToCheckRepitition.length > 1) {
-    console.log('Compare Array Multiple',this.state.searchResultArray[0]);
+   // console.log('Compare Array Multiple',this.state.searchResultArray[0]);
     this.props.navigator.push({
       screen:'RelatedWords',
       title:'Related Items',
@@ -4005,10 +4005,10 @@ callSomeFunction(index){
       },
     })
   }else{
-    var selectedRow = index;
+    var selectedRow = 0; //index
     var sectionArray = [];
     sectionArray.push(this.state.searchResultArray[index]);
-    console.log('Compare Array 1',sectionArray);
+   // console.log('Compare Array 1',sectionArray);
     // var selectedItem = this.state.searchResultArray[index].data;
     // var selectedTitle = this.state.searchResultArray[index].title;
     this.props.navigator.push({
