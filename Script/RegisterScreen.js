@@ -15,7 +15,7 @@ var BookMarkReading=require('./BookMarkReading');
 var IntroductionScreen=require('./IntroductionScreen');
 var IntroductionScreen2=require('./IntroductionScreen2');
 var ListScreen=require('./ListScreen');
-var EassyReading=require('./EassyReading');
+var ArticlesReading=require('./ArticlesReading');
 var DialerScreen=require('./DialerScreen');
 var DialerResultScreen=require('./DialerResultScreen');
 var BookCatagoryScreen=require('./BookCatagoryScreen');
@@ -44,7 +44,7 @@ export function RegisterScreen(){
   Navigation.registerComponent('IntroductionScreen', () => IntroductionScreen);
   Navigation.registerComponent('IntroductionScreen2', () => IntroductionScreen2);
   Navigation.registerComponent('ListScreen', () => ListScreen);
-  Navigation.registerComponent('EassyReading', () => EassyReading);
+  Navigation.registerComponent('ArticlesReading', () => ArticlesReading);
   Navigation.registerComponent('DialerScreen', () => DialerScreen);
   Navigation.registerComponent('DialerResultScreen', () => DialerResultScreen);
   Navigation.registerComponent('NewHomeScreen', () => NewHomeScreen);

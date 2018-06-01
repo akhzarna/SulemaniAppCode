@@ -1,4 +1,5 @@
 
+
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -16,40 +17,50 @@ import {
 
 var Header=require('./Header');
 var arrow_left=require('./Icons/arrow_left.png');
-var RNFS = require('react-native-fs');
+var RNFS=require('react-native-fs');
 var Loader=require('./Loader')
 import HTMLView from 'react-native-htmlview';
-var EassyData = require('./EassyData');
-var EassyText=require('./EassyText');
+var ArticlesData=require('./ArticlesData');
+var ArticlesText=require('./ArticlesText');
 var HeadingView=require('./HeadingView');
 
-
-class EassyReading extends Component{
+class ArticlesReading extends Component{
   constructor(props){
     super(props);
     var heading=this.props.selectedItem.heading;
+    var mainData=this.props.selectedItem.data;
     var array=[heading];
     this.state={
         headingWords:array,
+        mainData:mainData
     }
-
   }
 
+componentDidMount(){
+  Alert.alert(this.state.mainData);
+}
+
   render(){
-//// console.log("ajjadkjjanan", <EassyText eassyId={this.props.selectedItem.eassyId}/>);
     return(
       <View style={styles.outerContainer}>
       <Header title='مضامین ' navigator={this.props.navigator} showMenu={false}/>
-      <ScrollView>
 
+      <ScrollView>
       <View style={{marginBottom:15}}>
       <HeadingView headingWords={this.state.headingWords}/>
       </View>
+
       <View style={{marginRight:15,marginLeft:15,marginBottom:20}}>
 
-      <EassyText eassyId={this.props.selectedItem.eassyId} />
-      </View>
+      {/*
+      <ArticlesText ArticlesId={this.props.selectedItem.ArticlesId} />
+      */}
 
+      <Text style={styles.textStyle}>
+      {this.state.mainData}
+      </Text>
+
+      </View>
       </ScrollView>
       </View>
     );
@@ -61,10 +72,14 @@ const styles=StyleSheet.create({
     outerContainer:{
       flex:1,
       backgroundColor:'white',
+    },
+
+    textStyle:{
+      textAlign:'right',
+      lineHeight:35,
+      fontSize:20,
+      fontFamily:'Nafees Web Naskh',
     }
-
-
 });
 
-
-module.exports=EassyReading;
+module.exports=ArticlesReading;

@@ -1565,9 +1565,6 @@ class HomeScreen extends Component{
                                                                 })
 
 
-
-
-
                                                                 var finalArray16=[];
 
                                                                 RNFS.readFile(path16)
