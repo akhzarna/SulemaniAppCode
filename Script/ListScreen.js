@@ -112,11 +112,9 @@ componentDidMount(){
           tempArray.push(ObjectToSaveInArray);
         }
 
-        console.log('YES Man Tahir is =',tempArray);
         AsyncStorage.setItem('articlesData', JSON.stringify(this.state.articlesArray));
         var Object0ToSaveInMainArray = {title:'مضامین',data:tempArray};
         mainArray.push(Object0ToSaveInMainArray);
-        console.log('main Man Tahir is =',mainArray);
         Constants.BookArray=mainArray;
         Constants.isBookLoaded=true;
 

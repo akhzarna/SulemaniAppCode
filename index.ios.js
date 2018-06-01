@@ -19,7 +19,7 @@ RegisterScreen();
 
 Navigation.startSingleScreenApp({
   screen: {
-    screen: 'LoginScreen',
+    screen: 'HomeScreen',
     title: 'Home',
     navigatorStyle: {
       navBarHidden:true,

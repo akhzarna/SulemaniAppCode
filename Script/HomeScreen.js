@@ -113,7 +113,6 @@ class HomeScreen extends Component{
           {fileName:require('./Banner/Honey_Farmi.jpg'),key:3},
           {fileName:require('./Banner/Honey_Wild.jpg'),key:4},
         ],
-
     }
 }
 
@@ -142,10 +141,12 @@ class HomeScreen extends Component{
     if (testVar == null) {
       this.actionButtonLoadBook();
     }else{
+    // Test Akhzar Nazir
     this.setState({
       bookArray:JSON.parse(value)
     });
     this.setState({showProgress:false});
+    // Alert.alert(this.state.bookArray[0].data[0].subbestheading);
     this.slectFunc();
     }
   }
@@ -159,6 +160,7 @@ class HomeScreen extends Component{
 
   actionButtonLoadBook(){
 
+    var path0='';
     var path1='';
     var path2='';
     var path3='';
@@ -178,6 +180,7 @@ class HomeScreen extends Component{
 
     if (Platform.OS === 'ios') {
 
+    path0=RNFS.MainBundlePath+'/Articles.txt';
     path1=RNFS.MainBundlePath+'/آرنڈ.txt';
     path2=RNFS.MainBundlePath+'/اندرائین.txt';
     path3=RNFS.MainBundlePath+'/انگور.txt';
@@ -194,6 +197,67 @@ class HomeScreen extends Component{
     path14=RNFS.MainBundlePath+'/گھی.txt';
     path15=RNFS.MainBundlePath+'/دھی.txt';
     path16=RNFS.MainBundlePath+'/گل سرک.txt';
+
+    // For Articles
+    var mainArray=[];
+    var finalArray0=[];
+    RNFS.readFile(path0)
+        .then((contents) => {
+          var contentString = contents.toString();
+          // console.log('Content Of Complete Book' + contentString);
+          var articlesNameArray=[];
+          var articlesHeadingArray=[];
+          var articlesDetailArray=[];
+          for (var i = 0; i < contentString.length; i++) {
+            // Main Heading denoted by & Sign
+            var firstIndexname=contentString.indexOf('&',i);
+            var secondIndexname=contentString.indexOf('&',firstIndexname+1);
+            if (secondIndexname==-1 || firstIndexname==-1) {
+              break;
+            }
+
+            var tempString=contentString.slice(firstIndexname+1,secondIndexname-1);
+            articlesNameArray.push(tempString);
+            i=secondIndexname;
+            }
+
+            for (var i = 0; i < contentString.length; i++) {
+            // ArticleHeading denoted by @ Sign
+            var firstIndexheading=contentString.indexOf('@',i);
+            var secondIndexheading=contentString.indexOf('@',firstIndexheading+1);
+            if (secondIndexheading==-1 || firstIndexheading==-1) {
+              break;
+            }
+
+            var tempString=contentString.slice(firstIndexheading+1,secondIndexheading-1);
+            articlesHeadingArray.push(tempString);
+            i=secondIndexheading;
+          }
+
+          for (var i = 0; i < contentString.length; i++) {
+            // ArticleDetail denoted by $ Sign
+            var firstIndexdetail=contentString.indexOf('$',i);
+            var secondIndexdetail=contentString.indexOf('$',firstIndexdetail+1);
+            if (secondIndexdetail==-1 || firstIndexdetail==-1) {
+              break;
+            }
+
+            var tempString=contentString.slice(firstIndexdetail+1,secondIndexdetail-1);
+            articlesDetailArray.push(tempString);
+            i=secondIndexdetail;
+
+          }
+
+          for (var x = 0; x < articlesDetailArray.length; x++) {
+            var ObjectToSaveInArray = {mainheading:articlesNameArray[0],subheading:articlesHeadingArray[x],subbestheading:articlesHeadingArray[x],data:articlesDetailArray[x].trim()};
+            finalArray0.push(ObjectToSaveInArray);
+          }
+
+          console.log('Marwa Dia Amir ne',finalArray0);
+
+        })
+
+
 
     var finalArray1=[];
     RNFS.readFile(path1)
@@ -291,6 +355,9 @@ class HomeScreen extends Component{
             var ObjectToSaveInArray = {mainheading:mainHeading,subheading:subHeading,subbestheading:testString,data:stringAtIndex.trim()};
             finalArray1.push(ObjectToSaveInArray);
           }
+
+          console.log('final Array 1 is =',finalArray1);
+
         })
 
         var finalArray2=[];
@@ -372,6 +439,9 @@ class HomeScreen extends Component{
                 finalArray2.push(ObjectToSaveInArray);
 
               }
+
+              console.log('final Array 2 is =',finalArray2);
+
             })
 
             var finalArray3=[];
@@ -829,8 +899,6 @@ class HomeScreen extends Component{
 
                                   }
                                 })
-
-
 
 
                                 var finalArray8=[];
@@ -1654,6 +1722,7 @@ class HomeScreen extends Component{
 
                                                                       }
 
+                                                                      console.log('First Array is = ',this.state.bookArray[0]);
                                                                       this.setState({showProgress:false});
                                                                       AsyncStorage.setItem('booksData', JSON.stringify(this.state.bookArray));
                                                                       this.slectFunc();
@@ -1661,6 +1730,9 @@ class HomeScreen extends Component{
                                                                     })
 
         var mainArray=[];
+        // First Array is for Articles and Other is for Books
+        var Object0ToSaveInMainArray = {title:'مضامین',data:finalArray0};
+
         var Object1ToSaveInMainArray = {title:'آرنڈ',data:finalArray1};
         var Object2ToSaveInMainArray = {title:'اندرائین',data:finalArray2};
         var Object3ToSaveInMainArray = {title:'انگور',data:finalArray3};
@@ -1678,6 +1750,7 @@ class HomeScreen extends Component{
         var Object15ToSaveInMainArray = {title:'دھی',data:finalArray15};
         var Object16ToSaveInMainArray = {title:'گل سرک',data:finalArray16};
 
+        mainArray.push(Object0ToSaveInMainArray);
         mainArray.push(Object1ToSaveInMainArray);
         mainArray.push(Object2ToSaveInMainArray);
         mainArray.push(Object3ToSaveInMainArray);
@@ -1697,6 +1770,7 @@ class HomeScreen extends Component{
 
         Constants.BookArray=mainArray;
         Constants.isBookLoaded=true;
+
         this.setState({
           bookArray:mainArray
         })
@@ -1705,6 +1779,7 @@ class HomeScreen extends Component{
 
     // For Android Path is different  خواص آک
 
+    var  path0='Articles.txt';
     var  path1='آرنڈ.txt';
     var  path2='اندرائین.txt';
     var  path3='انگور.txt';
@@ -1730,6 +1805,66 @@ class HomeScreen extends Component{
         // return Promise.all([RNFS.stat(result[0].path), result[0].path]);
       });
       // // console.log('End of File results');
+
+
+      // For Articles
+      var mainArray=[];
+      var finalArray0=[];
+      RNFS.readFileAssets(path0)
+          .then((contents) => {
+            var contentString = contents.toString();
+            // console.log('Content Of Complete Book' + contentString);
+            var articlesNameArray=[];
+            var articlesHeadingArray=[];
+            var articlesDetailArray=[];
+            for (var i = 0; i < contentString.length; i++) {
+              // Main Heading denoted by & Sign
+              var firstIndexname=contentString.indexOf('&',i);
+              var secondIndexname=contentString.indexOf('&',firstIndexname+1);
+              if (secondIndexname==-1 || firstIndexname==-1) {
+                break;
+              }
+
+              var tempString=contentString.slice(firstIndexname+1,secondIndexname-1);
+              articlesNameArray.push(tempString);
+              i=secondIndexname;
+              }
+
+              for (var i = 0; i < contentString.length; i++) {
+              // ArticleHeading denoted by @ Sign
+              var firstIndexheading=contentString.indexOf('@',i);
+              var secondIndexheading=contentString.indexOf('@',firstIndexheading+1);
+              if (secondIndexheading==-1 || firstIndexheading==-1) {
+                break;
+              }
+
+              var tempString=contentString.slice(firstIndexheading+1,secondIndexheading-1);
+              articlesHeadingArray.push(tempString);
+              i=secondIndexheading;
+            }
+
+            for (var i = 0; i < contentString.length; i++) {
+              // ArticleDetail denoted by $ Sign
+              var firstIndexdetail=contentString.indexOf('$',i);
+              var secondIndexdetail=contentString.indexOf('$',firstIndexdetail+1);
+              if (secondIndexdetail==-1 || firstIndexdetail==-1) {
+                break;
+              }
+
+              var tempString=contentString.slice(firstIndexdetail+1,secondIndexdetail-1);
+              articlesDetailArray.push(tempString);
+              i=secondIndexdetail;
+
+            }
+
+            for (var x = 0; x < articlesDetailArray.length; x++) {
+              var ObjectToSaveInArray = {key:x,mainheading:articlesNameArray[0],subheading:articlesHeadingArray[x],subbestheading:articlesHeadingArray[x],data:articlesDetailArray[x].trim()};
+              finalArray0.push(ObjectToSaveInArray);
+            }
+
+            console.log('Marwa Dia Amir ne',finalArray0);
+
+          })
 
     var finalArray1=[];
     RNFS.readFileAssets(path1)
@@ -3482,6 +3617,9 @@ class HomeScreen extends Component{
 
         var mainArray=[];
 
+        // First Array is for Articles and Other is for Books
+        var Object0ToSaveInMainArray = {title:'مضامین',data:finalArray0};
+
         var Object1ToSaveInMainArray = {title:'آرنڈ',data:finalArray1};
         var Object2ToSaveInMainArray = {title:'اندرائین',data:finalArray2};
         var Object3ToSaveInMainArray = {title:'انگور',data:finalArray3};
@@ -3499,6 +3637,7 @@ class HomeScreen extends Component{
         var Object15ToSaveInMainArray = {title:'دھی',data:finalArray15};
         var Object16ToSaveInMainArray = {title:'گل سرک',data:finalArray16};
 
+        mainArray.push(Object0ToSaveInMainArray);
         mainArray.push(Object1ToSaveInMainArray);
         mainArray.push(Object2ToSaveInMainArray);
         mainArray.push(Object3ToSaveInMainArray);
@@ -3543,6 +3682,10 @@ actionButtonBooksList(){
 }
 
 actionButtonSearch(){
+
+  Alert.alert('Hello');
+
+// Alert.alert('Hello'+this.state.bookArray.length);
 
 // this.searchExactWord();
 var stringToSearch=this.state.txtSearch.trim();
