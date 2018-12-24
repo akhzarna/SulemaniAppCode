@@ -83,10 +83,6 @@ class HomeScreen extends Component{
 
     var array=[alif,bay,pay,tay,ttay,say,jeem,chay,hey,khey,dal,ddal,zaal,ray,aray,zay,say,seen,sheen,saad,zaad,toain,zoain,ain,ghain,fey,kaf,kaaf,gaaf,laam,meem,noon,wao,hey,chotiye];
 
-    // var array=['ا','ب','پ','ت','ٹ','ث','ج','چ','ح','خ','د','ڈ','ذ','ر',
-    // 'ڑ','ز','ژ','س','ش','ص','ض','ط','ظ','ع','غ','ف','ق','ک','گ','ل','م','ن','و',
-    // 'ہ','ي'];
-
     this.state={
         urduAlphabet:array,
         fileContent:'kdsnfk',
@@ -180,7 +176,9 @@ class HomeScreen extends Component{
 
     if (Platform.OS === 'ios') {
 
-    path0=RNFS.MainBundlePath+'/Articles.txt';
+    // path0=RNFS.MainBundlePath+'/Articles.txt';
+
+    path0=RNFS.MainBundlePath+'/islami riasat.txt';
     path1=RNFS.MainBundlePath+'/آرنڈ.txt';
     path2=RNFS.MainBundlePath+'/اندرائین.txt';
     path3=RNFS.MainBundlePath+'/انگور.txt';
@@ -3661,16 +3659,11 @@ class HomeScreen extends Component{
           bookArray:mainArray
         })
 
-        // For Permanent Storage Of Data
-
-// readFileAssets
   }
 }
 
 actionButtonBooksList(){
-      // // console.log("check dobara");
     var screenName='BooksListScreen';
-
     this.props.navigator.push({
       screen:screenName,
       // passProps:{finalArray},
@@ -3682,243 +3675,14 @@ actionButtonBooksList(){
 }
 
 actionButtonSearch(){
-
-  Alert.alert('Hello');
-
-// Alert.alert('Hello'+this.state.bookArray.length);
-
-// this.searchExactWord();
 var stringToSearch=this.state.txtSearch.trim();
-// // // console.log('String to Search' + stringToSearch);
   stringToSearch=stringToSearch.toLowerCase();
 if (stringToSearch.length <=0) {
   Alert.alert('Stop!','Search complete word');
   return;
-}
-
-var finalArray=[];
-
-this.setState({showProgress:true})
-for (var x = 0; x < this.state.bookArray.length; x++) {
-var bookArray=this.state.bookArray[x].data;
-var searchedArray=[];
-var counter = 0;
-var flag = 0;
-
-// Testing Akhzar Nazir
-for (var i = 0; i < bookArray.length; i++) {
-  var mainHeading=bookArray[i].mainheading;
-  var subHeading=bookArray[i].subheading;
-  var subbestheading=bookArray[i].subbestheading;
-  var tempString=bookArray[i].data;
-  var tempPara=tempString.toLowerCase();
-
-  var index = -1;
-
- if (!this.state.isBook1Selected && !this.state.isBook2Selected && !this.state.isBook3Selected && !this.state.isBook4Selected)
-  {
-
-    index=mainHeading.indexOf(stringToSearch);
-    if (index==-1) {
-      index=subHeading.indexOf(stringToSearch);
-    }
-    if (index==-1) {
-      index=subbestheading.indexOf(stringToSearch);
-    }
-    if (index==-1) {
-      index=tempPara.indexOf(stringToSearch);
-    }
-
-  }
-
-  else if (this.state.isBook1Selected && this.state.isBook2Selected && this.state.isBook3Selected && this.state.isBook4Selected)
-  {
-
-    index=mainHeading.indexOf(stringToSearch);
-    if (index==-1) {
-      index=subHeading.indexOf(stringToSearch);
-    }
-    if (index==-1) {
-      index=subbestheading.indexOf(stringToSearch);
-    }
-    if (index==-1) {
-      index=tempPara.indexOf(stringToSearch);
-    }
-
-  }
-
-  else if (this.state.isBook1Selected && !this.state.isBook2Selected && !this.state.isBook3Selected && !this.state.isBook4Selected)
-  {
-    index=mainHeading.indexOf(stringToSearch);
-
-  }
-
-  else  if (this.state.isBook2Selected && !this.state.isBook1Selected && !this.state.isBook3Selected && !this.state.isBook4Selected)
-  {
-    index=tempPara.indexOf(stringToSearch);
-
-  }
-
-  else  if (this.state.isBook3Selected && !this.state.isBook1Selected && !this.state.isBook2Selected && !this.state.isBook4Selected)
-  {
-    index=subHeading.indexOf(stringToSearch);
-
-  }
-
-  else  if (this.state.isBook4Selected && !this.state.isBook1Selected && !this.state.isBook2Selected && !this.state.isBook3Selected)
-  {
-    index=subbestheading.indexOf(stringToSearch);
-
-  }
-
-  else  if (this.state.isBook1Selected && this.state.isBook2Selected && !this.state.isBook3Selected && !this.state.isBook4Selected)
-  {
-    index=mainHeading.indexOf(stringToSearch);
-    index=tempPara.indexOf(stringToSearch);
-  }
-
-  else  if (this.state.isBook1Selected && this.state.isBook3Selected && !this.state.isBook2Selected && !this.state.isBook4Selected)
-  {
-    index=mainHeading.indexOf(stringToSearch);
-    index=subHeading.indexOf(stringToSearch);
-  }
-
-  else  if (this.state.isBook1Selected && this.state.isBook4Selected && !this.state.isBook2Selected && !this.state.isBook3Selected)
-  {
-    index=mainHeading.indexOf(stringToSearch);
-    index=subbestheading.indexOf(stringToSearch);
-  }
-
-
-
-  else  if (this.state.isBook2Selected && this.state.isBook1Selected && !this.state.isBook3Selected && !this.state.isBook4Selected)
-  {
-    index=mainHeading.indexOf(stringToSearch);
-    index=tempPara.indexOf(stringToSearch);
-  }
-
-  else  if (this.state.isBook2Selected && this.state.isBook3Selected && !this.state.isBook1Selected && !this.state.isBook4Selected)
-  {
-    index=tempPara.indexOf(stringToSearch);
-    index=subHeading.indexOf(stringToSearch);
-  }
-
-  else  if (this.state.isBook2Selected && this.state.isBook4Selected && !this.state.isBook1Selected && !this.state.isBook3Selected)
-  {
-    index=tempPara.indexOf(stringToSearch);
-    index=subbestheading.indexOf(stringToSearch);
-  }
-
-
-
-////// ///// /////
-
-  else  if (this.state.isBook3Selected && this.state.isBook1Selected && !this.state.isBook2Selected && !this.state.isBook4Selected)
-  {
-    index=mainHeading.indexOf(stringToSearch);
-    index=subHeading.indexOf(stringToSearch);
-  }
-
-  else  if (this.state.isBook3Selected && this.state.isBook2Selected && !this.state.isBook1Selected && !this.state.isBook4Selected)
-  {
-    index=tempPara.indexOf(stringToSearch);
-    index=subHeading.indexOf(stringToSearch);
-  }
-
-  else  if (this.state.isBook3Selected && this.state.isBook4Selected && !this.state.isBook1Selected && !this.state.isBook2Selected)
-  {
-    index=subHeading.indexOf(stringToSearch);
-    index=subbestheading.indexOf(stringToSearch);
-  }
-
-
-
-  ////// ///// /////
-
-    else  if (this.state.isBook4Selected && this.state.isBook1Selected && !this.state.isBook2Selected && !this.state.isBook3Selected)
-    {
-      index=mainHeading.indexOf(stringToSearch);
-      index=subbestheading.indexOf(stringToSearch);
-
-    }
-
-    else  if (this.state.isBook4Selected && this.state.isBook2Selected && !this.state.isBook1Selected && !this.state.isBook3Selected)
-    {
-
-      index=tempPara.indexOf(stringToSearch);
-      index=subbestheading.indexOf(stringToSearch);
-    }
-
-    else  if (this.state.isBook4Selected && this.state.isBook3Selected && !this.state.isBook1Selected && !this.state.isBook2Selected)
-    {
-      index=subHeading.indexOf(stringToSearch);
-      index=subbestheading.indexOf(stringToSearch);
-    }
-
-
-    ////// ///// /////
-
-      else  if (this.state.isBook1Selected && this.state.isBook2Selected && this.state.isBook3Selected && !this.state.isBook4Selected)
-      {
-        index=mainHeading.indexOf(stringToSearch);
-        index=tempPara.indexOf(stringToSearch);
-        index=subHeading.indexOf(stringToSearch);
-
-      }
-
-      else  if (this.state.isBook1Selected && this.state.isBook2Selected && this.state.isBook4Selected && !this.state.isBook3Selected)
-      {
-        index=mainHeading.indexOf(stringToSearch);
-        index=tempPara.indexOf(stringToSearch);
-        index=subbestheading.indexOf(stringToSearch);
-
-      }
-
-      else  if (this.state.isBook1Selected && this.state.isBook3Selected && this.state.isBook4Selected && !this.state.isBook2Selected)
-      {
-
-        index=mainHeading.indexOf(stringToSearch);
-        index=subHeading.indexOf(stringToSearch);
-        index=subbestheading.indexOf(stringToSearch);
-
-      }
-
-
-  if (index != -1) {
-    var object={key:counter,data:bookArray[i]}
-    searchedArray.push(object);
-    counter++;
-  }
-
-}
-
-var searchResult={'word':stringToSearch,'searchedArray':searchedArray,bookname:this.state.bookArray[x].title};
-
-this.setState({showProgress:false})
-if (searchedArray.length!=0) {
-  flag++;
-}
-
-  finalArray.push(searchResult);
-
-}
-
-// // // console.log('Search Result Word is = ',finalArray[0]);
-
-if (flag == 0){
-  Alert.alert('Stop!','No result found');
+}else{
   return;
 }
-
-this.setState({showProgress:false});
-this.props.navigator.push({
-  screen:'DisplayResultScreen',
-  passProps:{finalArray},
-  navigatorStyle:{
-    navBarHidden:true,
-  },
-})
-
 }
 
 searchExactWord(){
@@ -4163,12 +3927,6 @@ callSomeFunction(index){
     })
   }
 }
- Search(){
-  this.setState({txtSearch :'ا'});
- }
- Search1(){
-  this.setState({txtSearch :'ب'});
- }
 
   render(){
     return(
@@ -4187,107 +3945,14 @@ callSomeFunction(index){
       underlineColorAndroid='transparent'
        />
 
-       {
-      /*
-       }<Text style={{textAlign:'right',marginRight:15,marginTop:15}}>کس کتاب سے تلاش کرنا چاہتے ہیں؟</Text>
-      */
-        }
-
-      {
-        /*
-       <View style={{justifyContent:'flex-end',alignItems:'flex-end',marginRight:40,marginLeft:40,backgroundColor:'transparent'}}>
-       <View style={{flexDirection:'row'}}>
-
-               <TouchableOpacity onPress={()=>this.actionCheckBox2()} style={{marginRight:20,width:120,height:40,alignItems:'flex-end',justifyContent:'center'}}>
-
-               <View style={{flexDirection:'row',}}>
-               <Text style={{alignSelf:'center',color:'white'}}>Title + Text</Text>
-               <Image source={this.state.isBook2Selected?checkIcon:uncheckIcon} style={{width:30,height:30,marginLeft:10}}/>
-               </View>
-
-               </TouchableOpacity>
-
-                <TouchableOpacity onPress={()=>this.actionCheckBox1()} style={{width:140,height:40,alignItems:'flex-end',justifyContent:'center'}}>
-
-                <View style={{flexDirection:'row'}}>
-                <Text style={{alignSelf:'center',color:'white'}}>Title</Text>
-                <Image source={this.state.isBook1Selected?checkIcon:uncheckIcon} style={{width:30,height:30,marginLeft:10}}/>
-
-                </View>
-
-                </TouchableOpacity>
-
-      </View>
-
-          <View style={{flexDirection:'row'}}>
-
-                    <TouchableOpacity onPress={()=>this.actionCheckBox4()} style={{marginRight:20,width:120,height:40,alignItems:'flex-end',justifyContent:'center'}}>
-
-                    <View style={{flexDirection:'row'}}>
-                    <Text style={{alignSelf:'center',color:'white'}}>علاج</Text>
-                    <Image source={this.state.isBook4Selected?checkIcon:uncheckIcon} style={{width:30,height:30,marginLeft:10}}/>
-                    </View>
-
-                    </TouchableOpacity>
-
-                    <TouchableOpacity onPress={()=>this.actionCheckBox3()} style={{width:140,height:40,alignItems:'flex-end',justifyContent:'center'}}>
-
-                    <View style={{flexDirection:'row'}}>
-                    <Text style={{fontSize:12,color:'white'}}>نسخہ جات یا بیماریاں</Text>
-                    <Image source={this.state.isBook3Selected?checkIcon:uncheckIcon} style={{width:30,height:30,marginLeft:10}}/>
-                    </View>
-
-                    </TouchableOpacity>
-          </View>
-
-     </View>
-     */
-   }
-
        <View style={styles.buttonView}>
        <TouchableOpacity onPress={()=>this.actionButtonSearch()} style={styles.buttonStyleOne}>
        <Text style={styles.textStyle}>{this.state.buttonSearchTitle}</Text>
        </TouchableOpacity>
        </View>
         <View style={{alignItems:'center'}}>
-        <TouchableOpacity onPress={()=>this.Search('ب')} style={styles.buttonStyleOne}>
-       <Text style={styles.textStyle}>ب</Text>
-       </TouchableOpacity>
 
-       <TouchableOpacity onPress={()=>this.Search1('ا')} style={styles.buttonStyleOne}>
-       <Text style={styles.textStyle}>ا</Text>
-       </TouchableOpacity>
        </View>
-
-       {
-      /*
-       <View style={{flex:1,backgroundColor:'transparent',justifyContent:'flex-end'}}>
-       <View style={{alignItems:'flex-start',marginBottom:isiPhone?10:30}}>
-       <Carousel
-          style={{}}
-           ref={(c) => { this._carousel = c; }}
-           data={this.state.bannersArray}
-           renderItem={this._renderItem}
-           sliderWidth={sliderWidth}
-           itemWidth={itemWidth}
-           itemHeight={itemWidth}
-           loop={true}
-           autoplay={true}
-         />
-         </View>
-         </View>
-         */
-       }
-
-{
-/*
-         <View style={styles.buttonView}>
-         <TouchableOpacity onPress={()=>this.actionButtonBooksList()} style={styles.buttonStyleTwo}>
-         <Text style={styles.textStyle}>{this.state.booksListTitle}</Text>
-         </TouchableOpacity>
-         </View>
-*/
-}
 
          <View style={{marginTop:25,}}>
          <FlatList
